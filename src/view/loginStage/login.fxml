@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <AnchorPane prefHeight="640" prefWidth="1136">
+         <children>
+            <JFXButton layoutX="493.0" layoutY="423.0" lineSpacing="15.0" prefHeight="48.0" prefWidth="150.0" ripplerFill="#3498db" style="-fx-background-color: #1abc9c;" text="Login" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="17.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField focusColor="#3498db" layoutX="386.0" layoutY="226.0" prefHeight="31.0" prefWidth="364.0" promptText="Username" unFocusColor="#1abc9c" />
+            <JFXPasswordField focusColor="#3498db" layoutX="386.0" layoutY="320.0" prefHeight="31.0" prefWidth="364.0" promptText="Password" unFocusColor="#1abc9c" />
+         </children>
+      </AnchorPane>
+   </children>
+</GridPane>
