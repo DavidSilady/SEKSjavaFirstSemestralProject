@@ -1,3 +1,5 @@
+package main;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -8,7 +10,7 @@ import javafx.stage.Stage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("../view/loginStage/login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../view/login.fxml"));
         primaryStage.setTitle("SEKS | Login");
         primaryStage.setScene(new Scene(root, 1136, 640));
         primaryStage.show();
