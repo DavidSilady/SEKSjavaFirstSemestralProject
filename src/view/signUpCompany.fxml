@@ -8,16 +8,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
-      <JFXButton layoutX="314.0" layoutY="337.0" style="-fx-background-color: #3949ab;" text="Sign Up" textFill="WHITE" />
-      <JFXTextField focusColor="#3949ab" layoutX="57.0" layoutY="113.0" prefHeight="31.0" prefWidth="257.0" promptText="Company Name" />
-      <JFXTextField focusColor="#3949ab" layoutX="387.0" layoutY="113.0" prefHeight="31.0" prefWidth="257.0" promptText="ICO" />
-      <JFXTextField focusColor="#3949ab" layoutX="57.0" layoutY="169.0" prefHeight="31.0" prefWidth="257.0" promptText="E-mail" />
-      <JFXTextField focusColor="#3949ab" layoutX="387.0" layoutY="169.0" prefHeight="31.0" prefWidth="257.0" promptText="Phone Number" />
-      <JFXPasswordField focusColor="#3949ab" layoutX="57.0" layoutY="270.0" prefHeight="31.0" prefWidth="257.0" promptText="Password" />
-      <JFXPasswordField focusColor="#3949ab" layoutX="387.0" layoutY="270.0" prefHeight="31.0" prefWidth="257.0" promptText="Confirm Password" />
+      <JFXButton fx:id="signUpCompanyButton" layoutX="314.0" layoutY="337.0" style="-fx-background-color: #3949ab;" text="Sign Up" textFill="WHITE" />
+      <JFXTextField fx:id="signUpCompanyName" focusColor="#3949ab" layoutX="57.0" layoutY="113.0" prefHeight="31.0" prefWidth="257.0" promptText="Company Name" />
+      <JFXTextField fx:id="signUpICO" focusColor="#3949ab" layoutX="387.0" layoutY="113.0" prefHeight="31.0" prefWidth="257.0" promptText="ICO" />
+      <JFXTextField fx:id="signUpEmail" focusColor="#3949ab" layoutX="57.0" layoutY="169.0" prefHeight="31.0" prefWidth="257.0" promptText="E-mail" />
+      <JFXTextField fx:id="signUpPhone" focusColor="#3949ab" layoutX="387.0" layoutY="169.0" prefHeight="31.0" prefWidth="257.0" promptText="Phone Number" />
+      <JFXPasswordField fx:id="signUpPassword" focusColor="#3949ab" layoutX="57.0" layoutY="270.0" prefHeight="31.0" prefWidth="257.0" promptText="Password" />
+      <JFXPasswordField fx:id="signUpConfirmPassword" focusColor="#3949ab" layoutX="387.0" layoutY="270.0" prefHeight="31.0" prefWidth="257.0" promptText="Confirm Password" />
       <AnchorPane prefHeight="72.0" prefWidth="701.0" style="-fx-background-color: #3949ab;">
          <children>
             <Label layoutX="291.0" layoutY="5.0" text="Sign Up" textFill="WHITE">
@@ -25,7 +24,7 @@
                   <Font name="System Bold" size="32.0" />
                </font>
             </Label>
-            <JFXButton fx:id="loginSignUpButton" layoutX="604.0" layoutY="21.0" style="-fx-background-color: #00227b;" text="Login" textFill="WHITE" />
+            <JFXButton fx:id="signUpLoginButton" layoutX="604.0" layoutY="21.0" style="-fx-background-color: #00227b;" text="Login" textFill="WHITE" />
             <Label layoutX="310.0" layoutY="45.0" text="Company" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
