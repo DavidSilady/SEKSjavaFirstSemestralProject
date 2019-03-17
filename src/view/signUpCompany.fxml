@@ -10,7 +10,10 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
    <children>
-      <JFXButton fx:id="signUpCompanyButton" layoutX="314.0" layoutY="337.0" style="-fx-background-color: #3949ab;" text="Sign Up" textFill="WHITE" />
+      <JFXButton fx:id="signUpCompanyButton" layoutX="300.0" layoutY="329.0" prefHeight="47.0" prefWidth="101.0" style="-fx-background-color: #00227b;" text="Sign Up" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></JFXButton>
       <JFXTextField fx:id="signUpCompanyName" focusColor="#3949ab" layoutX="57.0" layoutY="113.0" prefHeight="31.0" prefWidth="257.0" promptText="Company Name" />
       <JFXTextField fx:id="signUpICO" focusColor="#3949ab" layoutX="387.0" layoutY="113.0" prefHeight="31.0" prefWidth="257.0" promptText="ICO" />
       <JFXTextField fx:id="signUpEmail" focusColor="#3949ab" layoutX="57.0" layoutY="169.0" prefHeight="31.0" prefWidth="257.0" promptText="E-mail" />
