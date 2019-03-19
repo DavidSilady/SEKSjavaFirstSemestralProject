@@ -48,8 +48,6 @@ public class LoginController {
 	
 	@FXML
 	void initialize() {
-		
-		
 		loginUsername.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
 				loginPassword.requestFocus();
@@ -61,7 +59,6 @@ public class LoginController {
 				loginSequence();
 			}
 		});
-		
 		
 		loginButton.setOnAction(event -> {
 			loginSequence();

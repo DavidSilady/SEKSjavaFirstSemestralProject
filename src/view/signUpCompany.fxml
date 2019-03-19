@@ -27,7 +27,7 @@
                   <Font name="System Bold" size="32.0" />
                </font>
             </Label>
-            <JFXButton fx:id="signUpLoginButton" layoutX="604.0" layoutY="21.0" onAction="#loadLoginScene" style="-fx-background-color: #00227b;" text="Login" textFill="WHITE" />
+            <JFXButton fx:id="signUpLoginButton" layoutX="604.0" layoutY="21.0" onAction="#loadLoginScene" style="-fx-background-color: white;" text="Login" textFill="#00227b" />
             <Label layoutX="310.0" layoutY="45.0" text="Company" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
