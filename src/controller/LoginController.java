@@ -11,13 +11,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import model.DataStorage;
+import model.User;
 
-import java.awt.*;
 import java.net.URL;
-import java.sql.SQLOutput;
 import java.util.ResourceBundle;
 
 public class LoginController {
@@ -31,7 +29,7 @@ public class LoginController {
 	private URL location;
 	
 	@FXML
-	private JFXTextField loginUsername;
+	private JFXTextField loginMail;
 	
 	@FXML
 	private JFXButton loginSignUpButton;
@@ -42,13 +40,9 @@ public class LoginController {
 	@FXML
 	private JFXPasswordField loginPassword;
 	
-	private String mail = new String();
-	private String password = new String();
-	
-	
 	@FXML
 	void initialize() {
-		loginUsername.setOnKeyPressed((event) -> {
+		loginMail.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
 				loginPassword.requestFocus();
 			}
@@ -68,18 +62,29 @@ public class LoginController {
 	private void loginSequence() {
 		if (isFilled()) {
 			System.out.println("Login button clicked!");
-			this.password = loginPassword.getText();
-			this.mail = loginUsername.getText();
+			for (User temp: DataStorage.getCompanyUserList()) {
+				if (temp.getMail().equals(loginMail.getText())) {
+					if (temp.getPassword().equals(loginPassword.getText())) {
+						System.out.println("Logged in!");
+					} else {
+						System.out.println("Wrong Password!");
+					}
+				} else {
+					System.out.println("Not signed up yet!");
+					return;
+				}
+			}
+			
 		}
 	}
 	
 	private boolean isFilled() {
 		boolean filled = true;
-		if (loginUsername.getText() == null || loginUsername.getText().trim().isEmpty()) {
-			loginUsername.setPromptText("You must enter an email!");
+		if (loginMail.getText() == null || loginMail.getText().trim().isEmpty()) {
+			loginMail.setPromptText("You must enter an email!");
 			filled = false;
 		} else {
-			loginUsername.setPromptText("Email");
+			loginMail.setPromptText("Email");
 		}
 		
 		if (loginPassword.getText() == null || loginPassword.getText().trim().isEmpty()) {

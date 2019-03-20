@@ -56,18 +56,4 @@ public class Company implements java.io.Serializable, User {
 		this.phone = phone;
 		this.password = password;
 	}
-	
-	private void save() {
-		try {
-			FileOutputStream fileOut =
-					new FileOutputStream("/tmp/company.ser");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(this);
-			out.close();
-			fileOut.close();
-			System.out.println("Serialized data is saved in /tmp/company.ser");
-		} catch (IOException i) {
-			i.printStackTrace();
-		}
-	}
 }

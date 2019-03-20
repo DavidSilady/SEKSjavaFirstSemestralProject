@@ -1,4 +1,4 @@
 package model;
 
-public class Inspection implements User {
+public abstract class  Inspection implements User {
 }
