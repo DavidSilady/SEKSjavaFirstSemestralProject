@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="controller.UserController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserController">
+   <children>
+       <JFXButton fx:id="chooseUserCompanyButton" layoutX="42.0" layoutY="291.0" onAction="#loadLoginCompany" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #c2185b;" text="Company" textFill="WHITE">
+           <font>
+             <Font name="System Bold" size="15.0" />
+           </font>
+       </JFXButton>
+       <JFXButton fx:id="chooseUserAuditorButton" layoutX="261.0" layoutY="291.0" onAction="#loadLoginAuditor" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #c2185b;" text="Auditor" textFill="WHITE">
+           <font>
+             <Font name="System Bold" size="15.0" />
+           </font>
+       </JFXButton>
+       <JFXButton fx:id="chooseUserInspectionButton" layoutX="479.0" layoutY="291.0" onAction="#loadLoginInspection" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #c2185b;" text="Inspection" textFill="WHITE">
+           <font>
+             <Font name="System Bold" size="15.0" />
+           </font>
+       </JFXButton>
+       <ImageView fitHeight="129.0" fitWidth="174.0" layoutX="287.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+           <image>
+             <Image url="@../assets/auditor.png" />
+           </image>
+       </ImageView>
+       <ImageView fitHeight="140.0" fitWidth="137.0" layoutX="64.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+              <Image url="@../assets/company.png" />
+          </image>
+       </ImageView>
+       <ImageView fitHeight="137.0" fitWidth="137.0" layoutX="501.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+          <image>
+              <Image url="@../assets/inspection.png" />
+          </image>
+       </ImageView>
+       <AnchorPane prefHeight="97.0" prefWidth="700.0" style="-fx-background-color: #c2185b;">
+          <children>
+              <Label layoutX="219.0" layoutY="19.0" text="Choose User" textFill="WHITE">
+                  <font>
+                      <Font name="System Bold" size="45.0" />
+                  </font>
+              </Label>
+          </children>
+       </AnchorPane>
+   </children>
 </AnchorPane>

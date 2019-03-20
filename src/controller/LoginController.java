@@ -116,9 +116,4 @@ public class LoginController {
 		window.setScene(signUpScene);
 		window.show();
 	}
-	
-	@FXML
-	public void onEnter (ActionEvent actionEvent) {
-	
-	}
 }
