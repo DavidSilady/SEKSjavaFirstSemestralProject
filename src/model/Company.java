@@ -1,7 +1,6 @@
 package model;
-import java.io.*;
 
-public class Company implements java.io.Serializable, User {
+public class Company implements java.io.Serializable, Listable {
 	private String name;
 	private String ICO;
 	private String mail;
@@ -56,4 +55,6 @@ public class Company implements java.io.Serializable, User {
 		this.phone = phone;
 		this.password = password;
 	}
+	
+	
 }

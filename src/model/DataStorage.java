@@ -1,37 +1,36 @@
 package model;
-import javax.xml.crypto.Data;
 import java.io.*;
 import java.util.ArrayList;
 
 
 public class DataStorage implements java.io.Serializable{
-	private static ArrayList<? extends User> companyUserList = new ArrayList<>();
-	private static ArrayList<? extends User> inspectionUserList = new ArrayList<>();
-	private static ArrayList<? extends User> auditorUserList = new ArrayList<>();
+	private static ArrayList<? extends Listable> companyUserList = new ArrayList<>();
+	private static ArrayList<? extends Listable> inspectionUserList = new ArrayList<>();
+	private static ArrayList<? extends Listable> auditorUserList = new ArrayList<>();
 	
-	public static ArrayList<? extends User> getCompanyUserList () {
+	public ArrayList<? extends Listable> getCompanyUserList () {
 		return companyUserList;
 	}
 	
-	public static void setCompanyUserList (ArrayList<? extends User> companyUserList) {
+	public void setCompanyUserList (ArrayList<? extends Listable> companyUserList) {
 		DataStorage.companyUserList = companyUserList;
 		DataStorage.save(companyUserList, "companyUserData");
 	}
 	
-	public static ArrayList<? extends User> getInspectionUserList () {
+	public static ArrayList<? extends Listable> getInspectionUserList () {
 		return inspectionUserList;
 	}
 	
-	public static void setInspectionUserList (ArrayList<? extends User> inspectionUserList) {
+	public static void setInspectionUserList (ArrayList<? extends Listable> inspectionUserList) {
 		DataStorage.inspectionUserList = inspectionUserList;
 		DataStorage.save(companyUserList, "companyUserData");
 	}
 	
-	public static ArrayList<? extends User> getAuditorUserList () {
+	public static ArrayList<? extends Listable> getAuditorUserList () {
 		return auditorUserList;
 	}
 	
-	public static void setAuditorUserList (ArrayList<? extends User> auditorUserList) {
+	public static void setAuditorUserList (ArrayList<? extends Listable> auditorUserList) {
 		DataStorage.auditorUserList = auditorUserList;
 		DataStorage.save(auditorUserList, "auditorUserData");
 	}
@@ -60,12 +59,12 @@ public class DataStorage implements java.io.Serializable{
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static ArrayList<? extends User> load (String name) {
+	private static ArrayList<? extends Listable> load (String name) {
 		try
 		{
 			FileInputStream fis = new FileInputStream(name + ".ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			ArrayList<? extends User> arrayList = (ArrayList<? extends User>) ois.readObject();
+			ArrayList<? extends Listable> arrayList = (ArrayList<? extends Listable>) ois.readObject();
 			ois.close();
 			fis.close();
 			return arrayList;

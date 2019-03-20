@@ -42,4 +42,9 @@ public class UserController {
 		window.show();
 	}
 	
+	public void loadLoginAuditor (ActionEvent actionEvent) {
+	}
+	
+	public void loadLoginInspection (ActionEvent actionEvent) {
+	}
 }

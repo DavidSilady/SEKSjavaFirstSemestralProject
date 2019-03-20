@@ -1,5 +1,5 @@
 package model;
 
-public abstract class Auditor implements User {
+public abstract class Auditor implements Listable {
 
 }

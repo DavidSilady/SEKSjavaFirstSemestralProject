@@ -48,6 +48,9 @@ public class SignUpController {
 	void initialize() {
 		signUpCompanyButton.setOnAction(event -> {
 			if (signUpPassword.getText().equals(signUpConfirmPassword.getText()) ) {
+				
+				DataStorage userData = new DataStorage();
+				ArrayList<Company> companyUserList = (ArrayList<Company>) userData.getCompanyUserList();
 				Company company = new Company(
 						signUpCompanyName.getText(),
 						signUpICO.getText(),
@@ -55,10 +58,13 @@ public class SignUpController {
 						signUpPhone.getText(),
 						signUpPassword.getText()
 				);
-				ArrayList<Company> companyUserList = (ArrayList<Company>) DataStorage.getCompanyUserList();
-				companyUserList.add(company);
-				DataStorage.setCompanyUserList(companyUserList);
-				
+				try {
+					companyUserList.add(company);
+					userData.setCompanyUserList(companyUserList);
+				} catch (NullPointerException npe) {
+					System.out.println("Empty List!");
+					return;
+				}
 				System.out.println("Signed up!");
 			} else {
 				signUpPassword.clear();

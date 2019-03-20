@@ -13,9 +13,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.DataStorage;
-import model.User;
+import model.Listable;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LoginController {
@@ -50,19 +51,19 @@ public class LoginController {
 		
 		loginPassword.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
-				loginSequence();
+			//	login(DataStorage.getCompanyUserList());
 			}
 		});
 		
 		loginButton.setOnAction(event -> {
-			loginSequence();
+			//login(DataStorage.getCompanyUserList());
 		});
 	}
 	
-	private void loginSequence() {
+	private void login(ArrayList<? extends Listable> userList) {
 		if (isFilled()) {
 			System.out.println("Login button clicked!");
-			for (User temp: DataStorage.getCompanyUserList()) {
+			for (Listable temp: userList) {
 				if (temp.getMail().equals(loginMail.getText())) {
 					if (temp.getPassword().equals(loginPassword.getText())) {
 						System.out.println("Logged in!");
@@ -77,6 +78,7 @@ public class LoginController {
 			
 		}
 	}
+	
 	
 	private boolean isFilled() {
 		boolean filled = true;
@@ -110,6 +112,16 @@ public class LoginController {
 		
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/signUpCompany.fxml"));
+		Parent signUpParent = loader.load();
+		Scene signUpScene = new Scene(signUpParent);
+		Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+		window.setScene(signUpScene);
+		window.show();
+	}
+	
+	public void loadChooseUser (ActionEvent actionEvent) throws Exception{
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/view/chooseUser.fxml"));
 		Parent signUpParent = loader.load();
 		Scene signUpScene = new Scene(signUpParent);
 		Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

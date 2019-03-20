@@ -1,6 +1,7 @@
 package model;
 
-public interface User {
+public interface Listable {
+	
 	String getName ();
 	
 	String getMail ();
