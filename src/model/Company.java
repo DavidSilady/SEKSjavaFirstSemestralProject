@@ -1,6 +1,6 @@
 package model;
 
-public class Company implements java.io.Serializable, Listable {
+public class Company extends User implements java.io.Serializable, Listable {
 	private String name;
 	private String ICO;
 	private String mail;

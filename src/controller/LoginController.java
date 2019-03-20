@@ -51,12 +51,12 @@ public class LoginController {
 		
 		loginPassword.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
-			//	login(DataStorage.getCompanyUserList());
+				login(DataStorage.getCompanyUserList());
 			}
 		});
 		
 		loginButton.setOnAction(event -> {
-			//login(DataStorage.getCompanyUserList());
+			login(DataStorage.getCompanyUserList());
 		});
 	}
 	
@@ -66,6 +66,7 @@ public class LoginController {
 			for (Listable temp: userList) {
 				if (temp.getMail().equals(loginMail.getText())) {
 					if (temp.getPassword().equals(loginPassword.getText())) {
+						User activeUser = (User) temp;
 						System.out.println("Logged in!");
 					} else {
 						System.out.println("Wrong Password!");

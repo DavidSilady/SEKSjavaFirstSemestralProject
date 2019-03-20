@@ -8,11 +8,11 @@ public class DataStorage implements java.io.Serializable{
 	private static ArrayList<? extends Listable> inspectionUserList = new ArrayList<>();
 	private static ArrayList<? extends Listable> auditorUserList = new ArrayList<>();
 	
-	public ArrayList<? extends Listable> getCompanyUserList () {
+	public static ArrayList<? extends Listable> getCompanyUserList () {
 		return companyUserList;
 	}
 	
-	public void setCompanyUserList (ArrayList<? extends Listable> companyUserList) {
+	public static void setCompanyUserList (ArrayList<? extends Listable> companyUserList) {
 		DataStorage.companyUserList = companyUserList;
 		DataStorage.save(companyUserList, "companyUserData");
 	}
@@ -34,8 +34,6 @@ public class DataStorage implements java.io.Serializable{
 		DataStorage.auditorUserList = auditorUserList;
 		DataStorage.save(auditorUserList, "auditorUserData");
 	}
-	
-	
 	
 	public static void init () {
 		companyUserList = load("companyUserData");
@@ -67,10 +65,11 @@ public class DataStorage implements java.io.Serializable{
 			ArrayList<? extends Listable> arrayList = (ArrayList<? extends Listable>) ois.readObject();
 			ois.close();
 			fis.close();
-			return arrayList;
-		} catch (FileNotFoundException fnfe) {
+			System.out.println(arrayList);
+			return  arrayList;
+		} catch (FileNotFoundException f) {
 			System.out.println("File not found");
-			//fnfe.printStackTrace();
+			//f.printStackTrace();
 			return null;
 		} catch(IOException ioe){
 			ioe.printStackTrace();

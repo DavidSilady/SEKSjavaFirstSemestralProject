@@ -48,9 +48,10 @@ public class SignUpController {
 	void initialize() {
 		signUpCompanyButton.setOnAction(event -> {
 			if (signUpPassword.getText().equals(signUpConfirmPassword.getText()) ) {
-				
-				DataStorage userData = new DataStorage();
-				ArrayList<Company> companyUserList = (ArrayList<Company>) userData.getCompanyUserList();
+				ArrayList<Company> companyUserList = new ArrayList<>();
+				if (DataStorage.getCompanyUserList() != null) {
+					companyUserList = (ArrayList<Company>) DataStorage.getCompanyUserList();
+				}
 				Company company = new Company(
 						signUpCompanyName.getText(),
 						signUpICO.getText(),
@@ -60,7 +61,7 @@ public class SignUpController {
 				);
 				try {
 					companyUserList.add(company);
-					userData.setCompanyUserList(companyUserList);
+					DataStorage.setCompanyUserList(companyUserList);
 				} catch (NullPointerException npe) {
 					System.out.println("Empty List!");
 					return;
