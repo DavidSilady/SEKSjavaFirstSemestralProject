@@ -41,6 +41,8 @@ public class LoginController {
 	@FXML
 	private JFXPasswordField loginPassword;
 	
+	private SceneController sceneController = new SceneController();
+	
 	@FXML
 	void initialize() {
 		loginMail.setOnKeyPressed((event) -> {
@@ -98,31 +100,12 @@ public class LoginController {
 	
 	@FXML
 	public void loadChooseSignUp (javafx.event.ActionEvent actionEvent) throws Exception{
-		/*FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/signUpCompany.fxml"));
-		Parent root1 = (Parent) fxmlLoader.load();
-		Stage stage = new Stage();
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initStyle(StageStyle.UNDECORATED);
-		stage.setTitle("Sign Up Company | SEKS");
-		stage.setScene(new Scene(root1));
-		stage.show();*/
 		
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/signUpCompany.fxml"));
-		Parent signUpParent = loader.load();
-		Scene signUpScene = new Scene(signUpParent);
-		Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-		window.setScene(signUpScene);
-		window.show();
+		
+		sceneController.setScene(actionEvent, "signUpCompany");
 	}
 	
 	public void loadChooseUser (ActionEvent actionEvent) throws Exception{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/chooseUser.fxml"));
-		Parent signUpParent = loader.load();
-		Scene signUpScene = new Scene(signUpParent);
-		Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-		window.setScene(signUpScene);
-		window.show();
+		sceneController.setScene(actionEvent, "chooseUser");
 	}
 }

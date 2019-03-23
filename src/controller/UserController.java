@@ -31,16 +31,12 @@ public class UserController {
 	
 	@FXML
 	void initialize() { }
+	private SceneController sceneController = new SceneController();
 	
 	public void loadLoginCompany (javafx.event.ActionEvent actionEvent) throws Exception{
-		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/view/login.fxml"));
-		Parent signUpParent = loader.load();
-		Scene signUpScene = new Scene(signUpParent);
-		Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-		window.setScene(signUpScene);
-		window.show();
+		sceneController.setScene(actionEvent, "login");
 	}
+	
 	
 	public void loadLoginAuditor (ActionEvent actionEvent) {
 	}

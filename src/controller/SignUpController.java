@@ -13,7 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import model.Company;
+import model.userTypes.Company;
 import model.DataStorage;
 
 public class SignUpController {
@@ -41,7 +41,7 @@ public class SignUpController {
 	
 	@FXML
 	private JFXTextField signUpICO;
-	
+	SceneController sceneController = new SceneController();
 	
 	@FXML
 	@SuppressWarnings("unchecked")
@@ -77,13 +77,6 @@ public class SignUpController {
 	
 	
 	public void loadLoginScene (ActionEvent actionEvent) throws Exception {
-		FXMLLoader loader = new FXMLLoader();
-		// Redirect to Sign Up scene (load the targeted .fxml scene)
-		loader.setLocation(getClass().getResource("/view/login.fxml"));
-		Parent newParent = loader.load();
-		Scene newScene = new Scene(newParent);
-		Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-		window.setScene(newScene);
-		window.show();
+		sceneController.setScene(actionEvent, "login");
 	}
 }

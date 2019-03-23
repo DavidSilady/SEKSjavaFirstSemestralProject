@@ -1,8 +1,12 @@
-package model;
+package model.userTypes;
+
+import model.Device;
+import model.Listable;
+import model.User;
 
 import java.util.ArrayList;
 
-public class Company extends User implements java.io.Serializable, Listable{
+public class Company extends User implements java.io.Serializable, Listable {
 	//private String name;
 	private String ICO;
 	
