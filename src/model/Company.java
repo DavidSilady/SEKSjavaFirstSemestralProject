@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Company extends User implements java.io.Serializable, Listable{
 	//private String name;
 	private String ICO;
@@ -8,13 +10,21 @@ public class Company extends User implements java.io.Serializable, Listable{
 	//private String mail;
 	private String phone;
 	//private String password;
-	private Device device;
+	private ArrayList<Device> deviceList;
 	
-		public String getName () {
+	public void addDevice() {
+		//add device
+	}
+	
+	public void removeDevice() {
+		//remove device
+	}
+	
+	public String getName () {
 		return super.getName();
 	}
-		
-		public void setName (String name) {
+	
+	public void setName (String name) {
 		super.setName(name);
 	}
 		
@@ -22,31 +32,31 @@ public class Company extends User implements java.io.Serializable, Listable{
 		return ICO;
 	}
 		
-		public void setICO (String ICO) {
+	public void setICO (String ICO) {
 		this.ICO = ICO;
 	}
 	
-		public String getMail () {
+	public String getMail () {
 		return super.getMail();
 	}
 		
-		public void setMail (String mail) {
+	public void setMail (String mail) {
 		super.setMail(mail);
 	}
 		
-		public String getPhone () {
+	public String getPhone () {
 		return phone;
 	}
 		
-		public void setPhone (String phone) {
+	public void setPhone (String phone) {
 		this.phone = phone;
 	}
-		
-		public String getPassword () {
+	
+	public String getPassword () {
 		return super.getPassword();
 	}
-		
-		public void setPassword (String password) {
+	
+	public void setPassword (String password) {
 		super.setPassword(password);
 	}
 	
