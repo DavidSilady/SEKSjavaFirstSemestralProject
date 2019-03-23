@@ -108,4 +108,8 @@ public class LoginController {
 	public void loadChooseUser (ActionEvent actionEvent) throws Exception{
 		sceneController.setScene(actionEvent, "chooseUser");
 	}
+	
+	public void loadUserInterface (ActionEvent actionEvent) throws Exception{
+		sceneController.switchStage(actionEvent, "userInterface");
+	}
 }
