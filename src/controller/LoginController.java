@@ -55,25 +55,21 @@ public class LoginController {
 			}
 		});
 		
-		loginButton.setOnAction(event -> {
-			login(DataStorage.getCompanyUserList());
-		});
+		loginButton.setOnAction(event -> login(DataStorage.getCompanyUserList()));
 	}
 	
 	private void login(ArrayList<? extends Listable> userList) {
 		if (isFilled()) {
 			System.out.println("Login button clicked!");
 			for (Listable temp: userList) {
+				System.out.println(temp.getMail());
 				if (temp.getMail().equals(loginMail.getText())) {
 					if (temp.getPassword().equals(loginPassword.getText())) {
 						User activeUser = (User) temp;
-						System.out.println("Logged in!");
+						System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
 					} else {
 						System.out.println("Wrong Password!");
 					}
-				} else {
-					System.out.println("Not signed up yet!");
-					return;
 				}
 			}
 			

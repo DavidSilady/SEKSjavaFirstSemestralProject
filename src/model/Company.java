@@ -1,19 +1,21 @@
 package model;
 
-public class Company extends User implements java.io.Serializable, Listable {
-	private String name;
+public class Company extends User implements java.io.Serializable, Listable{
+	//private String name;
 	private String ICO;
-	private String mail;
+	
+	
+	//private String mail;
 	private String phone;
-	private String password;
+	//private String password;
 	private Device device;
 	
 		public String getName () {
-		return name;
+		return super.getName();
 	}
 		
 		public void setName (String name) {
-		this.name = name;
+		super.setName(name);
 	}
 		
 		public String getICO () {
@@ -23,13 +25,13 @@ public class Company extends User implements java.io.Serializable, Listable {
 		public void setICO (String ICO) {
 		this.ICO = ICO;
 	}
-		
+	
 		public String getMail () {
-		return mail;
+		return super.getMail();
 	}
 		
 		public void setMail (String mail) {
-		this.mail = mail;
+		super.setMail(mail);
 	}
 		
 		public String getPhone () {
@@ -41,19 +43,19 @@ public class Company extends User implements java.io.Serializable, Listable {
 	}
 		
 		public String getPassword () {
-		return password;
+		return super.getPassword();
 	}
 		
 		public void setPassword (String password) {
-		this.password = password;
+		super.setPassword(password);
 	}
 	
 	public Company (String name, String ICO, String mail, String phone, String password) {
-		this.name = name;
+		super.setName(name);
 		this.ICO = ICO;
-		this.mail = mail;
+		super.setMail(mail);
 		this.phone = phone;
-		this.password = password;
+		super.setPassword(password);
 	}
 	
 	
