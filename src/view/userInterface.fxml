@@ -11,7 +11,7 @@
    <children>
       <VBox prefHeight="720.0" prefWidth="300.0" style="-fx-background-color: #6f74dd;">
          <children>
-            <JFXButton id=".button" alignment="BASELINE_LEFT" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@../assets/css/style.css" text="Company Data" textFill="WHITE">
+            <JFXButton id=".button" alignment="BASELINE_LEFT" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@css/style.css" text="Company Data" textFill="WHITE">
                <font>
                   <Font name="Roboto Light" size="18.0" />
                </font>
@@ -25,7 +25,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@../assets/css/style.css" text="Devices" textFill="WHITE">
+            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@css/style.css" text="Devices" textFill="WHITE">
                <font>
                   <Font name="Roboto Light" size="18.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="689.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@../assets/css/style.css" text="Inspection" textFill="WHITE">
+            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="689.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@css/style.css" text="Inspection" textFill="WHITE">
                <font>
                   <Font name="Roboto Light" size="18.0" />
                </font>
@@ -53,7 +53,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </JFXButton>
-            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="698.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@../assets/css/style.css" text="Notifications" textFill="WHITE">
+            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="698.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@css/style.css" text="Notifications" textFill="WHITE">
                <font>
                   <Font name="Roboto Light" size="18.0" />
                </font>
@@ -70,7 +70,7 @@
             <VBox prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #c2185b;" />
          </children>
       </VBox>
-      <VBox layoutX="300.0" prefHeight="720.0" prefWidth="980.0" style="-fx-background-color: white;" stylesheets="@../assets/css/style.css">
+      <VBox layoutX="300.0" prefHeight="720.0" prefWidth="980.0" style="-fx-background-color: white;" stylesheets="@css/style.css">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
