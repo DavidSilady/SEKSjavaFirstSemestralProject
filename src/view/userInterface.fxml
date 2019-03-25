@@ -1,110 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import de.jensd.fx.glyphs.materialdesignicons.*?>
-<?import de.jensd.fx.glyphs.weathericons.*?>
-<?import de.jensd.fx.glyphs.testapps.*?>
-<?import de.jensd.fx.glyphs.fontawesome.*?>
-<?import com.jfoenix.validation.*?>
-<?import org.controlsfx.control.*?>
-<?import org.controlsfx.control.textfield.*?>
-<?import javafx.scene.paint.*?>
-<?import org.controlsfx.glyphfont.*?>
-<?import de.jensd.fx.glyphs.*?>
-<?import com.jfoenix.svg.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InterfaceController">
    <children>
       <VBox prefHeight="720.0" prefWidth="300.0" style="-fx-background-color: #6f74dd;">
          <children>
-            <HBox alignment="CENTER_LEFT" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #6e74dc;" styleClass=".side-bar" stylesheets="@../assets/css/style.css">
-               <children>
-                  <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT" size="30">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </MaterialDesignIconView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Company Data" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto Light" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
+            <JFXButton id=".button" alignment="BASELINE_LEFT" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@../assets/css/style.css" text="Company Data" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Light" size="18.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT" size="30" />
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </JFXButton>
+            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@../assets/css/style.css" text="Devices" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Light" size="18.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="SERVER" size="30" />
+               </graphic>
                <padding>
-                  <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+                  <Insets left="30.0" />
                </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #6e74dc;" styleClass=".side-bar" stylesheets="@../assets/css/style.css">
-               <children>
-                  <MaterialDesignIconView fill="WHITE" glyphName="SERVER" size="30">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </MaterialDesignIconView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="View Devices" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto Light" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </JFXButton>
+            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="689.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@../assets/css/style.css" text="Inspection" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Light" size="18.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="BRIEFCASE_CHECK" size="30" />
+               </graphic>
                <padding>
-                  <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+                  <Insets left="30.0" />
                </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="309.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #6e74dc;" styleClass=".side-bar" stylesheets="@../assets/css/style.css">
-               <children>
-                  <MaterialDesignIconView fill="WHITE" glyphName="BRIEFCASE_CHECK" size="30">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </MaterialDesignIconView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Inspection" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto Light" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+            </JFXButton>
+            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="698.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" stylesheets="@../assets/css/style.css" text="Notifications" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Light" size="18.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="BOOKMARK" size="30" />
+               </graphic>
                <padding>
-                  <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
+                  <Insets left="30.0" />
                </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="384.0" prefHeight="60.0" prefWidth="200.0" style="-fx-background-color: #6e74dc;" styleClass=".side-bar" stylesheets="@../assets/css/style.css">
-               <children>
-                  <MaterialDesignIconView fill="WHITE" glyphName="BOOKMARK" size="30">
-                     <HBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </MaterialDesignIconView>
-                  <Label alignment="CENTER" contentDisplay="CENTER" text="Notifications" textAlignment="CENTER" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto Light" size="18.0" />
-                     </font>
-                  </Label>
-               </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
-               <padding>
-                  <Insets bottom="10.0" left="15.0" right="15.0" top="15.0" />
-               </padding>
-            </HBox>
+            </JFXButton>
             <VBox prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #c2185b;" />
          </children>
       </VBox>

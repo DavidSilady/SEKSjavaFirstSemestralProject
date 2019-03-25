@@ -4,16 +4,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ToolBar;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import java.awt.event.ActionEvent;
-
-public class SceneController implements Controlable {
+public class SceneController implements Switchable {
 	public void setScene (javafx.event.ActionEvent actionEvent, String sceneName) throws Exception{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/" + sceneName + ".fxml"));
