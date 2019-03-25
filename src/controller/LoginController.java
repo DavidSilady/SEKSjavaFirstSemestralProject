@@ -5,11 +5,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.DataStorage;
@@ -50,17 +47,9 @@ public class LoginController {
 				loginPassword.requestFocus();
 			}
 		});
-		
-		loginPassword.setOnKeyPressed((event) -> {
-			if(event.getCode() == KeyCode.ENTER) {
-				login(DataStorage.getCompanyUserList());
-			}
-		});
-		
-		loginButton.setOnAction(event -> login(DataStorage.getCompanyUserList()));
 	}
 	
-	private void login(ArrayList<? extends Listable> userList) {
+	private boolean isAuthenticated (ArrayList<? extends Listable> userList) {
 		if (isFilled()) {
 			System.out.println("Login button clicked!");
 			for (Listable temp: userList) {
@@ -69,13 +58,16 @@ public class LoginController {
 					if (temp.getPassword().equals(loginPassword.getText())) {
 						User activeUser = (User) temp;
 						System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
+						return true;
 					} else {
 						System.out.println("Wrong Password!");
+						return false;
 					}
 				}
 			}
 			
 		}
+		return false;
 	}
 	
 	
@@ -99,17 +91,27 @@ public class LoginController {
 	}
 	
 	@FXML
-	public void loadChooseSignUp (javafx.event.ActionEvent actionEvent) throws Exception{
-		
-		
-		sceneController.setScene(actionEvent, "signUpCompany");
+	public void buttonLogin (javafx.event.ActionEvent actionEvent) throws Exception{
+		if (isAuthenticated(DataStorage.getCompanyUserList())) {
+			sceneController.setScene(actionEvent, "signUpCompany");
+		}
 	}
 	
+	@FXML
+	public void onEnterLogin (KeyEvent keyEvent) throws Exception{
+		if(keyEvent.getCode() == KeyCode.ENTER) {
+			if(isAuthenticated(DataStorage.getCompanyUserList())) {
+				sceneController.switchStage(keyEvent, "userInterface");
+			}
+		}
+	}
+	
+	@FXML
 	public void loadChooseUser (ActionEvent actionEvent) throws Exception{
 		sceneController.setScene(actionEvent, "chooseUser");
 	}
-	
-	public void loadUserInterface (ActionEvent actionEvent) throws Exception{
-		sceneController.switchStage(actionEvent, "userInterface");
+	@FXML
+	public void loadSignUp (ActionEvent actionEvent) throws Exception{
+		sceneController.setScene(actionEvent, "signUpCompany");
 	}
 }
