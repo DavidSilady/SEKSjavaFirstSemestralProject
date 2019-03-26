@@ -7,22 +7,20 @@ import model.User;
 import java.util.ArrayList;
 
 public class Company extends User implements java.io.Serializable, Listable {
-	//private String name;
 	private String ICO;
-	
-	
-	//private String mail;
 	private String phone;
-	//private String password;
 	private ArrayList<Device> deviceList;
 	
-	public void addDevice() {
-		//add device
+	public void addDevice(String name, String location, String serialNum) {
+		Device newDevice = new Device(name, location, serialNum);
+		deviceList.add(newDevice);
 	}
 	
-	public void removeDevice() {
-		//remove device
+	public void removeDevice(Device device) {
+		deviceList.remove(device);
 	}
+	
+	
 	
 	public String getName () {
 		return super.getName();
@@ -71,6 +69,4 @@ public class Company extends User implements java.io.Serializable, Listable {
 		this.phone = phone;
 		super.setPassword(password);
 	}
-	
-	
 }

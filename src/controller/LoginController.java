@@ -18,6 +18,9 @@ import java.util.ResourceBundle;
 
 public class LoginController {
 	@FXML
+	public JFXButton loginChooseUserButton;
+	
+	@FXML
 	private AnchorPane content;
 	
 	@FXML
