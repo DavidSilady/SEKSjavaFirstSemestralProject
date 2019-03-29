@@ -1,17 +1,18 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class User implements java.io.Serializable, Listable {
+public abstract class User implements java.io.Serializable, Listable {
 	private String name;
 	private String mail;
 	private String password;
 	
+	private ArrayList<Notification> notifications = new ArrayList<>();
+	
 	public String getName () {
 		return name;
 	}
-	
-	
 	
 	public void setName (String name) {
 		this.name = name;

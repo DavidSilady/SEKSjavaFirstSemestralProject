@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class Device {
 	private enum type {
-	
 	};
 	private String name;
 	private String location;

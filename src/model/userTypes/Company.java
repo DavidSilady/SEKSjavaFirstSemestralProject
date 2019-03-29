@@ -20,8 +20,6 @@ public class Company extends User implements java.io.Serializable, Listable {
 		deviceList.remove(device);
 	}
 	
-	
-	
 	public String getName () {
 		return super.getName();
 	}
@@ -30,7 +28,7 @@ public class Company extends User implements java.io.Serializable, Listable {
 		super.setName(name);
 	}
 		
-		public String getICO () {
+	public String getICO () {
 		return ICO;
 	}
 		
