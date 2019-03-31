@@ -95,7 +95,7 @@ public class LoginController {
 	
 	@FXML
 	public void buttonLogin (javafx.event.ActionEvent actionEvent) throws Exception{
-		if (isAuthenticated(DataStorage.getCompanyUserList())) {
+		if (isAuthenticated(DataStorage.getInstance().getCompanyUserList())) {
 			sceneController.setScene(actionEvent, "signUpCompany");
 		}
 	}
@@ -103,7 +103,7 @@ public class LoginController {
 	@FXML
 	public void onEnterLogin (KeyEvent keyEvent) throws Exception{
 		if(keyEvent.getCode() == KeyCode.ENTER) {
-			if(isAuthenticated(DataStorage.getCompanyUserList())) {
+			if(isAuthenticated(DataStorage.getInstance().getCompanyUserList())) {
 				sceneController.switchStage(keyEvent, "userInterface");
 			}
 		}

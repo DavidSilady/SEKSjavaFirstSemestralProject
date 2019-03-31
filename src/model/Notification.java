@@ -2,5 +2,6 @@ package model;
 
 import java.io.Serializable;
 
-class Notification implements Serializable {
+abstract class Notification implements Serializable {
+
 }

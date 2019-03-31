@@ -11,7 +11,7 @@ import model.DataStorage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        DataStorage.init();
+        DataStorage.getInstance().init();
         Parent root = FXMLLoader.load(getClass().getResource("../view/chooseUser.fxml"));
         primaryStage.setTitle("SEKS");
         primaryStage.setScene(new Scene(root, 700, 400));

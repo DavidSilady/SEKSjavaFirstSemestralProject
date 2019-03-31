@@ -4,44 +4,49 @@ import java.util.ArrayList;
 
 
 public class DataStorage implements java.io.Serializable{
-	private static ArrayList<? extends Listable> companyUserList = new ArrayList<>();
-	private static ArrayList<? extends Listable> inspectionUserList = new ArrayList<>();
-	private static ArrayList<? extends Listable> auditorUserList = new ArrayList<>();
+	private static DataStorage thisInstance = new DataStorage();
+	private ArrayList<? extends Listable> companyUserList = new ArrayList<>();
+	private ArrayList<? extends Listable> inspectionUserList = new ArrayList<>();
+	private ArrayList<? extends Listable> auditorUserList = new ArrayList<>();
 	
-	public static ArrayList<? extends Listable> getCompanyUserList () {
+	public static DataStorage getInstance () {
+		return thisInstance;
+	}
+	
+	public ArrayList<? extends Listable> getCompanyUserList () {
 		return companyUserList;
 	}
 	
-	public static void setCompanyUserList (ArrayList<? extends Listable> companyUserList) {
-		DataStorage.companyUserList = companyUserList;
-		DataStorage.save(companyUserList, "companyUserData");
+	public void setCompanyUserList (ArrayList<? extends Listable> companyUserList) {
+		thisInstance.companyUserList = companyUserList;
+		thisInstance.save(companyUserList, "companyUserData");
 	}
 	
-	public static ArrayList<? extends Listable> getInspectionUserList () {
+	public ArrayList<? extends Listable> getInspectionUserList () {
 		return inspectionUserList;
 	}
 	
-	public static void setInspectionUserList (ArrayList<? extends Listable> inspectionUserList) {
-		DataStorage.inspectionUserList = inspectionUserList;
-		DataStorage.save(companyUserList, "companyUserData");
+	public void setInspectionUserList (ArrayList<? extends Listable> inspectionUserList) {
+		thisInstance.inspectionUserList = inspectionUserList;
+		thisInstance.save(companyUserList, "companyUserData");
 	}
 	
-	public static ArrayList<? extends Listable> getAuditorUserList () {
+	public ArrayList<? extends Listable> getAuditorUserList () {
 		return auditorUserList;
 	}
 	
-	public static void setAuditorUserList (ArrayList<? extends Listable> auditorUserList) {
-		DataStorage.auditorUserList = auditorUserList;
-		DataStorage.save(auditorUserList, "auditorUserData");
+	public void setAuditorUserList (ArrayList<? extends Listable> auditorUserList) {
+		thisInstance.auditorUserList = auditorUserList;
+		thisInstance.save(auditorUserList, "auditorUserData");
 	}
 	
-	public static void init () {
+	public void init () {
 		companyUserList = load("companyUserData");
 		inspectionUserList = load("inspectionUserData");
 		auditorUserList = load("auditorUserData");
 	}
 	
-	private static void save (ArrayList arrayList, String name) {
+	private void save (ArrayList arrayList, String name) {
 		try
 		{
 			FileOutputStream fos = new FileOutputStream(name + ".ser");
@@ -57,7 +62,7 @@ public class DataStorage implements java.io.Serializable{
 	}
 	
 	@SuppressWarnings("unchecked")
-	private static ArrayList<? extends Listable> load (String name) {
+	private ArrayList<? extends Listable> load (String name) {
 		try
 		{
 			FileInputStream fis = new FileInputStream(name + ".ser");

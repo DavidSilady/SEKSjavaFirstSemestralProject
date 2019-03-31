@@ -8,11 +8,6 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 import model.userTypes.Company;
 import model.DataStorage;
 
@@ -41,7 +36,7 @@ public class SignUpController {
 	
 	@FXML
 	private JFXTextField signUpICO;
-	SceneController sceneController = new SceneController();
+	private SceneController sceneController = new SceneController();
 	
 	@FXML
 	@SuppressWarnings("unchecked")
@@ -49,8 +44,8 @@ public class SignUpController {
 		signUpCompanyButton.setOnAction(event -> {
 			if (signUpPassword.getText().equals(signUpConfirmPassword.getText()) ) {
 				ArrayList<Company> companyUserList = new ArrayList<>();
-				if (DataStorage.getCompanyUserList() != null) {
-					companyUserList = (ArrayList<Company>) DataStorage.getCompanyUserList();
+				if (DataStorage.getInstance().getCompanyUserList() != null) {
+					companyUserList = (ArrayList<Company>) DataStorage.getInstance().getCompanyUserList();
 				}
 				Company company = new Company(
 						signUpCompanyName.getText(),
@@ -61,7 +56,7 @@ public class SignUpController {
 				);
 				try {
 					companyUserList.add(company);
-					DataStorage.setCompanyUserList(companyUserList);
+					DataStorage.getInstance().setCompanyUserList(companyUserList);
 				} catch (NullPointerException npe) {
 					System.out.println("Empty List!");
 					return;

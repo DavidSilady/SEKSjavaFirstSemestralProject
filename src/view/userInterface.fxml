@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.materialdesignicons.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
@@ -7,6 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InterfaceController">
     <children>
         <VBox prefHeight="720.0" prefWidth="300.0" style="-fx-background-color: #6f74dd;">
@@ -53,7 +60,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="698.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;"  text="Notifications" textFill="WHITE">
+                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="698.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Notifications" textFill="WHITE">
                     <font>
                         <Font name="Roboto Light" size="18.0" />
                     </font>
@@ -70,10 +77,6 @@
                 <VBox prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #c2185b;" />
             </children>
         </VBox>
-        <VBox layoutX="300.0" prefHeight="720.0" prefWidth="980.0" style="-fx-background-color: white;">
-            <cursor>
-                <Cursor fx:constant="DEFAULT" />
-            </cursor>
-        </VBox>
+      <AnchorPane layoutX="300.0" prefHeight="720.0" prefWidth="980.0" />
     </children>
 </AnchorPane>
