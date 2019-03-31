@@ -42,6 +42,7 @@ public class LoginController {
 	private JFXPasswordField loginPassword;
 	
 	private SceneController sceneController = new SceneController();
+	User activeUser = new Company();
 	
 	@FXML
 	void initialize() {
@@ -51,28 +52,6 @@ public class LoginController {
 			}
 		});
 	}
-	
-	private boolean isAuthenticated (ArrayList<? extends Listable> userList) {
-		if (isFilled()) {
-			System.out.println("Login button clicked!");
-			for (Listable temp: userList) {
-				System.out.println(temp.getMail());
-				if (temp.getMail().equals(loginMail.getText())) {
-					if (temp.getPassword().equals(loginPassword.getText())) {
-						User activeUser = (User) temp;
-						System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
-						return true;
-					} else {
-						System.out.println("Wrong Password!");
-						return false;
-					}
-				}
-			}
-			
-		}
-		return false;
-	}
-	
 	
 	private boolean isFilled() {
 		boolean filled = true;
@@ -94,17 +73,17 @@ public class LoginController {
 	}
 	
 	@FXML
-	public void buttonLogin (javafx.event.ActionEvent actionEvent) throws Exception{
-		if (isAuthenticated(DataStorage.getInstance().getCompanyUserList())) {
-			sceneController.setScene(actionEvent, "signUpCompany");
+	public void buttonLogin (ActionEvent actionEvent) throws Exception{
+		if (isFilled()) {
+			activeUser.loginUser(actionEvent, loginMail.getText(), loginPassword.getText());
 		}
 	}
 	
 	@FXML
 	public void onEnterLogin (KeyEvent keyEvent) throws Exception{
 		if(keyEvent.getCode() == KeyCode.ENTER) {
-			if(isAuthenticated(DataStorage.getInstance().getCompanyUserList())) {
-				sceneController.switchStage(keyEvent, "userInterface");
+			if (isFilled()) {
+				activeUser.loginUser(keyEvent, loginMail.getText(), loginPassword.getText());
 			}
 		}
 	}

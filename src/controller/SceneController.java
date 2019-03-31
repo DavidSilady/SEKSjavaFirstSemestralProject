@@ -10,7 +10,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class SceneController {
-	void setScene (javafx.event.ActionEvent actionEvent, String sceneName) throws Exception{
+	public void setScene (javafx.event.ActionEvent actionEvent, String sceneName) throws Exception{
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("/view/" + sceneName + ".fxml"));
 		Parent signUpParent = loader.load();
@@ -20,7 +20,7 @@ public class SceneController {
 		window.show();
 	}
 	
-	void switchStage (Event actionEvent, String sceneName) throws Exception {
+	public void switchStage (Event actionEvent, String sceneName) throws Exception {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/" + sceneName +".fxml"));
 		((Node) actionEvent.getSource()).getScene().getWindow().hide();
 		Parent root1 = (Parent) fxmlLoader.load();

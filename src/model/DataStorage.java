@@ -1,4 +1,6 @@
 package model;
+import javafx.collections.ObservableList;
+
 import java.io.*;
 import java.util.ArrayList;
 

@@ -1,12 +1,34 @@
 package model;
 
+import controller.SceneController;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+
 import java.util.ArrayList;
-import java.util.List;
 
 public abstract class User implements java.io.Serializable, Listable {
 	private String name;
 	private String mail;
 	private String password;
+	
+	protected boolean isAuthenticated (ArrayList<? extends Listable> userList, String loginMail, String loginPassword) {
+		System.out.println("Login button clicked!");
+		for (Listable temp: userList) {
+			System.out.println(temp.getMail());
+			if (temp.getMail().equals(loginMail)) {
+				if (temp.getPassword().equals(loginPassword)) {
+					User activeUser = (User) temp;
+					System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
+					return true;
+				} else {
+					System.out.println("Wrong Password!");
+					return false;
+				}
+			}
+		}
+		return false;
+	}
+	
 	
 	private ArrayList<Notification> notifications = new ArrayList<>();
 	

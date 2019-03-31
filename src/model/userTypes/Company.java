@@ -1,5 +1,8 @@
 package model.userTypes;
 
+import controller.SceneController;
+import javafx.event.Event;
+import model.DataStorage;
 import model.Device;
 import model.Listable;
 import model.User;
@@ -10,6 +13,16 @@ public class Company extends User implements java.io.Serializable, Listable {
 	private String ICO;
 	private String phone;
 	private ArrayList<Device> deviceList;
+	
+	public Company() {
+	}
+	
+	public void loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
+		SceneController sceneController = new SceneController();
+		if (super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword)) {
+			sceneController.switchStage(actionEvent, "userInterface");
+		}
+	}
 	
 	public void addDevice(String name, String location, String serialNum) {
 		Device newDevice = new Device(name, location, serialNum);
