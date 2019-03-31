@@ -8,7 +8,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import model.userTypes.Company;
+import model.User;
+import model.userTypes.CompanyUser;
 import model.DataStorage;
 
 public class SignUpController {
@@ -39,29 +40,20 @@ public class SignUpController {
 	private SceneController sceneController = new SceneController();
 	
 	@FXML
-	@SuppressWarnings("unchecked")
 	void initialize() {
-		signUpCompanyButton.setOnAction(event -> {
+		signUpCompanyButton.setOnAction((ActionEvent event) -> {
 			if (signUpPassword.getText().equals(signUpConfirmPassword.getText()) ) {
-				ArrayList<Company> companyUserList = new ArrayList<>();
-				if (DataStorage.getInstance().getCompanyUserList() != null) {
-					companyUserList = (ArrayList<Company>) DataStorage.getInstance().getCompanyUserList();
-				}
-				Company company = new Company(
-						signUpCompanyName.getText(),
-						signUpICO.getText(),
-						signUpEmail.getText(),
-						signUpPhone.getText(),
-						signUpPassword.getText()
-				);
+			User activeUser = new CompanyUser();
 				try {
-					companyUserList.add(company);
-					DataStorage.getInstance().setCompanyUserList(companyUserList);
-				} catch (NullPointerException npe) {
-					System.out.println("Empty List!");
-					return;
+					activeUser.signUpUser(event,
+							signUpCompanyName.getText(),
+							signUpICO.getText(),
+							signUpEmail.getText(),
+							signUpPhone.getText(),
+							signUpPassword.getText());
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				System.out.println("Signed up!");
 			} else {
 				signUpPassword.clear();
 				signUpConfirmPassword.clear();
@@ -73,5 +65,33 @@ public class SignUpController {
 	
 	public void loadLoginScene (ActionEvent actionEvent) throws Exception {
 		sceneController.setScene(actionEvent, "login");
+	}
+	
+	public JFXTextField getSignUpEmail () {
+		return signUpEmail;
+	}
+	
+	public JFXButton getSignUpCompanyButton () {
+		return signUpCompanyButton;
+	}
+	
+	public JFXButton getSignUpLoginButton () {
+		return signUpLoginButton;
+	}
+	
+	public JFXPasswordField getSignUpPassword () {
+		return signUpPassword;
+	}
+	
+	public JFXTextField getSignUpPhone () {
+		return signUpPhone;
+	}
+	
+	public JFXTextField getSignUpCompanyName () {
+		return signUpCompanyName;
+	}
+	
+	public JFXTextField getSignUpICO () {
+		return signUpICO;
 	}
 }

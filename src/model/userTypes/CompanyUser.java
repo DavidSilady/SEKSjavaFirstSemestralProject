@@ -1,6 +1,7 @@
 package model.userTypes;
 
 import controller.SceneController;
+import controller.SignUpController;
 import javafx.event.Event;
 import model.DataStorage;
 import model.Device;
@@ -9,14 +10,49 @@ import model.User;
 
 import java.util.ArrayList;
 
-public class Company extends User implements java.io.Serializable, Listable {
+public class CompanyUser extends User implements java.io.Serializable, Listable {
 	private String ICO;
 	private String phone;
 	private ArrayList<Device> deviceList;
 	
-	public Company() {
+	public CompanyUser () {
 	}
 	
+	//Sign up method
+	@Override
+	@SuppressWarnings("unchecked")
+	public void signUpUser(Event actionEvent,
+	                       String companyName,
+	                       String companyICO,
+	                       String email,
+	                       String phone,
+	                       String password) throws Exception{
+		ArrayList<CompanyUser> companyUserList = new ArrayList<>();
+		if (DataStorage.getInstance().getCompanyUserList() != null) {
+			companyUserList = (ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList();
+		}
+		SignUpController signUpController = new SignUpController();
+		CompanyUser company = new CompanyUser(
+				companyName,
+				companyICO,
+				email,
+				phone,
+				password);
+		try {
+			companyUserList.add(company);
+			DataStorage.getInstance().setCompanyUserList(companyUserList);
+		} catch (NullPointerException npe) {
+			System.out.println("Empty List!");
+			return;
+		}
+		
+		System.out.println("Signed up!");
+		SceneController sceneController = new SceneController();
+		sceneController.switchStage(actionEvent, "userInterface");
+	}
+	
+	//Login method
+	@Override
 	public void loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
 		SceneController sceneController = new SceneController();
 		if (super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword)) {
@@ -73,7 +109,7 @@ public class Company extends User implements java.io.Serializable, Listable {
 		super.setPassword(password);
 	}
 	
-	public Company (String name, String ICO, String mail, String phone, String password) {
+	public CompanyUser (String name, String ICO, String mail, String phone, String password) {
 		super.setName(name);
 		this.ICO = ICO;
 		super.setMail(mail);

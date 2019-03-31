@@ -42,7 +42,7 @@ public class LoginController {
 	private JFXPasswordField loginPassword;
 	
 	private SceneController sceneController = new SceneController();
-	User activeUser = new Company();
+	User activeUser = new CompanyUser();
 	
 	@FXML
 	void initialize() {
