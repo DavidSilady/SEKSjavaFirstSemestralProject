@@ -8,6 +8,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import model.User;
 import model.userTypes.CompanyUser;
 import model.DataStorage;
@@ -58,6 +60,53 @@ public class SignUpController {
 				signUpPassword.clear();
 				signUpConfirmPassword.clear();
 				signUpConfirmPassword.setPromptText("Passwords must match!");
+			}
+		});
+		
+		signUpCompanyName.setOnKeyPressed(event -> {
+			if(event.getCode() == KeyCode.ENTER) {
+				signUpEmail.requestFocus();
+			}
+		});
+		signUpEmail.setOnKeyPressed(event -> {
+			if(event.getCode() == KeyCode.ENTER) {
+				signUpICO.requestFocus();
+			}
+		});
+		signUpICO.setOnKeyPressed(event -> {
+			if(event.getCode() == KeyCode.ENTER) {
+				signUpPhone.requestFocus();
+			}
+		});
+		signUpPhone.setOnKeyPressed(event -> {
+			if(event.getCode() == KeyCode.ENTER) {
+				signUpPassword.requestFocus();
+			}
+		});
+		signUpPassword.setOnKeyPressed(event -> {
+			if(event.getCode() == KeyCode.ENTER) {
+				signUpConfirmPassword.requestFocus();
+			}
+		});
+		signUpConfirmPassword.setOnKeyPressed((KeyEvent event) -> {
+			if(event.getCode() == KeyCode.ENTER) {
+				if (signUpPassword.getText().equals(signUpConfirmPassword.getText())) {
+					User activeUser = new CompanyUser();
+					try {
+						activeUser.signUpUser(event,
+								signUpCompanyName.getText(),
+								signUpICO.getText(),
+								signUpEmail.getText(),
+								signUpPhone.getText(),
+								signUpPassword.getText());
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} else {
+					signUpPassword.clear();
+					signUpConfirmPassword.clear();
+					signUpConfirmPassword.setPromptText("Passwords must match!");
+				}
 			}
 		});
 	}

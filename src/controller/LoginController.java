@@ -44,6 +44,14 @@ public class LoginController {
 	private SceneController sceneController = new SceneController();
 	User activeUser = new CompanyUser();
 	
+	public JFXTextField getLoginMail () {
+		return loginMail;
+	}
+	
+	public JFXPasswordField getLoginPassword () {
+		return loginPassword;
+	}
+	
 	@FXML
 	void initialize() {
 		loginMail.setOnKeyPressed((event) -> {

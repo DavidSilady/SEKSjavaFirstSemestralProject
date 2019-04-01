@@ -55,7 +55,7 @@ public class CompanyUser extends User implements java.io.Serializable, Listable 
 	@Override
 	public void loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
 		SceneController sceneController = new SceneController();
-		if (super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword)) {
+		if (super.isAuthenticated(DataStorage.getInstance().getCompanyUserList())) {
 			sceneController.switchStage(actionEvent, "userInterface");
 		}
 	}
