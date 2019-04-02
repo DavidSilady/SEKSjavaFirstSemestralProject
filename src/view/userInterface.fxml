@@ -32,7 +32,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Devices" textFill="WHITE">
+                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" onAction="#showDeviceList" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Devices" textFill="WHITE">
                     <font>
                         <Font name="Roboto Light" size="18.0" />
                     </font>
@@ -77,6 +77,6 @@
                 <VBox prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #c2185b;" />
             </children>
         </VBox>
-      <AnchorPane layoutX="300.0" prefHeight="720.0" prefWidth="980.0" />
+      <AnchorPane fx:id="dynamicPane" layoutX="300.0" prefHeight="720.0" prefWidth="980.0" />
     </children>
 </AnchorPane>

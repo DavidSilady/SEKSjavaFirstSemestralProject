@@ -42,7 +42,7 @@ public class LoginController {
 	private JFXPasswordField loginPassword;
 	
 	private SceneController sceneController = new SceneController();
-	User activeUser = new CompanyUser();
+	private User activeUser = User.getInstance();
 	
 	public JFXTextField getLoginMail () {
 		return loginMail;

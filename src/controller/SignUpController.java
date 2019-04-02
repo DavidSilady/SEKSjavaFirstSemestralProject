@@ -2,17 +2,14 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 
-import java.util.ArrayList;
-
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import model.User;
-import model.userTypes.CompanyUser;
-import model.DataStorage;
+import model.user.User;
+import model.user.userTypes.CompanyUser;
 
 public class SignUpController {
 	
@@ -39,13 +36,13 @@ public class SignUpController {
 	
 	@FXML
 	private JFXTextField signUpICO;
+	private User activeUser = User.getInstance();
 	private SceneController sceneController = new SceneController();
 	
 	@FXML
 	void initialize() {
 		signUpCompanyButton.setOnAction((ActionEvent event) -> {
 			if (signUpPassword.getText().equals(signUpConfirmPassword.getText()) ) {
-			User activeUser = new CompanyUser();
 				try {
 					activeUser.signUpUser(event,
 							signUpCompanyName.getText(),
@@ -110,7 +107,6 @@ public class SignUpController {
 			}
 		});
 	}
-	
 	
 	public void loadLoginScene (ActionEvent actionEvent) throws Exception {
 		sceneController.setScene(actionEvent, "login");

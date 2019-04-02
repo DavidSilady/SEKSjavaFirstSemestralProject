@@ -6,11 +6,8 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import model.user.User;
+import model.user.User;
 
 public class UserController {
 	
@@ -34,13 +31,18 @@ public class UserController {
 	private SceneController sceneController = new SceneController();
 	
 	public void loadLoginCompany (javafx.event.ActionEvent actionEvent) throws Exception{
+		User.getInstance().setToCompanyUser();
 		sceneController.setScene(actionEvent, "login");
 	}
 	
 	
-	public void loadLoginAuditor (ActionEvent actionEvent) {
+	public void loadLoginAuditor (ActionEvent actionEvent) throws Exception{
+		User.getInstance().setToAuditorUser();
+		sceneController.setScene(actionEvent, "login");
 	}
 	
-	public void loadLoginInspection (ActionEvent actionEvent) {
+	public void loadLoginInspection (ActionEvent actionEvent) throws Exception{
+		User.getInstance().setToInspectionUser();
+		sceneController.setScene(actionEvent, "login");
 	}
 }

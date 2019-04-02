@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="720.0" prefWidth="980.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DevicesController">
+   <children>
+      <TableView fx:id="tableView" prefHeight="720.0" prefWidth="980.0">
+        <columns>
+          <TableColumn prefWidth="93.0" text="Name" />
+          <TableColumn minWidth="5.0" prefWidth="123.0" text="Location" />
+            <TableColumn prefWidth="160.0" text="Serial Number" />
+            <TableColumn prefWidth="159.0" text="Last Inspection" />
+            <TableColumn prefWidth="152.0" text="Next Inspection" />
+            <TableColumn prefWidth="141.0" text="Last Audition" />
+            <TableColumn minWidth="1.0" prefWidth="151.0" text="Next Audition" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

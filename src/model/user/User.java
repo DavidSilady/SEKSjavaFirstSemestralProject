@@ -1,24 +1,29 @@
-package model;
+package model.user;
 
 import controller.LoginController;
-import controller.SceneController;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
+import model.Notification;
+import model.user.userTypes.AuditorUser;
+import model.user.userTypes.CompanyUser;
+import model.user.userTypes.InspectionUser;
 
 import java.util.ArrayList;
 
 public abstract class User implements java.io.Serializable, Listable {
+	private static User activeUser = new AuditorUser();
 	private String name;
 	private String mail;
 	private String password;
 	
-	protected boolean isAuthenticated (ArrayList<? extends Listable> userList) {
+	public static User getInstance() {
+		return activeUser;
+	}
+	
+	protected boolean isAuthenticated (ArrayList<? extends Listable> userList, String loginMail, String loginPassword) {
 		System.out.println("Login button clicked!");
 		for (Listable temp: userList) {
 			System.out.println(temp.getMail());
-			LoginController loginController = new LoginController();
-			if (temp.getMail().equals(loginController.getLoginMail().getText())) {
-				if (temp.getPassword().equals(loginController.getLoginPassword().getText())) {
+			if (temp.getMail().equals(loginMail)) {
+				if (temp.getPassword().equals(loginPassword)) {
 					User activeUser = (User) temp;
 					System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
 					return true;
@@ -56,5 +61,16 @@ public abstract class User implements java.io.Serializable, Listable {
 	
 	public void setPassword (String password) {
 		this.password = password;
+	}
+	
+	
+	public void setToCompanyUser() {
+		activeUser = new CompanyUser();
+	}
+	public void setToAuditorUser() {
+		activeUser = new AuditorUser();
+	}
+	public void setToInspectionUser() {
+		activeUser = new InspectionUser();
 	}
 }

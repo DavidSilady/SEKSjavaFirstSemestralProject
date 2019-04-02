@@ -1,5 +1,5 @@
 package model;
-import javafx.collections.ObservableList;
+import model.user.Listable;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -10,6 +10,9 @@ public class DataStorage implements java.io.Serializable{
 	private ArrayList<? extends Listable> companyUserList = new ArrayList<>();
 	private ArrayList<? extends Listable> inspectionUserList = new ArrayList<>();
 	private ArrayList<? extends Listable> auditorUserList = new ArrayList<>();
+	
+	private DataStorage(){
+	}
 	
 	public static DataStorage getInstance () {
 		return thisInstance;

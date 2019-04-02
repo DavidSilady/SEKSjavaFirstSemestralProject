@@ -1,8 +1,8 @@
-package model.userTypes;
+package model.user.userTypes;
 
 import javafx.event.Event;
-import model.Listable;
-import model.User;
+import model.user.Listable;
+import model.user.User;
 
 public class InspectionUser extends User implements java.io.Serializable, Listable {
 	
