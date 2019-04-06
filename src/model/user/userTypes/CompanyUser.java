@@ -1,7 +1,6 @@
 package model.user.userTypes;
 
 import controller.SceneController;
-import controller.SignUpController;
 import javafx.event.Event;
 import model.DataStorage;
 import model.Device;
@@ -31,7 +30,6 @@ public class CompanyUser extends User implements java.io.Serializable, Listable 
 		if (DataStorage.getInstance().getCompanyUserList() != null) {
 			companyUserList = (ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList();
 		}
-		SignUpController signUpController = new SignUpController();
 		CompanyUser company = new CompanyUser(
 				companyName,
 				companyICO,
@@ -45,19 +43,12 @@ public class CompanyUser extends User implements java.io.Serializable, Listable 
 			System.out.println("Empty List!");
 			return;
 		}
-		
-		System.out.println("Signed up!");
-		SceneController sceneController = new SceneController();
-		sceneController.switchStage(actionEvent, "userInterface");
 	}
 	
 	//Login method
 	@Override
-	public void loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
-		SceneController sceneController = new SceneController();
-		if (super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword)) {
-			sceneController.switchStage(actionEvent, "userInterface");
-		}
+	public boolean loginUser(Event actionEvent, String loginMail, String loginPassword, User user) throws Exception {
+		return super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword, user);
 	}
 	
 	public ArrayList<Device> getDeviceList () {

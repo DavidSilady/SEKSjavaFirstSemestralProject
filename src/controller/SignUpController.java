@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import controller.UserController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
@@ -36,7 +37,7 @@ public class SignUpController {
 	
 	@FXML
 	private JFXTextField signUpICO;
-	private User activeUser = User.getInstance();
+	private UserController userController = UserController.getInstance();
 	private SceneController sceneController = new SceneController();
 	
 	@FXML
@@ -44,7 +45,7 @@ public class SignUpController {
 		signUpCompanyButton.setOnAction((ActionEvent event) -> {
 			if (signUpPassword.getText().equals(signUpConfirmPassword.getText()) ) {
 				try {
-					activeUser.signUpUser(event,
+					userController.signUpUser(event,
 							signUpCompanyName.getText(),
 							signUpICO.getText(),
 							signUpEmail.getText(),

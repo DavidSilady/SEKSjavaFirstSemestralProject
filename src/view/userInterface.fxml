@@ -75,6 +75,20 @@
                     </cursor>
                 </JFXButton>
                 <VBox prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #c2185b;" />
+            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="220.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Exit" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Roboto Light" size="18.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="POWER" size="30" />
+               </graphic>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
+            </JFXButton>
             </children>
         </VBox>
       <AnchorPane fx:id="dynamicPane" layoutX="300.0" prefHeight="720.0" prefWidth="980.0" />

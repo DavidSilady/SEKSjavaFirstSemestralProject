@@ -4,12 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import controller.UserController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import model.user.User;
-import model.user.User;
 
-public class UserController {
+public class ChooseUserController {
 	
 	@FXML
 	private ResourceBundle resources;
@@ -31,18 +30,18 @@ public class UserController {
 	private SceneController sceneController = new SceneController();
 	
 	public void loadLoginCompany (javafx.event.ActionEvent actionEvent) throws Exception{
-		User.getInstance().setToCompanyUser();
+		UserController.getInstance().castToCompanyController();
 		sceneController.setScene(actionEvent, "login");
 	}
 	
 	
 	public void loadLoginAuditor (ActionEvent actionEvent) throws Exception{
-		User.getInstance().setToAuditorUser();
+		UserController.getInstance().castToAuditorController();
 		sceneController.setScene(actionEvent, "login");
 	}
 	
 	public void loadLoginInspection (ActionEvent actionEvent) throws Exception{
-		User.getInstance().setToInspectionUser();
+		UserController.getInstance().castToInspectionController();
 		sceneController.setScene(actionEvent, "login");
 	}
 }

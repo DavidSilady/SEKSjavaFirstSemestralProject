@@ -1,6 +1,7 @@
 package controller;
 
 
+import controller.UserController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -11,7 +12,7 @@ import model.user.User;
 public class InterfaceController {
 	public AnchorPane dynamicPane;
 	
-	private User activeUser = User.getInstance();
+	private UserController activeUser = UserController.getInstance();
 	
 	
 	public void showDeviceList (ActionEvent actionEvent) throws Exception{

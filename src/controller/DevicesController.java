@@ -2,6 +2,8 @@ package controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import controller.UserController.UserController;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableView;
 import model.user.User;
@@ -9,7 +11,7 @@ import model.user.User;
 
 public class DevicesController {
 	
-	private User activeUser = User.getInstance();
+	private UserController activeUser = UserController.getInstance();
 	
 	@FXML
 	private ResourceBundle resources;

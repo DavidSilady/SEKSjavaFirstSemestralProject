@@ -7,8 +7,9 @@ import model.user.User;
 public class AuditorUser extends User implements java.io.Serializable, Listable {
 	
 	@Override
-	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
-	
+	public boolean loginUser (Event actionEvent, String loginMail, String loginPassword, User user) throws Exception {
+		
+		return false;
 	}
 	
 	@Override

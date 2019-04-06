@@ -9,23 +9,18 @@ import model.user.userTypes.InspectionUser;
 import java.util.ArrayList;
 
 public abstract class User implements java.io.Serializable, Listable {
-	private static User activeUser = new AuditorUser();
 	private String name;
 	private String mail;
 	private String password;
 	
-	public static User getInstance() {
-		return activeUser;
-	}
-	
-	protected boolean isAuthenticated (ArrayList<? extends Listable> userList, String loginMail, String loginPassword) {
+	protected boolean isAuthenticated (ArrayList<? extends Listable> userList, String loginMail, String loginPassword, User user) {
 		System.out.println("Login button clicked!");
 		for (Listable temp: userList) {
 			System.out.println(temp.getMail());
 			if (temp.getMail().equals(loginMail)) {
 				if (temp.getPassword().equals(loginPassword)) {
-					User activeUser = (User) temp;
-					System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
+					user = (User) temp;
+					System.out.println("Logged in!\n Welcome " + user.getName() + "!");
 					return true;
 				} else {
 					System.out.println("Wrong Password!");
@@ -61,16 +56,5 @@ public abstract class User implements java.io.Serializable, Listable {
 	
 	public void setPassword (String password) {
 		this.password = password;
-	}
-	
-	
-	public void setToCompanyUser() {
-		activeUser = new CompanyUser();
-	}
-	public void setToAuditorUser() {
-		activeUser = new AuditorUser();
-	}
-	public void setToInspectionUser() {
-		activeUser = new InspectionUser();
 	}
 }

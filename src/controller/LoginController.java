@@ -3,6 +3,7 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import controller.UserController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
@@ -42,7 +43,7 @@ public class LoginController {
 	private JFXPasswordField loginPassword;
 	
 	private SceneController sceneController = new SceneController();
-	private User activeUser = User.getInstance();
+	private UserController activeUser = UserController.getInstance();
 	
 	public JFXTextField getLoginMail () {
 		return loginMail;
