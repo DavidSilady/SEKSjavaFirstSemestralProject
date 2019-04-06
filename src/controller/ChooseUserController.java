@@ -30,18 +30,18 @@ public class ChooseUserController {
 	private SceneController sceneController = new SceneController();
 	
 	public void loadLoginCompany (javafx.event.ActionEvent actionEvent) throws Exception{
-		UserController.getInstance().castToCompanyController();
+		UserController.castToCompanyController();
 		sceneController.setScene(actionEvent, "login");
 	}
 	
 	
 	public void loadLoginAuditor (ActionEvent actionEvent) throws Exception{
-		UserController.getInstance().castToAuditorController();
+		UserController.castToAuditorController();
 		sceneController.setScene(actionEvent, "login");
 	}
 	
 	public void loadLoginInspection (ActionEvent actionEvent) throws Exception{
-		UserController.getInstance().castToInspectionController();
+		UserController.castToInspectionController();
 		sceneController.setScene(actionEvent, "login");
 	}
 }

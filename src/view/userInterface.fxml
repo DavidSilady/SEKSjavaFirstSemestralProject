@@ -75,7 +75,7 @@
                     </cursor>
                 </JFXButton>
                 <VBox prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #c2185b;" />
-            <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="220.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Exit" textFill="WHITE">
+            <JFXButton id=".button" fx:id="exitButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="220.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Exit" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

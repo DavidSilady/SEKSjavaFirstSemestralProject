@@ -1,29 +1,33 @@
 package controller.UserController;
 
 import javafx.event.Event;
+import model.user.User;
 
 public abstract class UserController {
 	private static UserController userController;
 	public static UserController getInstance() {
 		return userController;
 	}
-	public void castToCompanyController() {
+	public static void castToCompanyController() {
 		userController = new CompanyUserController();
 	}
-	public void castToAuditorController() {
+	public static void castToAuditorController() {
 		userController = new AuditorUserController();
 	}
-	public void castToInspectionController() {
+	public static void castToInspectionController() {
 		userController = new InspectionUserController();
 	}
-	public void loginUser (Event actionEvent,
-	                String loginMail,
-	                String loginPassword) throws Exception {};
 	
-	public void signUpUser (Event actionEvent,
+	public abstract void loginUser (Event actionEvent,
+	                String loginMail,
+	                String loginPassword) throws Exception;
+	
+	public abstract void signUpUser (Event actionEvent,
 	                 String companyName,
 	                 String companyICO,
 	                 String email,
 	                 String phone,
-	                 String password) throws Exception {};
+	                 String password) throws Exception;
+	
+	public abstract User getUser ();
 }

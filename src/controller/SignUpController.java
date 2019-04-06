@@ -86,12 +86,12 @@ public class SignUpController {
 				signUpConfirmPassword.requestFocus();
 			}
 		});
+		
 		signUpConfirmPassword.setOnKeyPressed((KeyEvent event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
 				if (signUpPassword.getText().equals(signUpConfirmPassword.getText())) {
-					User activeUser = new CompanyUser();
 					try {
-						activeUser.signUpUser(event,
+						userController.signUpUser(event,
 								signUpCompanyName.getText(),
 								signUpICO.getText(),
 								signUpEmail.getText(),

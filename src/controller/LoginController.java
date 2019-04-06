@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import controller.UserController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -20,6 +21,7 @@ import java.util.ResourceBundle;
 public class LoginController {
 	@FXML
 	public JFXButton loginChooseUserButton;
+	public Label userIdentityLabel;
 	
 	@FXML
 	private AnchorPane content;
@@ -55,6 +57,8 @@ public class LoginController {
 	
 	@FXML
 	void initialize() {
+		userIdentityLabel.setText(activeUser.getClass().getName().replaceFirst("controller.UserController.", "").replace("UserController", ""));
+		
 		loginMail.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
 				loginPassword.requestFocus();

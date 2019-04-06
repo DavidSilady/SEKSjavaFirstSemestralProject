@@ -76,6 +76,10 @@ public class DataStorage implements java.io.Serializable{
 			ois.close();
 			fis.close();
 			System.out.println(arrayList);
+			for (Listable temp : arrayList
+			     ) {
+				System.out.println(temp.getMail() + temp.getPassword());
+			}
 			return  arrayList;
 		} catch (FileNotFoundException f) {
 			System.out.println("File not found");
