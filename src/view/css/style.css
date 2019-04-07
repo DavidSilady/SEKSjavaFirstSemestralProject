@@ -4,18 +4,33 @@
 }
 
 .side-bar:hover {
-    -fx-background-color: #383838;
+    -fx-background-color: #838383;
     -fx-scale-y: 1.1;
 }
 
 .button:hover {
-    -fx-background-color: #383838;
+    -fx-background-color: #838383;
+}
+
+.jfx-button:hover {
+    -fx-background-color: #838383;
 }
 
 .jfx-button {
+    -fx-background-color: #383838;
     -jfx-disable-visual-focus: true;
     -fx-background-radius: 0px;
     -fx-border-radius: 0px;
+}
+.chooseButton {
+    -fx-background-color: white;
+    -jfx-disable-visual-focus: true;
+    -fx-background-radius: 0px;
+    -fx-border-radius: 0px;
+}
+
+.chooseButton:hover {
+    -fx-background-color: #F8F8F8;
 }
 
 .table-view .column-header,

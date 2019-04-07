@@ -1,5 +1,7 @@
 package model;
 
+import model.user.userTypes.InspectionUser;
+
 import java.util.Date;
 
 public class Device {
@@ -8,6 +10,8 @@ public class Device {
 	private String name;
 	private String location;
 	private String serialNum;
+	
+	private InspectionUser inspection;
 	
 	private String note;
 	

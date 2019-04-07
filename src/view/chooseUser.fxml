@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import de.jensd.fx.glyphs.materialdesignicons.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.paint.*?>
@@ -10,46 +12,91 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="@css/style.css" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChooseUserController">
+<AnchorPane prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: white;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ChooseUserController">
    <children>
-       <JFXButton fx:id="chooseUserCompanyButton" layoutX="42.0" layoutY="291.0" onAction="#loadLoginCompany" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #c2185b;" text="Company" textFill="WHITE">
+       <JFXButton fx:id="chooseUserCompanyButton" alignment="CENTER" contentDisplay="TOP" layoutY="40.0" onAction="#loadLoginCompany" prefHeight="360.0" prefWidth="233.0" styleClass="chooseButton" text=" " textAlignment="CENTER" textFill="WHITE">
            <font>
              <Font name="System Bold" size="15.0" />
            </font>
+         <graphic>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                   <ImageView fitHeight="140.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@../assets/company.png" />
+                      </image>
+                   </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Company" textAlignment="CENTER" textFill="#c2185b">
+                     <font>
+                        <Font name="Roboto Black" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
        </JFXButton>
-       <JFXButton fx:id="chooseUserAuditorButton" layoutX="261.0" layoutY="291.0" onAction="#loadLoginAuditor" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #c2185b;" text="Auditor" textFill="WHITE">
+       <JFXButton fx:id="chooseUserAuditorButton" contentDisplay="TOP" layoutX="233.0" layoutY="40.0" onAction="#loadLoginAuditor" prefHeight="360.0" prefWidth="233.0" styleClass="chooseButton" text=" " textFill="WHITE">
            <font>
              <Font name="System Bold" size="15.0" />
            </font>
+         <graphic>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                   <ImageView fitHeight="129.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
+                       <image>
+                         <Image url="@../assets/auditor.png" />
+                       </image>
+                   </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Auditor" textAlignment="CENTER" textFill="#c2185b">
+                     <font>
+                        <Font name="Roboto Black" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
        </JFXButton>
-       <JFXButton fx:id="chooseUserInspectionButton" layoutX="479.0" layoutY="291.0" onAction="#loadLoginInspection" prefHeight="50.0" prefWidth="180.0" style="-fx-background-color: #c2185b;" text="Inspection" textFill="WHITE">
+       <JFXButton fx:id="chooseUserInspectionButton" alignment="CENTER" contentDisplay="TOP" layoutX="466.0" layoutY="40.0" onAction="#loadLoginInspection" prefHeight="360.0" prefWidth="233.0" styleClass="chooseButton" text=" " textFill="WHITE">
            <font>
              <Font name="System Bold" size="15.0" />
            </font>
+         <graphic>
+            <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                   <ImageView fitHeight="137.0" fitWidth="137.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@../assets/inspection.png" />
+                      </image>
+                   </ImageView>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Inspection" textAlignment="CENTER" textFill="#c2185b">
+                     <font>
+                        <Font name="Roboto Black" size="22.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
        </JFXButton>
-       <ImageView fitHeight="129.0" fitWidth="174.0" layoutX="287.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
-           <image>
-             <Image url="@../assets/auditor.png" />
-           </image>
-       </ImageView>
-       <ImageView fitHeight="140.0" fitWidth="137.0" layoutX="64.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
-          <image>
-              <Image url="@../assets/company.png" />
-          </image>
-       </ImageView>
-       <ImageView fitHeight="137.0" fitWidth="137.0" layoutX="501.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
-          <image>
-              <Image url="@../assets/inspection.png" />
-          </image>
-       </ImageView>
-       <AnchorPane prefHeight="97.0" prefWidth="700.0" style="-fx-background-color: #c2185b;">
-          <children>
-              <Label layoutX="219.0" layoutY="19.0" text="Choose User" textFill="WHITE">
-                  <font>
-                      <Font name="System Bold" size="45.0" />
-                  </font>
-              </Label>
-          </children>
-       </AnchorPane>
+      <JFXButton fx:id="exitButton" contentDisplay="CENTER" layoutX="644.0" prefHeight="42.0" prefWidth="56.0" ripplerFill="WHITE" style="-fx-background-color: white;" text=" ">
+         <graphic>
+            <FontAwesomeIconView fill="#e8e8e8" glyphName="CLOSE" size="25">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </FontAwesomeIconView>
+         </graphic>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>
