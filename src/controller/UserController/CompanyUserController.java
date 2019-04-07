@@ -6,16 +6,18 @@ import model.user.User;
 import model.user.userTypes.CompanyUser;
 
 public class CompanyUserController extends UserController {
-	private CompanyUser user = new CompanyUser();
+	private CompanyUser activeUser;
 	
-	public User getUser() {
-		return user;
+	public User getActiveUser () {
+		return activeUser;
 	}
 	
 	@Override
 	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
 		SceneController sceneController = new SceneController();
-		if (user.loginUser(actionEvent, loginMail, loginPassword, user)) {
+		CompanyUser temp = new CompanyUser();
+		activeUser = (CompanyUser) temp.loginUser(actionEvent, loginMail, loginPassword, activeUser);
+		if (activeUser != null){
 			sceneController.switchStage(actionEvent, "userInterface");
 		}
 	}
@@ -29,7 +31,8 @@ public class CompanyUserController extends UserController {
 	                        String email,
 	                        String phone,
 	                        String password) throws Exception{
-		user.signUpUser(actionEvent, companyName, companyICO, email, phone, password);
+		CompanyUser temp = new CompanyUser();
+		activeUser = (CompanyUser) temp.signUpUser(actionEvent, companyName, companyICO, email, phone, password);
 		System.out.println("Signed up!");
 		SceneController sceneController = new SceneController();
 		sceneController.switchStage(actionEvent, "userInterface");

@@ -29,5 +29,5 @@ public abstract class UserController {
 	                 String phone,
 	                 String password) throws Exception;
 	
-	public abstract User getUser ();
+	public abstract User getActiveUser ();
 }

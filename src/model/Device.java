@@ -2,9 +2,10 @@ package model;
 
 import model.user.userTypes.InspectionUser;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Device {
+public class Device implements Serializable {
 	private enum type {
 	};
 	private String name;

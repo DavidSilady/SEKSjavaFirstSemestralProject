@@ -13,22 +13,22 @@ public abstract class User implements java.io.Serializable, Listable {
 	private String mail;
 	private String password;
 	
-	protected boolean isAuthenticated (ArrayList<? extends Listable> userList, String loginMail, String loginPassword, User user) {
+	protected User isAuthenticated (ArrayList<? extends Listable> userList, String loginMail, String loginPassword) {
 		System.out.println("Login button clicked!");
 		for (Listable temp: userList) {
 			System.out.println(temp.getMail());
 			if (temp.getMail().equals(loginMail)) {
 				if (temp.getPassword().equals(loginPassword)) {
-					user = (User) temp;
-					System.out.println("Logged in!\n Welcome " + user.getName() + "!");
-					return true;
+					User activeUser = (User) temp;
+					System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
+					return (User) temp;
 				} else {
 					System.out.println("Wrong Password!");
-					return false;
+					return null;
 				}
 			}
 		}
-		return false;
+		return null;
 	}
 	
 	

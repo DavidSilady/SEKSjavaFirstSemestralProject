@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="@css/style.css"
+            fx:controller="controller.DevicesController"
+            prefHeight="400.0" prefWidth="600.0">
+        <children>
+            <TableView fx:id="tableView" prefHeight="690.0" prefWidth="980.0">
+                <columns>
+                    <TableColumn fx:id="nameCol" prefWidth="93.0" text="Name" />
+                    <TableColumn fx:id="locationCol" minWidth="5.0" prefWidth="123.0" text="Location" />
+                    <TableColumn fx:id="serialNumCol" prefWidth="160.0" text="Serial Number" />
+                    <TableColumn fx:id="lastInspectionCol" prefWidth="159.0" text="Last Inspection" />
+                    <TableColumn fx:id="nextInspectionCol" prefWidth="152.0" text="Next Inspection" />
+                    <TableColumn fx:id="lastAuditionCol" prefWidth="141.0" text="Last Audition" />
+                    <TableColumn fx:id="nextAuditionCol" minWidth="1.0" prefWidth="151.0" text="Next Audition" />
+                </columns>
+            </TableView>
+        </children>
+</AnchorPane>

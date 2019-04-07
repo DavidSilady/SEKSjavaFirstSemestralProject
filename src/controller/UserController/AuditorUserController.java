@@ -17,7 +17,7 @@ public class AuditorUserController extends UserController {
 	}
 	
 	@Override
-	public User getUser () {
+	public User getActiveUser () {
 		return user;
 	}
 }

@@ -17,7 +17,7 @@ public class InspectionUserController extends UserController {
 	}
 	
 	@Override
-	public User getUser () {
+	public User getActiveUser () {
 		return user;
 	}
 }

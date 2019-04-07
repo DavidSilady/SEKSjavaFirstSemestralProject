@@ -7,12 +7,13 @@ import model.Device;
 import model.user.Listable;
 import model.user.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CompanyUser extends User implements java.io.Serializable, Listable {
+public class CompanyUser extends User implements Serializable, Listable {
 	private String ICO;
 	private String phone;
-	private ArrayList<Device> deviceList;
+	private ArrayList<Device> deviceList = new ArrayList<>();
 	
 	public CompanyUser () {
 	}
@@ -20,7 +21,7 @@ public class CompanyUser extends User implements java.io.Serializable, Listable 
 	//Sign up method
 	@Override
 	@SuppressWarnings("unchecked")
-	public void signUpUser(Event actionEvent,
+	public User signUpUser(Event actionEvent,
 	                       String companyName,
 	                       String companyICO,
 	                       String email,
@@ -39,25 +40,33 @@ public class CompanyUser extends User implements java.io.Serializable, Listable 
 		try {
 			companyUserList.add(company);
 			DataStorage.getInstance().setCompanyUserList(companyUserList);
+			return company;
 		} catch (NullPointerException npe) {
 			System.out.println("Empty List!");
-			return;
+			return null;
 		}
 	}
 	
 	//Login method
 	@Override
-	public boolean loginUser(Event actionEvent, String loginMail, String loginPassword, User user) throws Exception {
-		return super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword, user);
+	public User loginUser(Event actionEvent, String loginMail, String loginPassword, User user) throws Exception {
+		return super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
 	}
 	
 	public ArrayList<Device> getDeviceList () {
+		System.out.println(super.getName() + "'s device list:");
+		for (Device temp:
+		    deviceList ) {
+			System.out.println(temp.getName());
+		}
 		return deviceList;
 	}
 	
 	public void addDevice(String name, String location, String serialNum) {
 		Device newDevice = new Device(name, location, serialNum);
 		deviceList.add(newDevice);
+		DataStorage.getInstance().serializeCurrentCompany();
+		System.out.println("Device " + newDevice.getName() + " added!");
 	}
 	
 	public void removeDevice(Device device) {

@@ -94,4 +94,8 @@ public class DataStorage implements java.io.Serializable{
 			return null;
 		}
 	}
+	
+	public void serializeCurrentCompany () {
+		save(companyUserList, "companyUserData");
+	}
 }
