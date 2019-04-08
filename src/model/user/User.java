@@ -27,6 +27,7 @@ public abstract class User implements java.io.Serializable, IUser, Observer {
 				if (temp.getPassword().equals(loginPassword)) {
 					User activeUser = (User) temp;
 					System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
+					printNotifications(activeUser);
 					return (User) temp;
 				} else {
 					System.out.println("Wrong Password!");
@@ -37,6 +38,11 @@ public abstract class User implements java.io.Serializable, IUser, Observer {
 		return null;
 	}
 	
+	private void printNotifications(User user) {
+		for (Notification tmp: user.getNotifications() ) {
+			System.out.println(tmp.getText());
+		}
+	}
 	public String getName () {
 		return name;
 	}

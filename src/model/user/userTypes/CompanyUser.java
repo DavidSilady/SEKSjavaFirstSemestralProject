@@ -3,6 +3,7 @@ package model.user.userTypes;
 import javafx.event.Event;
 import model.DataStorage;
 import model.device.Device;
+import model.device.deviceTypes.ElectronicDevice;
 import model.notification.Notification;
 import model.user.IUser;
 import model.Observer;
@@ -56,6 +57,13 @@ public class CompanyUser extends User implements Serializable, IUser {
 		return super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
 	}
 	
+	private void checkDevices(CompanyUser companyUser) {
+		for (Device device:
+		     companyUser.getDeviceList()) {
+			device.calculateDates();
+		}
+	}
+	
 	public ArrayList<Device> getDeviceList () {
 		System.out.println(super.getName() + "'s device list:");
 		for (Device temp:
@@ -66,7 +74,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	}
 	
 	public void addDevice(String name, String location, String serialNum) {
-		Device newDevice = new Device(name, location, serialNum);
+		Device newDevice = new ElectronicDevice(name, location, serialNum);
 		deviceList.add(newDevice);
 		DataStorage.getInstance().serializeCurrentCompany();
 		System.out.println("Device " + newDevice.getName() + " added!");
