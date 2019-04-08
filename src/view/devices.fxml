@@ -36,6 +36,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </JFXButton>
+            <JFXButton layoutX="370.0" layoutY="10.0" onAction="#addInspectorButton" prefHeight="30.0" prefWidth="180.0" text="Assign Inspector" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Roboto Light" size="14.0" />
+               </font>
+            </JFXButton>
             </children>
         </HBox>
         <AnchorPane fx:id="dynamicDevicePane" layoutY="30.0" prefHeight="690.0" prefWidth="980.0" style="-fx-background-color: white;">

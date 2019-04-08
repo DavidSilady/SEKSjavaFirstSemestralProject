@@ -2,10 +2,10 @@ package model.user;
 
 import javafx.event.Event;
 
-public interface Listable {
+public interface IUser {
 	String getMail ();
 	String getPassword ();
-	User loginUser(Event actionEvent, String loginMail, String loginPassword, User user) throws Exception;
+	User loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception;
 	User signUpUser(Event actionEvent,
 	                       String companyName,
 	                       String companyICO,

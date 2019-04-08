@@ -1,5 +1,5 @@
 package model;
-import model.user.Listable;
+import model.user.IUser;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -7,9 +7,9 @@ import java.util.ArrayList;
 
 public class DataStorage implements java.io.Serializable{
 	private static DataStorage thisInstance = new DataStorage();
-	private ArrayList<? extends Listable> companyUserList = new ArrayList<>();
-	private ArrayList<? extends Listable> inspectionUserList = new ArrayList<>();
-	private ArrayList<? extends Listable> auditorUserList = new ArrayList<>();
+	private ArrayList<? extends IUser> companyUserList = new ArrayList<>();
+	private ArrayList<? extends IUser> inspectionUserList = new ArrayList<>();
+	private ArrayList<? extends IUser> auditorUserList = new ArrayList<>();
 	
 	private DataStorage(){
 	}
@@ -18,29 +18,29 @@ public class DataStorage implements java.io.Serializable{
 		return thisInstance;
 	}
 	
-	public ArrayList<? extends Listable> getCompanyUserList () {
+	public ArrayList<? extends IUser> getCompanyUserList () {
 		return companyUserList;
 	}
 	
-	public void setCompanyUserList (ArrayList<? extends Listable> companyUserList) {
+	public void setCompanyUserList (ArrayList<? extends IUser> companyUserList) {
 		thisInstance.companyUserList = companyUserList;
 		thisInstance.save(companyUserList, "companyUserData");
 	}
 	
-	public ArrayList<? extends Listable> getInspectionUserList () {
+	public ArrayList<? extends IUser> getInspectionUserList () {
 		return inspectionUserList;
 	}
 	
-	public void setInspectionUserList (ArrayList<? extends Listable> inspectionUserList) {
+	public void setInspectionUserList (ArrayList<? extends IUser> inspectionUserList) {
 		thisInstance.inspectionUserList = inspectionUserList;
 		thisInstance.save(companyUserList, "companyUserData");
 	}
 	
-	public ArrayList<? extends Listable> getAuditorUserList () {
+	public ArrayList<? extends IUser> getAuditorUserList () {
 		return auditorUserList;
 	}
 	
-	public void setAuditorUserList (ArrayList<? extends Listable> auditorUserList) {
+	public void setAuditorUserList (ArrayList<? extends IUser> auditorUserList) {
 		thisInstance.auditorUserList = auditorUserList;
 		thisInstance.save(auditorUserList, "auditorUserData");
 	}
@@ -67,16 +67,16 @@ public class DataStorage implements java.io.Serializable{
 	}
 	
 	@SuppressWarnings("unchecked")
-	private ArrayList<? extends Listable> load (String name) {
+	private ArrayList<? extends IUser> load (String name) {
 		try
 		{
 			FileInputStream fis = new FileInputStream(name + ".ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			ArrayList<? extends Listable> arrayList = (ArrayList<? extends Listable>) ois.readObject();
+			ArrayList<? extends IUser> arrayList = (ArrayList<? extends IUser>) ois.readObject();
 			ois.close();
 			fis.close();
 			System.out.println(arrayList);
-			for (Listable temp : arrayList
+			for (IUser temp : arrayList
 			     ) {
 				System.out.println(temp.getMail() + temp.getPassword());
 			}

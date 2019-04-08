@@ -1,21 +1,17 @@
 package model.user;
 
-import controller.LoginController;
 import model.Notification;
-import model.user.userTypes.AuditorUser;
-import model.user.userTypes.CompanyUser;
-import model.user.userTypes.InspectionUser;
 
 import java.util.ArrayList;
 
-public abstract class User implements java.io.Serializable, Listable {
+public abstract class User implements java.io.Serializable, IUser {
 	private String name;
 	private String mail;
 	private String password;
 	
-	protected User isAuthenticated (ArrayList<? extends Listable> userList, String loginMail, String loginPassword) {
+	protected User isAuthenticated (ArrayList<? extends IUser> userList, String loginMail, String loginPassword) {
 		System.out.println("Login button clicked!");
-		for (Listable temp: userList) {
+		for (IUser temp: userList) {
 			System.out.println(temp.getMail());
 			if (temp.getMail().equals(loginMail)) {
 				if (temp.getPassword().equals(loginPassword)) {

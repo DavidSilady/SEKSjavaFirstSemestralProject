@@ -1,16 +1,15 @@
 package model.user.userTypes;
 
-import controller.SceneController;
 import javafx.event.Event;
 import model.DataStorage;
 import model.Device;
-import model.user.Listable;
+import model.user.IUser;
 import model.user.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CompanyUser extends User implements Serializable, Listable {
+public class CompanyUser extends User implements Serializable, IUser {
 	private String ICO;
 	private String phone;
 	private ArrayList<Device> deviceList = new ArrayList<>();
@@ -49,7 +48,7 @@ public class CompanyUser extends User implements Serializable, Listable {
 	
 	//Login method
 	@Override
-	public User loginUser(Event actionEvent, String loginMail, String loginPassword, User user) throws Exception {
+	public User loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
 		return super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
 	}
 	
