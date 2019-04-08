@@ -1,5 +1,7 @@
 package model;
 
+import model.notification.Notification;
+
 public interface Observable {
-	public void notifyUser();
+	public void notifyUser(Notification notification);
 }

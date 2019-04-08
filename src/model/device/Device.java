@@ -40,8 +40,8 @@ public class Device implements Serializable, Observable {
 		this.serialNum = serialNum;
 	}
 	
-	public void notifyUser() {
-		company.update(this.notification);
+	public void notifyUser(Notification notification) {
+		company.update(notification);
 	}
 	
 	public String getName () {
