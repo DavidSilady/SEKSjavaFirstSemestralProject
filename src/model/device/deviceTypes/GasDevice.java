@@ -18,11 +18,11 @@ public class GasDevice extends Device {
 		super.getNextInspection().setYear(super.getLastInspection().getYear() + 1);
 		Date today = new Date();
 		if (super.getNextAudition().before(today)) {
-			Notification warning = new WarningNotification();
+			Notification warning = new WarningNotification(super.getName() + "out of date!");
 			notifyUser(warning);
 		}
 		if (super.getNextInspection().before(today)) {
-			Notification warning = new WarningNotification();
+			Notification warning = new WarningNotification(super.getName() + "out of date!");
 			notifyUser(warning);
 		}
 	}
