@@ -70,7 +70,9 @@ public class CompanyUser extends User implements Serializable, Listable {
 	}
 	
 	public void removeDevice(Device device) {
+		System.out.println("Device " + device.getName() + " removed!");
 		deviceList.remove(device);
+		DataStorage.getInstance().serializeCurrentCompany();
 	}
 	
 	public String getName () {

@@ -40,28 +40,26 @@ public class DevicesController {
 	private TableView<Device> tableView;
 	
 	private CompanyUser user = (CompanyUser) UserController.getInstance().getActiveUser();
-	
+	private ObservableList<Device> deviceObservableList = null;
 	
 	@FXML
 	@SuppressWarnings("unchecked")
 	void initialize() {
-		ObservableList<Device> deviceObservableList = null;
 		try {
 			deviceObservableList = FXCollections.observableArrayList(user.getDeviceList());
 		} catch (NullPointerException npe) {
 			System.out.println("Device list not found!");
 		}
 		
-		nameCol.setCellFactory(new PropertyValueFactory<Device, String>("name"));
-		locationCol.setCellFactory(new PropertyValueFactory<Device, String>("location"));
-		serialNumCol.setCellFactory(new PropertyValueFactory<Device, String>("serialNum"));
-		lastInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastInspection"));
+		nameCol.setCellValueFactory(new PropertyValueFactory<Device, String>("name"));
+		locationCol.setCellValueFactory(new PropertyValueFactory<Device, String>("location"));
+		serialNumCol.setCellValueFactory(new PropertyValueFactory<Device, String>("serialNum"));
+		/*lastInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastInspection"));
 		nextInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextInspection"));
 		lastAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastAudition"));
-		nextAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextAudition"));
+		nextAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextAudition"));*/
 		tableView.setItems(deviceObservableList);
-	//	tableView.getColumns().addAll(nameCol, locationCol, serialNumCol, lastAuditionCol, nextAuditionCol, lastInspectionCol, nextInspectionCol);
-		
+//		tableView.getColumns().addAll(nameCol, locationCol, serialNumCol/*, lastAuditionCol, nextAuditionCol, lastInspectionCol, nextInspectionCol*/);
 	}
 	
 	public void addDeviceScreen (ActionEvent actionEvent) throws Exception{
@@ -76,6 +74,24 @@ public class DevicesController {
 	}
 	
 	public void deviceListScreen (ActionEvent actionEvent) throws Exception{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
+		Pane deviceListTable = (Pane) fxmlLoader.load();
+		try {
+			dynamicDevicePane.getChildren().clear();
+			dynamicDevicePane.getChildren().add(deviceListTable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void removeSelectedDeviceButton (ActionEvent actionEvent) throws Exception{
+		// Add a pop up for confirmation - later
+		
+		//Remove the selected device from the active company's device list
+		CompanyUser companyUser = (CompanyUser) activeUser.getActiveUser();
+		companyUser.removeDevice(tableView.getSelectionModel().getSelectedItem());
+		
+		//Update the table
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
 		try {
