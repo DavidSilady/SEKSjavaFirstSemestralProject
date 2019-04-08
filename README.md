@@ -26,12 +26,14 @@ druhy kontrol úplne eliminujú. Rovnako bude môcť ohlásiť budúcu fyzickú 
 a zanechať upozornenia či výzvy na nápravu po vykonanej kontrole.
 Každý používateľ bude dostávať upozornenia adekvátne k ich úlohe, či funkcii.
 
-  Momentálne implementované: 
+  Momentálne implementované:
+  
     Užívateľ companyUser sa dokáže zaregistrovať, prihlásiť, pridať/odobrať nové zariadenia (zatiaľ iba ilustračné).
     Užívateľ auditorUser (login: admin/admin) si dokáže prezerať všetkých companyUserov a ich zariadenia.
     Upozornenia sú rozrobené, ale zatiaľ nie riadne implementované.
 
   Veci z hodnotenia: 
+  
     - agregacia: Trieda CompanyUser agreguje ArrayList zariadení (Device), Trieda User agreguje ArrayList upozornení (Notification)
     - dedenie: 
         Triedy CompanyUser, AuditorUser, InspectionUser dedia z abstract triedy User
