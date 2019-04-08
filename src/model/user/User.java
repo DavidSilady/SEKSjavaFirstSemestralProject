@@ -1,13 +1,23 @@
 package model.user;
 
+import model.Observer;
 import model.notification.Notification;
 
 import java.util.ArrayList;
 
-public abstract class User implements java.io.Serializable, IUser {
+public abstract class User implements java.io.Serializable, IUser, Observer {
 	private String name;
 	private String mail;
 	private String password;
+	private ArrayList<Notification> notifications = new ArrayList<>();
+	
+	public void update(Notification notification) {
+		notifications.add(notification);
+	}
+	
+	public ArrayList<Notification> getNotifications() {
+		return notifications;
+	}
 	
 	protected User isAuthenticated (ArrayList<? extends IUser> userList, String loginMail, String loginPassword) {
 		System.out.println("Login button clicked!");
@@ -26,9 +36,6 @@ public abstract class User implements java.io.Serializable, IUser {
 		}
 		return null;
 	}
-	
-	
-	private ArrayList<Notification> notifications = new ArrayList<>();
 	
 	public String getName () {
 		return name;
