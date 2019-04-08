@@ -12,6 +12,8 @@ import java.util.ArrayList;
 public class CompanyUser extends User implements Serializable, IUser {
 	private String ICO;
 	private String phone;
+	private InspectionUser inspectionUser = new InspectionUser();
+	private String inspectionName = inspectionUser.getName();
 	private ArrayList<Device> deviceList = new ArrayList<>();
 	
 	public CompanyUser () {

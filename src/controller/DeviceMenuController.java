@@ -112,6 +112,7 @@ public class DeviceMenuController {
 		//Update the table
 		SceneController sceneController = new SceneController();
 		sceneController.setScene(actionEvent, "companyUserInterface");
+		
 	}
 	
 	public void addInspectorButton (ActionEvent actionEvent) {

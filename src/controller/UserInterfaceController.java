@@ -19,12 +19,12 @@ public class UserInterfaceController {
 	
 	@FXML
 	void initialize() {
-		try {
+		/*try {
 			activeUser.showDefault(dynamicPane);
 		} catch (java.io.IOException e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		exitButton.setOnAction((ActionEvent event) -> {
 			((Node) event.getSource()).getScene().getWindow().hide();
 			System.exit(0);
@@ -42,7 +42,16 @@ public class UserInterfaceController {
 		}
 	}
 	
-	public void companyListButton (ActionEvent actionEvent) {
+	public void companyListButton (ActionEvent actionEvent) throws Exception{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/companyMenu.fxml"));
+		Pane deviceListTable = (Pane) fxmlLoader.load();
+		try {
+			dynamicPane.getChildren().clear();
+			dynamicPane.getChildren().add(deviceListTable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void inspectionAuditorInterfaceButton (ActionEvent actionEvent) {

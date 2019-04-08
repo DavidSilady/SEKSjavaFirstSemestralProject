@@ -10,18 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.stage.Stage;
-import model.DataStorage;
-import model.Listable;
 
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class LoginController {
 	@FXML
-	public JFXButton loginChooseUserButton;
-	public Label userIdentityLabel;
+	private JFXButton loginChooseUserButton;
+	@FXML
+	private Label userIdentityLabel;
 	
 	@FXML
 	private AnchorPane content;
