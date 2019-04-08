@@ -32,6 +32,7 @@ public class CompanyMenuController {
 	@FXML
 	private TableView<CompanyUser> tableView;
 	
+	
 	@FXML
 	private TableColumn inspectionName;
 	
@@ -65,28 +66,36 @@ public class CompanyMenuController {
 	
 	@SuppressWarnings("unchecked")
 	@FXML void initialize() {
+		updateTableView();
+	}
+	
+	public void companyListButton (ActionEvent actionEvent) throws Exception{
+		//temporary fix to reloading the selection model
+		SceneController sceneController = new SceneController();
+		sceneController.setScene(actionEvent, "auditorUserInterface");
 		
+		updateTableView();
+	}
+	
+	public void viewDeviceButton (ActionEvent actionEvent) throws Exception{
+		if (tableView.getSelectionModel().getSelectedItem() != null)
+			showDeviceList(tableView.getSelectionModel().getSelectedItem());
+		updateTableView();
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void updateTableView() {
 		try {
 			companyUsers = FXCollections.observableArrayList((ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList());
 		} catch (NullPointerException npe) {
 			companyUsers = FXCollections.observableArrayList();
 			System.out.println("No companies found!");
 		}
-		
 		name.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("name"));
 		mail.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("mail"));
 		ICO.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("ICO"));
 		phone.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("phone"));
 		inspectionName.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("inspectionName"));
-	  	tableView.setItems(companyUsers);
-	}
-	
-	public void companyListButton (ActionEvent actionEvent) throws Exception{
-		showCompanyList();
-	}
-	
-	public void viewDeviceButton (ActionEvent actionEvent) throws Exception{
-		if (tableView.getSelectionModel().getSelectedItem() != null)
-			showDeviceList(tableView.getSelectionModel().getSelectedItem());
+		tableView.setItems(companyUsers);
 	}
 }
