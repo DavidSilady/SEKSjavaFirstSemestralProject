@@ -1,4 +1,4 @@
-package controller.UserController;
+package controller.userController;
 
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;

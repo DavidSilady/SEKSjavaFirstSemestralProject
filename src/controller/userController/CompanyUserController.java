@@ -1,4 +1,4 @@
-package controller.UserController;
+package controller.userController;
 
 import controller.SceneController;
 import javafx.event.Event;

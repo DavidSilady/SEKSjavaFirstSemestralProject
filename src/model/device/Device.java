@@ -1,5 +1,7 @@
-package model;
+package model.device;
 
+import model.notification.Notification;
+import model.Observable;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
@@ -38,7 +40,7 @@ public class Device implements Serializable, Observable {
 		this.serialNum = serialNum;
 	}
 	
-	public void addNotification() {
+	public void notifyUser() {
 		company.update(this.notification);
 	}
 	

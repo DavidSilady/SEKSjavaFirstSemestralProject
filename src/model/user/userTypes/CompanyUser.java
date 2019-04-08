@@ -2,8 +2,8 @@ package model.user.userTypes;
 
 import javafx.event.Event;
 import model.DataStorage;
-import model.Device;
-import model.Notification;
+import model.device.Device;
+import model.notification.Notification;
 import model.user.IUser;
 import model.Observer;
 import model.user.User;

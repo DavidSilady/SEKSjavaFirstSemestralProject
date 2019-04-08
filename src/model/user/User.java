@@ -1,6 +1,6 @@
 package model.user;
 
-import model.Notification;
+import model.notification.Notification;
 
 import java.util.ArrayList;
 

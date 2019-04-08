@@ -1,6 +1,6 @@
 package model;
 
-import model.Notification;
+import model.notification.Notification;
 
 public interface Observer {
 	public void update(Notification notification);

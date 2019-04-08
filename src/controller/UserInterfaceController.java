@@ -2,7 +2,7 @@ package controller;
 
 
 import com.jfoenix.controls.JFXButton;
-import controller.UserController.UserController;
+import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

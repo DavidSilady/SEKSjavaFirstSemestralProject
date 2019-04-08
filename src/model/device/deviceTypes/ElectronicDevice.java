@@ -1,4 +1,4 @@
-package model.deviceTypes;
+package model.device.deviceTypes;
 
 public class ElectronicDevice {
 }

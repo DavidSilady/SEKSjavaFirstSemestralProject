@@ -3,7 +3,7 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import controller.UserController.UserController;
+import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -54,7 +54,7 @@ public class LoginController {
 	
 	@FXML
 	void initialize() {
-		userIdentityLabel.setText(activeUser.getClass().getName().replaceFirst("controller.UserController.", "").replace("UserController", ""));
+		userIdentityLabel.setText(activeUser.getClass().getName().replaceFirst("controller.userController.", "").replace("UserController", ""));
 		
 		loginMail.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
