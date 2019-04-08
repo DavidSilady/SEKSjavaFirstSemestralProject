@@ -13,7 +13,7 @@ public class CompanyMenuController {
 	private AnchorPane dynamicPane;
 	
 	@FXML void initialize() throws IOException {
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceMenu.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
 		try {
 			dynamicPane.getChildren().clear();
