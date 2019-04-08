@@ -5,9 +5,12 @@ import model.Observable;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Date;
 
+//gonna be abstract . . . one day. . .
 public class Device implements Serializable, Observable {
 	private CompanyUser company;
 	private String name;
@@ -25,6 +28,8 @@ public class Device implements Serializable, Observable {
 	private Date nextAudition = new Date();
 	
 	private Notification notification;
+	
+	private PropertyChangeSupport support;
 	/*
 	public abstract void calculateDates();
 	*/
@@ -33,15 +38,31 @@ public class Device implements Serializable, Observable {
 		this.location = location;
 		this.serialNum = serialNum;
 		this.company = company;
+		support = new PropertyChangeSupport(this);
 	}
 	public Device (String name, String location, String serialNum) {
 		this.name = name;
 		this.location = location;
 		this.serialNum = serialNum;
+		support = new PropertyChangeSupport(this);
+	}
+	
+	public void addPropertyChangeListener(PropertyChangeListener pcl) {
+		support.addPropertyChangeListener(pcl);
+	}
+	
+	public void removePropertyChangeListener(PropertyChangeListener pcl) {
+		support.removePropertyChangeListener(pcl);
 	}
 	
 	public void notifyUser(Notification notification) {
 		company.update(notification);
+	}
+	
+	public void setNextInspection (Date nextInspection) {
+		support.firePropertyChange("lastInspection", this.nextInspection, nextInspection);
+		this.lastInspection = new Date();
+		this.nextInspection = nextInspection;
 	}
 	
 	public String getName () {
@@ -81,10 +102,6 @@ public class Device implements Serializable, Observable {
 		return nextInspection;
 	}
 	
-	public void setNextInspection (Date nextInspection) {
-		this.nextInspection = nextInspection;
-	}
-	
 	public Date getLastAudition () {
 		return lastAudition;
 	}
@@ -99,5 +116,9 @@ public class Device implements Serializable, Observable {
 	
 	public void setNextAudition (Date nextAudition) {
 		this.nextAudition = nextAudition;
+	}
+	
+	protected void setSupport (PropertyChangeSupport propertyChangeSupport) {
+		this.support = propertyChangeSupport;
 	}
 }

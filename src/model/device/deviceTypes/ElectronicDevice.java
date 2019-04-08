@@ -20,12 +20,12 @@ public class ElectronicDevice extends Device {
 		
 		Date today = new Date();
 		if (super.getNextAudition().before(today)) {
-			Notification warning = new WarningNotification();
+			Notification warning = new WarningNotification("");
 			notifyUser(warning);
 		}
 		
 		if (super.getNextInspection().before(today)) {
-			Notification warning = new WarningNotification();
+			Notification warning = new WarningNotification("");
 			notifyUser(warning);
 		}
 	}
