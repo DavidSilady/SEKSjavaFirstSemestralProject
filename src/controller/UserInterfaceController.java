@@ -9,10 +9,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import model.user.User;
 
 
-public class InterfaceController {
+public class UserInterfaceController {
 	public AnchorPane dynamicPane;
 	public JFXButton exitButton;
 	
@@ -20,6 +19,12 @@ public class InterfaceController {
 	
 	@FXML
 	void initialize() {
+		try {
+			activeUser.showDefault(dynamicPane);
+		} catch (java.io.IOException e) {
+			e.printStackTrace();
+		}
+		
 		exitButton.setOnAction((ActionEvent event) -> {
 			((Node) event.getSource()).getScene().getWindow().hide();
 			System.exit(0);
@@ -27,7 +32,7 @@ public class InterfaceController {
 	}
 	
 	public void showDeviceList (ActionEvent actionEvent) throws Exception{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/devices.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceMenu.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
 		try {
 			dynamicPane.getChildren().clear();
@@ -35,5 +40,11 @@ public class InterfaceController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void companyListButton (ActionEvent actionEvent) {
+	}
+	
+	public void inspectionAuditorInterfaceButton (ActionEvent actionEvent) {
 	}
 }

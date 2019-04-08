@@ -1,8 +1,11 @@
 package controller.UserController;
 
 import javafx.event.Event;
+import javafx.scene.layout.AnchorPane;
 import model.user.User;
 import model.user.userTypes.InspectionUser;
+
+import java.io.IOException;
 
 public class InspectionUserController extends UserController {
 	private InspectionUser user = new InspectionUser();
@@ -19,5 +22,10 @@ public class InspectionUserController extends UserController {
 	@Override
 	public User getActiveUser () {
 		return user;
+	}
+	
+	@Override
+	public void showDefault (AnchorPane dynamicPane) throws IOException {
+	
 	}
 }

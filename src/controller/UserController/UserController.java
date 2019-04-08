@@ -1,7 +1,10 @@
 package controller.UserController;
 
 import javafx.event.Event;
+import javafx.scene.layout.AnchorPane;
 import model.user.User;
+
+import java.io.IOException;
 
 public abstract class UserController {
 	private static UserController userController;
@@ -30,4 +33,6 @@ public abstract class UserController {
 	                 String password) throws Exception;
 	
 	public abstract User getActiveUser ();
+	
+	public abstract void showDefault (AnchorPane dynamicPane) throws IOException;
 }

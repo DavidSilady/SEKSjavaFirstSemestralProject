@@ -14,16 +14,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InterfaceController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserInterfaceController">
     <children>
         <VBox prefHeight="720.0" prefWidth="300.0" style="-fx-background-color: #6f74dd;">
             <children>
-                <JFXButton id=".button" alignment="BASELINE_LEFT" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Company Data" textFill="WHITE">
+                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" onAction="#showDeviceList" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Devices" textFill="WHITE">
                     <font>
                         <Font name="Roboto Light" size="18.0" />
                     </font>
                     <graphic>
-                        <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT" size="30" />
+                        <MaterialDesignIconView fill="WHITE" glyphName="SERVER" size="30" />
                     </graphic>
                     <padding>
                         <Insets left="30.0" />
@@ -32,12 +32,12 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="10.0" onAction="#showDeviceList" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Devices" textFill="WHITE">
+                <JFXButton id=".button" alignment="BASELINE_LEFT" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Company Data" textFill="WHITE">
                     <font>
                         <Font name="Roboto Light" size="18.0" />
                     </font>
                     <graphic>
-                        <MaterialDesignIconView fill="WHITE" glyphName="SERVER" size="30" />
+                        <MaterialDesignIconView fill="WHITE" glyphName="ACCOUNT" size="30" />
                     </graphic>
                     <padding>
                         <Insets left="30.0" />

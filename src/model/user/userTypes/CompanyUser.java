@@ -69,7 +69,12 @@ public class CompanyUser extends User implements Serializable, IUser {
 	}
 	
 	public void removeDevice(Device device) {
-		System.out.println("Device " + device.getName() + " removed!");
+		try {
+			System.out.println("Device " + device.getName() + " removed!");
+		}
+		catch (NullPointerException noe) {
+			System.out.println("Device already removed!");
+		}
 		deviceList.remove(device);
 		DataStorage.getInstance().serializeCurrentCompany();
 	}

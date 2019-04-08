@@ -2,8 +2,13 @@ package controller.UserController;
 
 import controller.SceneController;
 import javafx.event.Event;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import model.user.User;
 import model.user.userTypes.AuditorUser;
+
+import java.io.IOException;
 
 public class AuditorUserController extends UserController {
 	private AuditorUser user;
@@ -23,5 +28,18 @@ public class AuditorUserController extends UserController {
 	@Override
 	public User getActiveUser () {
 		return user;
+	}
+	
+	@Override
+	public void showDefault (AnchorPane dynamicPane) throws IOException {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/companyMenu.fxml"));
+		Pane deviceListTable = (Pane) fxmlLoader.load();
+		try {
+			dynamicPane.getChildren().clear();
+			dynamicPane.getChildren().add(deviceListTable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
 	}
 }

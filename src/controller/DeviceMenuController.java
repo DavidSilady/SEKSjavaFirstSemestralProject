@@ -4,21 +4,25 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import controller.UserController.UserController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.Device;
 import model.user.userTypes.CompanyUser;
 
 
-public class DevicesController {
+public class DeviceMenuController {
 	
 	public AnchorPane dynamicDevicePane;
 	public TableColumn nameCol;
@@ -51,6 +55,19 @@ public class DevicesController {
 			System.out.println("Device list not found!");
 		}
 		
+		
+		/*
+		tableView.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
+			@Override
+			public void changed (ObservableValue observable, Object oldValue, Object newValue) {
+				if (tableView.getSelectionModel().getSelectedItem() != null) {
+					selectedDevice = tableView.getSelectionModel().getSelectedItem();
+					System.out.println(selectedDevice.getName() + " selected!");
+				}
+			}
+			
+		});*/
+		
 		nameCol.setCellValueFactory(new PropertyValueFactory<Device, String>("name"));
 		locationCol.setCellValueFactory(new PropertyValueFactory<Device, String>("location"));
 		serialNumCol.setCellValueFactory(new PropertyValueFactory<Device, String>("serialNum"));
@@ -61,6 +78,7 @@ public class DevicesController {
 		tableView.setItems(deviceObservableList);
 //		tableView.getColumns().addAll(nameCol, locationCol, serialNumCol/*, lastAuditionCol, nextAuditionCol, lastInspectionCol, nextInspectionCol*/);
 	}
+	
 	
 	public void addDeviceScreen (ActionEvent actionEvent) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/addDevice.fxml"));
@@ -92,13 +110,10 @@ public class DevicesController {
 		companyUser.removeDevice(tableView.getSelectionModel().getSelectedItem());
 		
 		//Update the table
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
-		Pane deviceListTable = (Pane) fxmlLoader.load();
-		try {
-			dynamicDevicePane.getChildren().clear();
-			dynamicDevicePane.getChildren().add(deviceListTable);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		SceneController sceneController = new SceneController();
+		sceneController.setScene(actionEvent, "companyUserInterface");
+	}
+	
+	public void addInspectorButton (ActionEvent actionEvent) {
 	}
 }
