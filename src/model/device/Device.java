@@ -18,16 +18,16 @@ public class Device implements Serializable, Observable {
 	
 	private String note;
 	
-	private int inspectionTimeLimit = 0;
 	private Date lastInspection = null;
 	private Date nextInspection = new Date();
 	
-	private int auditionTimeLimit = 0;
 	private Date lastAudition = null;
 	private Date nextAudition = new Date();
 	
 	private Notification notification;
-	
+	/*
+	public abstract void calculateDates();
+	*/
 	public Device (String name, String location, String serialNum, CompanyUser company) {
 		this.name = name;
 		this.location = location;
@@ -68,13 +68,6 @@ public class Device implements Serializable, Observable {
 		this.serialNum = serialNum;
 	}
 	
-	public int getInspectionTimeLimit () {
-		return inspectionTimeLimit;
-	}
-	
-	public void setInspectionTimeLimit (int inspectionTimeLimit) {
-		this.inspectionTimeLimit = inspectionTimeLimit;
-	}
 	
 	public Date getLastInspection () {
 		return lastInspection;
@@ -90,14 +83,6 @@ public class Device implements Serializable, Observable {
 	
 	public void setNextInspection (Date nextInspection) {
 		this.nextInspection = nextInspection;
-	}
-	
-	public int getAuditionTimeLimit () {
-		return auditionTimeLimit;
-	}
-	
-	public void setAuditionTimeLimit (int auditionTimeLimit) {
-		this.auditionTimeLimit = auditionTimeLimit;
 	}
 	
 	public Date getLastAudition () {
