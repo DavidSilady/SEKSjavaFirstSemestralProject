@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.DataStorage;
@@ -17,22 +18,22 @@ import java.util.ArrayList;
 
 public class CompanyMenuController {
 	@FXML
-	private TableColumn<?, ?> mail;
+	private TableColumn mail;
 	
 	@FXML
-	private TableColumn<?, ?> ICO;
+	private TableColumn ICO;
 	
 	@FXML
-	private TableColumn<?, ?> phone;
+	private TableColumn phone;
 	
 	@FXML
-	private TableColumn<?, ?> name;
+	private TableColumn name;
 	
 	@FXML
 	private TableView<CompanyUser> tableView;
 	
 	@FXML
-	private TableColumn<?, ?> inspectionName;
+	private TableColumn inspectionName;
 	
 	@FXML
 	private AnchorPane dynamicPane;
@@ -49,16 +50,21 @@ public class CompanyMenuController {
 		}
 	}
 	
-	@SuppressWarnings("unchecked")
-	@FXML void initialize() {
+	private void showDeviceList(CompanyUser company) throws Exception{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
+		Pane companyListPane = (Pane) fxmlLoader.load();
+		DeviceMenuController deviceMenuController = fxmlLoader.getController();
+		deviceMenuController.setCompany(company);
 		try {
-			showCompanyList();
-		} catch (IOException ioe) {
-			System.out.println("IOE");
-			ioe.printStackTrace();
+			dynamicPane.getChildren().clear();
+			dynamicPane.getChildren().add(companyListPane);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	@FXML void initialize() {
 		
 		try {
 			companyUsers = FXCollections.observableArrayList((ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList());
@@ -66,15 +72,21 @@ public class CompanyMenuController {
 			companyUsers = FXCollections.observableArrayList();
 			System.out.println("No companies found!");
 		}
-		tableView.setItems(companyUsers);
+		
+		name.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("name"));
+		mail.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("mail"));
+		ICO.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("ICO"));
+		phone.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("phone"));
+		inspectionName.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("inspectionName"));
+	  	tableView.setItems(companyUsers);
 	}
 	
-	public void companyListButton (ActionEvent actionEvent) {
+	public void companyListButton (ActionEvent actionEvent) throws Exception{
+		showCompanyList();
 	}
 	
-	public void viewDeviceButton (ActionEvent actionEvent) {
+	public void viewDeviceButton (ActionEvent actionEvent) throws Exception{
+		if (tableView.getSelectionModel().getSelectedItem() != null)
+			showDeviceList(tableView.getSelectionModel().getSelectedItem());
 	}
-	
-	
-	
 }

@@ -4,18 +4,14 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import controller.UserController.UserController;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.Device;
@@ -43,17 +39,18 @@ public class DeviceMenuController {
 	@FXML
 	private TableView<Device> tableView;
 	
-	private CompanyUser user = (CompanyUser) UserController.getInstance().getActiveUser();
+	private CompanyUser company;
 	private ObservableList<Device> deviceObservableList = null;
 	
 	@FXML
 	@SuppressWarnings("unchecked")
 	void initialize() {
 		try {
-			deviceObservableList = FXCollections.observableArrayList(user.getDeviceList());
-		} catch (NullPointerException npe) {
-			System.out.println("Device list not found!");
+			company = (CompanyUser) UserController.getInstance().getActiveUser();
+		} catch (ClassCastException cce) {
+			System.out.println("Not a company user!");
 		}
+		
 		
 		
 		/*
@@ -68,15 +65,6 @@ public class DeviceMenuController {
 			
 		});*/
 		
-		nameCol.setCellValueFactory(new PropertyValueFactory<Device, String>("name"));
-		locationCol.setCellValueFactory(new PropertyValueFactory<Device, String>("location"));
-		serialNumCol.setCellValueFactory(new PropertyValueFactory<Device, String>("serialNum"));
-		/*lastInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastInspection"));
-		nextInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextInspection"));
-		lastAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastAudition"));
-		nextAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextAudition"));*/
-		tableView.setItems(deviceObservableList);
-//		tableView.getColumns().addAll(nameCol, locationCol, serialNumCol/*, lastAuditionCol, nextAuditionCol, lastInspectionCol, nextInspectionCol*/);
 	}
 	
 	
@@ -109,12 +97,34 @@ public class DeviceMenuController {
 		CompanyUser companyUser = (CompanyUser) activeUser.getActiveUser();
 		companyUser.removeDevice(tableView.getSelectionModel().getSelectedItem());
 		
-		//Update the table
+		//Update the table  //Probably a temporary solution
 		SceneController sceneController = new SceneController();
 		sceneController.setScene(actionEvent, "companyUserInterface");
 		
 	}
 	
 	public void addInspectorButton (ActionEvent actionEvent) {
+	}
+	
+	public void setCompany (CompanyUser company) {
+		this.company = company;
+		updateTable();
+	}
+	
+	@SuppressWarnings("unchecked")
+	private void updateTable () {
+		try {
+			deviceObservableList = FXCollections.observableArrayList(company.getDeviceList());
+		} catch (NullPointerException npe) {
+			System.out.println("Device list not found!");
+		}
+		nameCol.setCellValueFactory(new PropertyValueFactory<Device, String>("name"));
+		locationCol.setCellValueFactory(new PropertyValueFactory<Device, String>("location"));
+		serialNumCol.setCellValueFactory(new PropertyValueFactory<Device, String>("serialNum"));
+		/*lastInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastInspection"));
+		nextInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextInspection"));
+		lastAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastAudition"));
+		nextAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextAudition"));*/
+		tableView.setItems(deviceObservableList);
 	}
 }

@@ -19,12 +19,12 @@ public class UserInterfaceController {
 	
 	@FXML
 	void initialize() {
-		/*try {
+		try {
 			activeUser.showDefault(dynamicPane);
 		} catch (java.io.IOException e) {
 			e.printStackTrace();
 		}
-		*/
+		
 		exitButton.setOnAction((ActionEvent event) -> {
 			((Node) event.getSource()).getScene().getWindow().hide();
 			System.exit(0);

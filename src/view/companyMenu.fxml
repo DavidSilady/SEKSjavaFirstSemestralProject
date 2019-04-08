@@ -5,6 +5,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <AnchorPane prefHeight="720.0" prefWidth="980.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyMenuController">
     <children>
         <HBox prefHeight="30.0" prefWidth="980.0" style="-fx-background-color: #383838;">
@@ -27,6 +29,18 @@
                 </JFXButton>
             </children>
         </HBox>
-        <AnchorPane fx:id="dynamicPane" layoutY="30.0" prefHeight="690.0" prefWidth="980.0" style="-fx-background-color: white;" />
+        <AnchorPane fx:id="dynamicPane" layoutY="30.0" prefHeight="690.0" prefWidth="980.0" style="-fx-background-color: white;">
+        <children>
+            <TableView fx:id="tableView" prefHeight="690.0" prefWidth="980.0">
+                <columns>
+                    <TableColumn fx:id="name" prefWidth="93.0" text="Name" />
+                    <TableColumn fx:id="mail" minWidth="5.0" prefWidth="123.0" text="Mail" />
+                    <TableColumn fx:id="ICO" prefWidth="160.0" text="ICO" />
+                    <TableColumn fx:id="phone" prefWidth="159.0" text="Phone" />
+                    <TableColumn fx:id="inspectionName" prefWidth="152.0" text="Inspection" />
+                </columns>
+            </TableView>
+        </children>
+        </AnchorPane>
     </children>
 </AnchorPane>
