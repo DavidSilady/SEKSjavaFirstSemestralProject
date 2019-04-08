@@ -62,9 +62,7 @@ public class DeviceMenuController {
 					System.out.println(selectedDevice.getName() + " selected!");
 				}
 			}
-			
 		});*/
-		
 	}
 	
 	

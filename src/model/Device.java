@@ -1,13 +1,13 @@
 package model;
 
+import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class Device implements Serializable {
-	private enum type {
-	};
+public class Device implements Serializable, Observable {
+	private CompanyUser company;
 	private String name;
 	private String location;
 	private String serialNum;
@@ -24,10 +24,22 @@ public class Device implements Serializable {
 	private Date lastAudition = null;
 	private Date nextAudition = new Date();
 	
+	private Notification notification;
+	
+	public Device (String name, String location, String serialNum, CompanyUser company) {
+		this.name = name;
+		this.location = location;
+		this.serialNum = serialNum;
+		this.company = company;
+	}
 	public Device (String name, String location, String serialNum) {
 		this.name = name;
 		this.location = location;
 		this.serialNum = serialNum;
+	}
+	
+	public void addNotification() {
+		company.update(this.notification);
 	}
 	
 	public String getName () {

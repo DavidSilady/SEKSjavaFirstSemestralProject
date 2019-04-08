@@ -3,18 +3,29 @@ package model.user.userTypes;
 import javafx.event.Event;
 import model.DataStorage;
 import model.Device;
+import model.Notification;
 import model.user.IUser;
+import model.Observer;
 import model.user.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class CompanyUser extends User implements Serializable, IUser {
+public class CompanyUser extends User implements Serializable, IUser, Observer {
 	private String ICO;
 	private String phone;
 	private InspectionUser inspectionUser = new InspectionUser();
 	private String inspectionName = "Mr. Inspector"; //inspectionUser.getName();
 	private ArrayList<Device> deviceList = new ArrayList<>();
+	private ArrayList<Notification> notifications = new ArrayList<>();
+	
+	public void update(Notification notification) {
+		notifications.add(notification);
+	}
+	
+	public ArrayList<Notification> getNotifications() {
+		return notifications;
+	}
 	
 	public CompanyUser () {
 	}
