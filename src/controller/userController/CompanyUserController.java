@@ -18,7 +18,7 @@ public class CompanyUserController extends UserController {
 	}
 	
 	@Override
-	public void showDefault (AnchorPane dynamicPane) throws IOException {
+	public void showDefaultPane (AnchorPane dynamicPane) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceMenu.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
 		try {

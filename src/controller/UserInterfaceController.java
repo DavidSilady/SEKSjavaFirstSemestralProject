@@ -20,7 +20,7 @@ public class UserInterfaceController {
 	@FXML
 	void initialize() {
 		try {
-			activeUser.showDefault(dynamicPane);
+			activeUser.showDefaultPane(dynamicPane);
 		} catch (java.io.IOException e) {
 			e.printStackTrace();
 		}
