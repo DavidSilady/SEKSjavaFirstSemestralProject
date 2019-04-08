@@ -17,11 +17,11 @@ public class Device implements Serializable {
 	private String note;
 	
 	private int inspectionTimeLimit = 0;
-	private Date lastInspection = new Date();
+	private Date lastInspection = null;
 	private Date nextInspection = new Date();
 	
 	private int auditionTimeLimit = 0;
-	private Date lastAudition = new Date();
+	private Date lastAudition = null;
 	private Date nextAudition = new Date();
 	
 	public Device (String name, String location, String serialNum) {

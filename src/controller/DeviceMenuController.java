@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import controller.UserController.UserController;
@@ -49,10 +50,9 @@ public class DeviceMenuController {
 			company = (CompanyUser) UserController.getInstance().getActiveUser();
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
+			tableView.setSelectionModel(null);
 		}
-		
-		
-		
+		updateTable();
 		/*
 		tableView.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
 			@Override
@@ -121,10 +121,10 @@ public class DeviceMenuController {
 		nameCol.setCellValueFactory(new PropertyValueFactory<Device, String>("name"));
 		locationCol.setCellValueFactory(new PropertyValueFactory<Device, String>("location"));
 		serialNumCol.setCellValueFactory(new PropertyValueFactory<Device, String>("serialNum"));
-		/*lastInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastInspection"));
-		nextInspectionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextInspection"));
-		lastAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("lastAudition"));
-		nextAuditionCol.setCellFactory(new PropertyValueFactory<Device, String>("nextAudition"));*/
+		lastInspectionCol.setCellValueFactory(new PropertyValueFactory<Date, String>("lastInspection"));
+		nextInspectionCol.setCellValueFactory(new PropertyValueFactory<Date, String>("nextInspection"));
+		lastAuditionCol.setCellValueFactory(new PropertyValueFactory<Date, String>("lastAudition"));
+		nextAuditionCol.setCellValueFactory(new PropertyValueFactory<Date, String>("nextAudition"));
 		tableView.setItems(deviceObservableList);
 	}
 }
