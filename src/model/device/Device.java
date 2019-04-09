@@ -2,6 +2,7 @@ package model.device;
 
 import model.notification.Notification;
 import model.Observable;
+import model.user.User;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
@@ -12,7 +13,6 @@ import java.util.Date;
 
 //gonna be abstract . . . one day. . .
 public abstract class Device implements Serializable, Observable {
-	private CompanyUser company;
 	private String name;
 	private String location;
 	private String serialNum;
@@ -29,22 +29,16 @@ public abstract class Device implements Serializable, Observable {
 	
 	private Notification notification;
 	
-	public abstract void calculateDates();
+	public abstract void calculateDates(User user);
 	
-	public Device (String name, String location, String serialNum, CompanyUser company) {
-		this.name = name;
-		this.location = location;
-		this.serialNum = serialNum;
-		this.company = company;
-	}
 	public Device (String name, String location, String serialNum) {
 		this.name = name;
 		this.location = location;
 		this.serialNum = serialNum;
 	}
 	
-	public void notifyUser(Notification notification) {
-		company.update(notification);
+	public void notifyUser(Notification notification, User user) {
+		user.update(notification);
 	}
 	
 	public void setNextInspection (Date nextInspection) {
