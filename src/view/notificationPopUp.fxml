@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            stylesheets="@css/style.css"
+            fx:controller="controller.NotificationController"
+            prefHeight="400.0" prefWidth="600.0">
+    <JFXButton fx:id="exitButton" contentDisplay="CENTER" layoutX="644.0" prefHeight="42.0" prefWidth="56.0" ripplerFill="WHITE" style="-fx-background-color: white;" text=" ">
+        <graphic>
+            <FontAwesomeIconView fill="#e8e8e8" glyphName="CLOSE" size="25">
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </FontAwesomeIconView>
+        </graphic>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </JFXButton>
+</AnchorPane>

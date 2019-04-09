@@ -38,7 +38,11 @@ public class UserInterfaceController {
 			button.setText(tmp.getClass().getName());
 			button.setOnAction(event -> {
 				NotificationController notificationController = new NotificationController();
-				notificationController.popUpNotification(tmp);
+				try {
+					notificationController.popUpNotification(tmp);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			});
 			notificationButtons.add(button);
 		}
