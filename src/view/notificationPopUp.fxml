@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+
 <AnchorPane prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: #383838;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NotificationController">
    <children>
        <JFXButton fx:id="hidePopUpButton" contentDisplay="CENTER" layoutX="444.0" prefHeight="42.0" prefWidth="56.0" ripplerFill="WHITE" style="-fx-background-color: #383838;" text=" ">
@@ -20,15 +28,20 @@
                <Cursor fx:constant="HAND" />
            </cursor>
        </JFXButton>
-      <Label fx:id="typeLabel" contentDisplay="CENTER" layoutX="8.0" layoutY="42.0" text="Type" textAlignment="CENTER" textFill="#838383">
+      <Label fx:id="typeLabel" contentDisplay="CENTER" layoutX="9.0" layoutY="60.0" text="Type" textAlignment="CENTER" textFill="#838383">
          <font>
             <Font name="Roboto Light" size="19.0" />
          </font>
       </Label>
-      <Label fx:id="textLabel" contentDisplay="CENTER" layoutX="29.0" layoutY="94.0" text="Text" textAlignment="CENTER" textFill="#e8e8e8">
+      <Label fx:id="textLabel" contentDisplay="CENTER" layoutX="30.0" layoutY="103.0" text="Text" textAlignment="CENTER" textFill="#e8e8e8">
          <font>
             <Font name="Roboto Black" size="14.0" />
          </font>
       </Label>
+      <JFXButton fx:id="showMessageButton" layoutX="5.0" layoutY="53.0" prefHeight="118.0" prefWidth="490.0" style="-fx-background-color: #383838;" text="Show Message" textFill="#838383">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
    </children>
 </AnchorPane>

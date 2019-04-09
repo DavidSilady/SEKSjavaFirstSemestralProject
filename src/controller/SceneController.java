@@ -34,9 +34,11 @@ public class SceneController {
 		stage.show();
 	}
 	
-	public void popUp (String sceneName) throws Exception {
+	public void popUp (Notification notification, String sceneName) throws Exception {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/" + sceneName + ".fxml"));
 		Parent root1 = (Parent) fxmlLoader.load();
+		NotificationController notificationController = fxmlLoader.getController();
+		notificationController.setNotification(notification);
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.initStyle(StageStyle.UNDECORATED);

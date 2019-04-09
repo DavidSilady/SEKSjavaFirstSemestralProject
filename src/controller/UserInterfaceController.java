@@ -39,7 +39,7 @@ public class UserInterfaceController {
 			button.setOnAction(event -> {
 				SceneController sceneController = new SceneController();
 				try {
-					sceneController.popUp("notificationPopUp");
+					sceneController.popUp(notification,"notificationPopUp");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
