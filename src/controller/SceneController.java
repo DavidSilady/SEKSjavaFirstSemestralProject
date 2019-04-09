@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.notification.Notification;
 
 public class SceneController {
 	public void setScene (javafx.event.ActionEvent actionEvent, String sceneName) throws Exception{

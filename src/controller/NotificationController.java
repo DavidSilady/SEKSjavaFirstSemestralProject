@@ -23,13 +23,9 @@ public class NotificationController {
 	
 	private Notification notification;
 	
-	public NotificationController(Notification notification) {
-		this.notification = notification;
-	}
 	
 	public void popUpNotification (Notification notification) throws Exception{
 		setNotification(notification);
-		
 	}
 	
 	public void setNotification(Notification notification) {
