@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="980.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeviceMenuController">
+    <children>
+        <HBox prefHeight="30.0" prefWidth="980.0" style="-fx-background-color: #383838;">
+            <children>
+                <JFXButton onAction="#deviceListScreen" prefHeight="30.0" prefWidth="180.0" text="Device List" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Light" size="14.0" />
+                    </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+                </JFXButton>
+                <JFXButton layoutX="10.0" layoutY="10.0" onAction="#addDeviceScreen" prefHeight="30.0" prefWidth="180.0" text="Add New Device" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Light" size="14.0" />
+                    </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+                </JFXButton>
+                <JFXButton layoutX="140.0" layoutY="10.0" onAction="#removeSelectedDeviceButton" prefHeight="30.0" prefWidth="180.0" text="Remove Selected Device" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Light" size="14.0" />
+                    </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+                </JFXButton>
+            <JFXButton layoutX="370.0" layoutY="10.0" onAction="#addInspectorButton" prefHeight="30.0" prefWidth="180.0" text="Assign Inspector" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Roboto Light" size="14.0" />
+               </font>
+            </JFXButton>
+            </children>
+        </HBox>
+        <AnchorPane fx:id="dynamicDevicePane" layoutY="30.0" prefHeight="690.0" prefWidth="980.0" style="-fx-background-color: white;">
+            <children>
+                <TableView fx:id="tableView" prefHeight="690.0" prefWidth="980.0">
+                    <columns>
+                        <TableColumn fx:id="nameCol" prefWidth="93.0" text="Name" />
+                        <TableColumn fx:id="locationCol" minWidth="5.0" prefWidth="123.0" text="Location" />
+                        <TableColumn fx:id="serialNumCol" prefWidth="160.0" text="Serial Number" />
+                        <TableColumn fx:id="lastInspectionCol" prefWidth="159.0" text="Last Inspection" />
+                        <TableColumn fx:id="nextInspectionCol" prefWidth="152.0" text="Next Inspection" />
+                        <TableColumn fx:id="lastAuditionCol" prefWidth="141.0" text="Last Audition" />
+                        <TableColumn fx:id="nextAuditionCol" minWidth="1.0" prefWidth="151.0" text="Next Audition" />
+                    </columns>
+                </TableView>
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

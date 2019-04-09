@@ -9,16 +9,51 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
+import model.notification.Notification;
+
+import java.util.ArrayList;
 
 
 public class UserInterfaceController {
-	public AnchorPane dynamicPane;
-	public JFXButton exitButton;
+	@FXML
+	private AnchorPane dynamicPane;
+	@FXML
+	private JFXButton exitButton;
+	@FXML
+	private VBox vBox;
+	@FXML
+	private ArrayList<JFXButton> notificationButtons = new ArrayList<>();
+	
 	
 	private UserController activeUser = UserController.getInstance();
 	
+	private void generateNotifications() {
+		ArrayList<Notification> notifications = activeUser.getActiveUser().getNotifications();
+		for (Notification notification:
+				notifications) {
+			JFXButton button = new JFXButton();
+			button.setPrefWidth(300);
+			button.setPrefHeight(50);
+			button.setText(notification.getClass().getName());
+			button.setOnAction(event -> {
+				SceneController sceneController = new SceneController();
+				try {
+					sceneController.popUp(notification,"notificationPopUp");
+					notifications.remove(notification);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			});
+			notificationButtons.add(button);
+		}
+		vBox.getChildren().addAll(notificationButtons);
+	}
+	
 	@FXML
 	void initialize() {
+		//generateNotifications();
+		
 		try {
 			activeUser.showDefaultPane(dynamicPane);
 		} catch (java.io.IOException e) {

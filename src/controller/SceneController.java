@@ -8,6 +8,8 @@ import javafx.scene.Scene;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import model.notification.Notification;
 
 public class SceneController {
 	public void setScene (javafx.event.ActionEvent actionEvent, String sceneName) throws Exception{
@@ -29,6 +31,19 @@ public class SceneController {
 		//stage.initStyle(StageStyle.UNDECORATED);
 		stage.setTitle("SEKS | " + sceneName);
 		stage.setScene(new Scene(root1, 1280, 720));
+		stage.show();
+	}
+	
+	public void popUp (Notification notification, String sceneName) throws Exception {
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/" + sceneName + ".fxml"));
+		Parent root1 = (Parent) fxmlLoader.load();
+		NotificationController notificationController = fxmlLoader.getController();
+		notificationController.setNotification(notification);
+		Stage stage = new Stage();
+		stage.initModality(Modality.APPLICATION_MODAL);
+		stage.initStyle(StageStyle.UNDECORATED);
+		stage.setTitle("Pop Up");
+		stage.setScene(new Scene(root1, 500, 200));
 		stage.show();
 	}
 }

@@ -17,19 +17,19 @@ public class ElectronicDevice extends Device {
 	public void calculateDates () {
 		//just illustrative for now
 		Date tmp = new Date();
-		tmp.setTime(getLastAudition().getTime() + (86400000*365));
+		tmp.setTime(getLastAudition().getTime() + (86400000*365*2));
 		setNextAudition(tmp);
-		tmp.setTime(getLastInspection().getTime() + (86400000*365));
+		tmp.setTime(getLastInspection().getTime() + (86400000*365*2));
 		setNextInspection(tmp);
 		
 		Date today = new Date();
 		if (super.getNextAudition().before(today)) {
-			Notification warning = new WarningNotification(super.getName() + " out of date!");
+			Notification warning = new WarningNotification(super.getName() + " requires Audition!");
 			notifyUser(warning);
 		}
 		
 		if (super.getNextInspection().before(today)) {
-			Notification warning = new WarningNotification(super.getName() + " out of date!");
+			Notification warning = new WarningNotification(super.getName() + " requires Inspection!");
 			notifyUser(warning);
 		}
 	}

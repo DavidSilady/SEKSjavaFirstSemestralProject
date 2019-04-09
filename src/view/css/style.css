@@ -14,6 +14,7 @@
 
 .jfx-button:hover {
     -fx-background-color: #838383;
+    -fx-cursor: hand;
 }
 
 .jfx-button {
@@ -22,6 +23,19 @@
     -fx-background-radius: 0px;
     -fx-border-radius: 0px;
 }
+ .notificationButtons .jfx-button .text{
+     -fx-fill: white;
+ }
+ .notificationButtons .jfx-button {
+  -fx-background-color: transparent;
+  -fx-cursor: hand;
+ }
+
+ .notificationButtons .jfx-button:hover {
+    -fx-background-color: #6e74dc;
+   -fx-cursor: hand;
+  }
+
 .chooseButton {
     -fx-background-color: white;
     -jfx-disable-visual-focus: true;
