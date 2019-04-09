@@ -2,7 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import controller.UserController.UserController;
+import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import model.user.userTypes.CompanyUser;
@@ -32,11 +32,11 @@ public class AddDeviceController {
 	@FXML
 	private JFXComboBox<?> deviceTypeComboBox;
 	
-	private UserController activeUser = UserController.getInstance();
+	private UserController activeUserController = UserController.getInstance();
 	
 	@FXML
 	void addDevice(ActionEvent event) {
-		CompanyUser company = (CompanyUser) activeUser.getActiveUser();
+		CompanyUser company = (CompanyUser) activeUserController.getActiveUser();
 		company.addDevice(nameField.getText(), locationField.getText(), serialNumField.getText());
 	}
 	

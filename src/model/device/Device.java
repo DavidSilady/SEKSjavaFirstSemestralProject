@@ -1,13 +1,18 @@
-package model;
+package model.device;
 
+import model.notification.Notification;
+import model.Observable;
+import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Device implements Serializable {
-	private enum type {
-	};
+//gonna be abstract . . . one day. . .
+public abstract class Device implements Serializable, Observable {
+	private CompanyUser company;
 	private String name;
 	private String location;
 	private String serialNum;
@@ -16,18 +21,34 @@ public class Device implements Serializable {
 	
 	private String note;
 	
-	private int inspectionTimeLimit = 0;
-	private Date lastInspection = new Date();
+	private Date lastInspection = new Date(0);
 	private Date nextInspection = new Date();
 	
-	private int auditionTimeLimit = 0;
-	private Date lastAudition = new Date();
+	private Date lastAudition = new Date(0);
 	private Date nextAudition = new Date();
 	
+	private Notification notification;
+	
+	public abstract void calculateDates();
+	
+	public Device (String name, String location, String serialNum, CompanyUser company) {
+		this.name = name;
+		this.location = location;
+		this.serialNum = serialNum;
+		this.company = company;
+	}
 	public Device (String name, String location, String serialNum) {
 		this.name = name;
 		this.location = location;
 		this.serialNum = serialNum;
+	}
+	
+	public void notifyUser(Notification notification) {
+		company.update(notification);
+	}
+	
+	public void setNextInspection (Date nextInspection) {
+		this.nextInspection = nextInspection;
 	}
 	
 	public String getName () {
@@ -54,13 +75,6 @@ public class Device implements Serializable {
 		this.serialNum = serialNum;
 	}
 	
-	public int getInspectionTimeLimit () {
-		return inspectionTimeLimit;
-	}
-	
-	public void setInspectionTimeLimit (int inspectionTimeLimit) {
-		this.inspectionTimeLimit = inspectionTimeLimit;
-	}
 	
 	public Date getLastInspection () {
 		return lastInspection;
@@ -72,18 +86,6 @@ public class Device implements Serializable {
 	
 	public Date getNextInspection () {
 		return nextInspection;
-	}
-	
-	public void setNextInspection (Date nextInspection) {
-		this.nextInspection = nextInspection;
-	}
-	
-	public int getAuditionTimeLimit () {
-		return auditionTimeLimit;
-	}
-	
-	public void setAuditionTimeLimit (int auditionTimeLimit) {
-		this.auditionTimeLimit = auditionTimeLimit;
 	}
 	
 	public Date getLastAudition () {

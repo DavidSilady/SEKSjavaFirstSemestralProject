@@ -44,7 +44,6 @@
                   <Font name="Roboto Light" size="14.0" />
                </font>
             </JFXButton>
-            <Label fx:id="testLabel" text="Label" textFill="WHITE" />
             </children>
         </HBox>
         <AnchorPane fx:id="dynamicDevicePane" layoutY="30.0" prefHeight="690.0" prefWidth="980.0" style="-fx-background-color: white;">

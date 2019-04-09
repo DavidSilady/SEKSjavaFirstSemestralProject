@@ -2,8 +2,11 @@ package model.user.userTypes;
 
 import javafx.event.Event;
 import model.DataStorage;
-import model.Device;
+import model.device.Device;
+import model.device.deviceTypes.ElectronicDevice;
+import model.notification.Notification;
 import model.user.IUser;
+import model.Observer;
 import model.user.User;
 
 import java.io.Serializable;
@@ -12,6 +15,8 @@ import java.util.ArrayList;
 public class CompanyUser extends User implements Serializable, IUser {
 	private String ICO;
 	private String phone;
+	private InspectionUser inspectionUser = new InspectionUser();
+	private String inspectionName = "Mr. Inspector"; //inspectionUser.getName();
 	private ArrayList<Device> deviceList = new ArrayList<>();
 	
 	public CompanyUser () {
@@ -49,20 +54,24 @@ public class CompanyUser extends User implements Serializable, IUser {
 	//Login method
 	@Override
 	public User loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
-		return super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
+		User user = super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
+		checkDevices((CompanyUser) user);
+		return user;
+	}
+	
+	private void checkDevices(CompanyUser companyUser) {
+		for (Device device:
+		     companyUser.getDeviceList()) {
+			device.calculateDates();
+		}
 	}
 	
 	public ArrayList<Device> getDeviceList () {
-		System.out.println(super.getName() + "'s device list:");
-		for (Device temp:
-		    deviceList ) {
-			System.out.println(temp.getName());
-		}
 		return deviceList;
 	}
 	
 	public void addDevice(String name, String location, String serialNum) {
-		Device newDevice = new Device(name, location, serialNum);
+		Device newDevice = new ElectronicDevice(name, location, serialNum, this);
 		deviceList.add(newDevice);
 		DataStorage.getInstance().serializeCurrentCompany();
 		System.out.println("Device " + newDevice.getName() + " added!");
@@ -73,7 +82,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 			System.out.println("Device " + device.getName() + " removed!");
 		}
 		catch (NullPointerException noe) {
-			System.out.println("Device already removed!");
+			System.out.println("Device not found!");
 		}
 		deviceList.remove(device);
 		DataStorage.getInstance().serializeCurrentCompany();

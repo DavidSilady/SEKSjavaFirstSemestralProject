@@ -1,4 +1,4 @@
-package controller.UserController;
+package controller.userController;
 
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;
@@ -34,5 +34,5 @@ public abstract class UserController {
 	
 	public abstract User getActiveUser ();
 	
-	public abstract void showDefault (AnchorPane dynamicPane) throws IOException;
+	public abstract void showDefaultPane (AnchorPane dynamicPane) throws IOException;
 }

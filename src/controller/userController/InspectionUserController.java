@@ -1,4 +1,4 @@
-package controller.UserController;
+package controller.userController;
 
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;
@@ -25,7 +25,7 @@ public class InspectionUserController extends UserController {
 	}
 	
 	@Override
-	public void showDefault (AnchorPane dynamicPane) throws IOException {
+	public void showDefaultPane (AnchorPane dynamicPane) throws IOException {
 	
 	}
 }

@@ -2,7 +2,7 @@ package controller;
 
 
 import com.jfoenix.controls.JFXButton;
-import controller.UserController.UserController;
+import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,7 @@ public class UserInterfaceController {
 	@FXML
 	void initialize() {
 		try {
-			activeUser.showDefault(dynamicPane);
+			activeUser.showDefaultPane(dynamicPane);
 		} catch (java.io.IOException e) {
 			e.printStackTrace();
 		}
@@ -42,7 +42,16 @@ public class UserInterfaceController {
 		}
 	}
 	
-	public void companyListButton (ActionEvent actionEvent) {
+	public void companyListButton (ActionEvent actionEvent) throws Exception{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/companyMenu.fxml"));
+		Pane deviceListTable = (Pane) fxmlLoader.load();
+		try {
+			dynamicPane.getChildren().clear();
+			dynamicPane.getChildren().add(deviceListTable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public void inspectionAuditorInterfaceButton (ActionEvent actionEvent) {

@@ -4,13 +4,11 @@ import com.jfoenix.controls.JFXButton;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
-import controller.UserController.UserController;
+import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import model.user.User;
-import model.user.userTypes.CompanyUser;
 
 public class SignUpController {
 	

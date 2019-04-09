@@ -4,7 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import controller.UserController.UserController;
+import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
