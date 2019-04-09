@@ -30,7 +30,7 @@ Každý používateľ bude dostávať upozornenia adekvátne k ich úlohe, či f
   
     Užívateľ companyUser sa dokáže zaregistrovať, prihlásiť, pridať/odobrať nové zariadenia (zatiaľ iba ilustračné).
     Užívateľ auditorUser (login: admin/admin) si dokáže prezerať všetkých companyUserov a ich zariadenia.
-    Upozornenia sú rozrobené, ale zatiaľ nie riadne implementované.
+    Upozornenia sú rozrobené, ale zatiaľ nie riadne implementované (pri prihlásení companyUsera sa cez System.out vypíšu nazbierané upozornenia o potrebných kontrolách)
 
   Veci z hodnotenia: 
   
