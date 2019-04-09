@@ -67,11 +67,6 @@ public class CompanyUser extends User implements Serializable, IUser {
 	}
 	
 	public ArrayList<Device> getDeviceList () {
-		System.out.println(super.getName() + "'s device list:");
-		for (Device temp:
-		    deviceList ) {
-			System.out.println(temp.getName());
-		}
 		return deviceList;
 	}
 	
@@ -87,7 +82,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 			System.out.println("Device " + device.getName() + " removed!");
 		}
 		catch (NullPointerException noe) {
-			System.out.println("Device already removed!");
+			System.out.println("Device not found!");
 		}
 		deviceList.remove(device);
 		DataStorage.getInstance().serializeCurrentCompany();

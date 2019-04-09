@@ -20,17 +20,13 @@ public abstract class User implements java.io.Serializable, IUser, Observer {
 	}
 	
 	protected User isAuthenticated (ArrayList<? extends IUser> userList, String loginMail, String loginPassword) {
-		System.out.println("Login button clicked!");
 		for (IUser temp: userList) {
-			System.out.println(temp.getMail());
 			if (temp.getMail().equals(loginMail)) {
 				if (temp.getPassword().equals(loginPassword)) {
 					User activeUser = (User) temp;
-					System.out.println("Logged in!\n Welcome " + activeUser.getName() + "!");
 					printNotifications(activeUser);
 					return (User) temp;
 				} else {
-					System.out.println("Wrong Password!");
 					return null;
 				}
 			}
