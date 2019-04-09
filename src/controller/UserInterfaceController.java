@@ -23,17 +23,19 @@ public class UserInterfaceController {
 	@FXML
 	private VBox vBox;
 	@FXML
-	private ArrayList<JFXButton> notificationButtons;
+	private ArrayList<JFXButton> notificationButtons = new ArrayList<>();
 	
 	
 	private UserController activeUser = UserController.getInstance();
 	
-	@FXML
-	void initialize() {
+	private void generateNotifications() {
 		ArrayList<Notification> notifications = activeUser.getActiveUser().getNotifications();
 		for (Notification tmp:
-		     notifications) {
+				notifications) {
 			JFXButton button = new JFXButton();
+			button.setPrefWidth(300);
+			button.setPrefHeight(50);
+			button.setText(tmp.getClass().getName());
 			button.setOnAction(event -> {
 				NotificationController notificationController = new NotificationController();
 				notificationController.popUpNotification(tmp);
@@ -41,6 +43,11 @@ public class UserInterfaceController {
 			notificationButtons.add(button);
 		}
 		vBox.getChildren().addAll(notificationButtons);
+	}
+	
+	@FXML
+	void initialize() {
+		generateNotifications();
 		
 		try {
 			activeUser.showDefaultPane(dynamicPane);

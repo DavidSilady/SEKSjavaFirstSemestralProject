@@ -22,6 +22,7 @@
     -fx-background-radius: 0px;
     -fx-border-radius: 0px;
 }
+
 .chooseButton {
     -fx-background-color: white;
     -jfx-disable-visual-focus: true;
