@@ -40,6 +40,7 @@ public class UserInterfaceController {
 				SceneController sceneController = new SceneController();
 				try {
 					sceneController.popUp(notification,"notificationPopUp");
+					notifications.remove(notification);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -51,7 +52,7 @@ public class UserInterfaceController {
 	
 	@FXML
 	void initialize() {
-		generateNotifications();
+		//generateNotifications();
 		
 		try {
 			activeUser.showDefaultPane(dynamicPane);
