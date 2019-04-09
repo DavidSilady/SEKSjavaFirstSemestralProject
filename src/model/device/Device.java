@@ -21,10 +21,10 @@ public abstract class Device implements Serializable, Observable {
 	
 	private String note;
 	
-	private Date lastInspection = null;
+	private Date lastInspection = new Date(0);
 	private Date nextInspection = new Date();
 	
-	private Date lastAudition = null;
+	private Date lastAudition = new Date(0);
 	private Date nextAudition = new Date();
 	
 	private Notification notification;

@@ -54,7 +54,9 @@ public class CompanyUser extends User implements Serializable, IUser {
 	//Login method
 	@Override
 	public User loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
-		return super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
+		User user = super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
+		checkDevices((CompanyUser) user);
+		return user;
 	}
 	
 	private void checkDevices(CompanyUser companyUser) {
@@ -74,7 +76,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	}
 	
 	public void addDevice(String name, String location, String serialNum) {
-		Device newDevice = new ElectronicDevice(name, location, serialNum);
+		Device newDevice = new ElectronicDevice(name, location, serialNum, this);
 		deviceList.add(newDevice);
 		DataStorage.getInstance().serializeCurrentCompany();
 		System.out.println("Device " + newDevice.getName() + " added!");

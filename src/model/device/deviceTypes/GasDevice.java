@@ -12,10 +12,14 @@ public class GasDevice extends Device {
 		calculateDates();
 	}
 	
-	private void calculateDates() {
+	public void calculateDates () {
 		//just illustrative for now
-		super.getNextAudition().setYear(super.getLastAudition().getYear() + 1);
-		super.getNextInspection().setYear(super.getLastInspection().getYear() + 1);
+		Date tmp = new Date();
+		tmp.setTime(getLastAudition().getTime() + (86400000*365));
+		setNextAudition(tmp);
+		tmp.setTime(getLastInspection().getTime() + (86400000*365));
+		setNextInspection(tmp);
+		
 		Date today = new Date();
 		if (super.getNextAudition().before(today)) {
 			Notification warning = new WarningNotification(super.getName() + "out of date!");

@@ -32,11 +32,11 @@ public class AddDeviceController {
 	@FXML
 	private JFXComboBox<?> deviceTypeComboBox;
 	
-	private UserController activeUser = UserController.getInstance();
+	private UserController activeUserController = UserController.getInstance();
 	
 	@FXML
 	void addDevice(ActionEvent event) {
-		CompanyUser company = (CompanyUser) activeUser.getActiveUser();
+		CompanyUser company = (CompanyUser) activeUserController.getActiveUser();
 		company.addDevice(nameField.getText(), locationField.getText(), serialNumField.getText());
 	}
 	
