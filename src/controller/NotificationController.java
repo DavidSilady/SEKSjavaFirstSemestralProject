@@ -7,13 +7,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.notification.Notification;
 
 public class NotificationController {
-	public JFXButton exitButton;
+	@FXML
+	private JFXButton hidePopUpButton;
+	@FXML
+	private Label typeLabel;
+	@FXML
+	private Label textLabel;
+	
 	private Notification notification = null;
 	
 	public void popUpNotification (Notification notification) throws Exception{
@@ -25,8 +32,11 @@ public class NotificationController {
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.initStyle(StageStyle.UNDECORATED);
 		stage.setTitle("Notification");
-		stage.setScene(new Scene(root1, 300, 180));
+		stage.setScene(new Scene(root1, 500, 200));
 		stage.show();
+		textLabel.setText(notification.getText());
+		typeLabel.setText(notification.getClass().getName());
+		
 	}
 	
 	public void setNotification(Notification notification) {
@@ -35,11 +45,8 @@ public class NotificationController {
 	
 	@FXML
 	void initialize() {
-		
-		
-		exitButton.setOnAction((ActionEvent event) -> {
+		hidePopUpButton.setOnAction((ActionEvent event) -> {
 			((Node) event.getSource()).getScene().getWindow().hide();
-			System.exit(0);
 		});
 	}
 }

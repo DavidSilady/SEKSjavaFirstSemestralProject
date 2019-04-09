@@ -30,16 +30,16 @@ public class UserInterfaceController {
 	
 	private void generateNotifications() {
 		ArrayList<Notification> notifications = activeUser.getActiveUser().getNotifications();
-		for (Notification tmp:
+		for (Notification notification:
 				notifications) {
 			JFXButton button = new JFXButton();
 			button.setPrefWidth(300);
 			button.setPrefHeight(50);
-			button.setText(tmp.getClass().getName());
+			button.setText(notification.getClass().getName());
 			button.setOnAction(event -> {
 				NotificationController notificationController = new NotificationController();
 				try {
-					notificationController.popUpNotification(tmp);
+					notificationController.popUpNotification(notification);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
