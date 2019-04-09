@@ -17,9 +17,9 @@ public class ElectronicDevice extends Device {
 	public void calculateDates () {
 		//just illustrative for now
 		Date tmp = new Date();
-		tmp.setTime(getLastAudition().getTime() + (86400000*365));
+		tmp.setTime(getLastAudition().getTime() + (86400000*365*2));
 		setNextAudition(tmp);
-		tmp.setTime(getLastInspection().getTime() + (86400000*365));
+		tmp.setTime(getLastInspection().getTime() + (86400000*365*2));
 		setNextInspection(tmp);
 		
 		Date today = new Date();

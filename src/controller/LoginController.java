@@ -54,7 +54,7 @@ public class LoginController {
 	
 	@FXML
 	void initialize() {
-		userIdentityLabel.setText(activeUser.getClass().getName().replaceFirst("controller.userController.", "").replace("UserController", ""));
+		userIdentityLabel.setText(activeUser.getClass().getName().replaceFirst("controller.userController.", "").replace("userController", ""));
 		
 		loginMail.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
