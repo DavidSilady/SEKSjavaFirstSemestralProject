@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 public class LoginController {
 	@FXML
 	private JFXButton loginChooseUserButton;
+	
 	@FXML
 	private Label userIdentityLabel;
 	

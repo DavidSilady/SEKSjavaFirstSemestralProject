@@ -21,21 +21,14 @@ public class NotificationController {
 	@FXML
 	private Label textLabel;
 	
-	private Notification notification = null;
+	private Notification notification;
+	
+	public NotificationController(Notification notification) {
+		this.notification = notification;
+	}
 	
 	public void popUpNotification (Notification notification) throws Exception{
 		setNotification(notification);
-		
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/notificationPopUp.fxml"));
-		Parent root1 = (Parent) fxmlLoader.load();
-		Stage stage = new Stage();
-		stage.initModality(Modality.APPLICATION_MODAL);
-		stage.initStyle(StageStyle.UNDECORATED);
-		stage.setTitle("Notification");
-		stage.setScene(new Scene(root1, 500, 200));
-		stage.show();
-		textLabel.setText(notification.getText());
-		typeLabel.setText(notification.getClass().getName());
 		
 	}
 	
@@ -45,6 +38,13 @@ public class NotificationController {
 	
 	@FXML
 	void initialize() {
+		try {
+			textLabel.setText(notification.getText());
+			typeLabel.setText(notification.getClass().getName());
+		} catch (NullPointerException npe) {
+			npe.printStackTrace();
+		}
+		
 		hidePopUpButton.setOnAction((ActionEvent event) -> {
 			((Node) event.getSource()).getScene().getWindow().hide();
 		});

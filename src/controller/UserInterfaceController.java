@@ -37,7 +37,7 @@ public class UserInterfaceController {
 			button.setPrefHeight(50);
 			button.setText(notification.getClass().getName());
 			button.setOnAction(event -> {
-				NotificationController notificationController = new NotificationController();
+				NotificationController notificationController = new NotificationController(notification);
 				try {
 					notificationController.popUpNotification(notification);
 				} catch (Exception e) {
