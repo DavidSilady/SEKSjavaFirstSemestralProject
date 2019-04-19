@@ -15,8 +15,6 @@ import model.notification.Notification;
 
 public class NotificationController {
 	@FXML
-	private JFXButton showMessageButton;
-	@FXML
 	private JFXButton hidePopUpButton;
 	@FXML
 	private Label typeLabel;
@@ -25,29 +23,14 @@ public class NotificationController {
 	
 	private Notification notification;
 	
-	
-	public void popUpNotification (Notification notification) throws Exception{
-		setNotification(notification);
-	}
-	
 	public void setNotification(Notification notification) {
 		this.notification = notification;
+		textLabel.setText(notification.getText());
+		typeLabel.setText(notification.getClass().getSimpleName());
 	}
 	
 	@FXML
 	void initialize() {
-		showMessageButton.setOnAction(event -> {
-			try {
-				textLabel.setText(notification.getText());
-				typeLabel.setText(notification.getClass().getSimpleName());
-				showMessageButton.setVisible(false);
-				showMessageButton.setManaged(false);
-			} catch (NullPointerException npe) {
-				npe.printStackTrace();
-			}
-		});
-		
-		
 		hidePopUpButton.setOnAction((ActionEvent event) -> {
 			((Node) event.getSource()).getScene().getWindow().hide();
 		});

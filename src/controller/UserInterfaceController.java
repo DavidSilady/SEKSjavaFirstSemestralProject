@@ -2,14 +2,11 @@ package controller;
 
 
 import com.jfoenix.controls.JFXButton;
-import com.jfoenix.controls.JFXScrollPane;
 import controller.userController.UserController;
-import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -17,7 +14,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import model.notification.Notification;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 
@@ -34,14 +30,13 @@ public class UserInterfaceController {
 	private ArrayList<JFXButton> notificationButtons = new ArrayList<>();
 	
 	
-	private UserController activeUser = UserController.getInstance();
+	private UserController activeUserController = UserController.getInstance();
 	
 	private void generateNotifications() {
-		/*notificationPane.prefWidthProperty().bind(Bindings.add(-5, scrollPane.widthProperty()));
-		notificationPane.prefHeightProperty().bind(Bindings.add(-5, scrollPane.heightProperty()));*/
+		notificationPane.getChildren().clear();
 		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
-		ArrayList<Notification> notifications = activeUser.getActiveUser().getNotifications();
+		ArrayList<Notification> notifications = activeUserController.getActiveUser().getNotifications();
 		for (Notification notification:
 				notifications) {
 			JFXButton button = new JFXButton();
@@ -52,7 +47,8 @@ public class UserInterfaceController {
 				SceneController sceneController = new SceneController();
 				try {
 					sceneController.popUp(notification,"notificationPopUp");
-					notifications.remove(notification);
+					notification.dismiss(activeUserController.getActiveUser());
+					generateNotifications();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -70,7 +66,7 @@ public class UserInterfaceController {
 		generateNotifications();
 		
 		try {
-			activeUser.showDefaultPane(dynamicPane);
+			activeUserController.showDefaultPane(dynamicPane);
 		} catch (java.io.IOException e) {
 			e.printStackTrace();
 		}

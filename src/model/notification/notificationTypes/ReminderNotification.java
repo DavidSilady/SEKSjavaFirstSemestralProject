@@ -1,29 +1,25 @@
 package model.notification.notificationTypes;
 
+import model.Observable;
+import model.device.Device;
 import model.notification.Notification;
 import model.user.User;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class ReminderNotification extends Notification {
-	private Date nextReminder = new Date(0);
 	
-	public void dismiss(User user, Date date) {
+	@Override
+	public void dismiss(User user) {
 		user.getNotifications().remove(this);
-		setNextReminder(date);
+		super.setNextReminder(LocalDate.now().plusDays(user.getDismissTime()));
 	}
 	
-	public void checkNextReminder(User user) {
-		if (new Date().after(nextReminder)) {
-			user.getNotifications().add(this);
-		}
-	}
-	
-	private void setNextReminder (Date date) {
-		this.nextReminder = date;
-	}
-	
-	public ReminderNotification(String text) {
+	public ReminderNotification(String text, Observable observable) {
 		super.setText(text);
+		super.setAggregatorName(observable.getName());
+		super.setAggregatorType(observable.getClass().getSimpleName());
+		super.setNextReminder(LocalDate.now());
 	}
 }

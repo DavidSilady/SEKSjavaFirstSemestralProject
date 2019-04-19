@@ -2,6 +2,7 @@ package model.device;
 
 import model.notification.Notification;
 import model.Observable;
+import model.notification.notificationTypes.WarningNotification;
 import model.user.User;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
@@ -29,7 +30,12 @@ public abstract class Device implements Serializable, Observable {
 	
 	private Notification notification;
 	
-	public abstract void calculateDates(User user);
+	public abstract void calculateNextInspection();
+	public abstract void calculateNextAudition ();
+	
+	public void checkForNotifications() {
+	
+	}
 	
 	public Device (String name, String location, String serialNum) {
 		this.name = name;
@@ -37,10 +43,25 @@ public abstract class Device implements Serializable, Observable {
 		this.serialNum = serialNum;
 	}
 	
+	
 	public void notifyUser(Notification notification, User user) {
 		user.update(notification);
 	}
 	
+	public void checkForWarnings(User user) {
+		Date today = new Date();
+		if (getNextAudition().before(today)) {
+			this.notification = new WarningNotification(getName() + " requires Audition!", this);
+			notifyUser(notification, user);
+		}
+		
+		if (getNextInspection().before(today)) {
+			this.notification = new WarningNotification(getName() + " requires Inspection!", this);
+			notifyUser(notification, user);
+		}
+	}
+	
+	//GETTERS N SETTERS
 	public void setNextInspection (Date nextInspection) {
 		this.nextInspection = nextInspection;
 	}

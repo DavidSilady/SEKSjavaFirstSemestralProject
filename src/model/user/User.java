@@ -9,6 +9,8 @@ public abstract class User implements java.io.Serializable, IUser, Observer {
 	private String name;
 	private String mail;
 	private String password;
+	private int  dismissTime = 1; // in days
+	
 	private ArrayList<Notification> notifications = new ArrayList<>();
 	
 	public void update(Notification notification) {
@@ -39,6 +41,19 @@ public abstract class User implements java.io.Serializable, IUser, Observer {
 			System.out.println(tmp.getText());
 		}
 	}
+	
+	
+	//GETTERS AND SETTERS
+	
+	
+	public int getDismissTime () {
+		return dismissTime;
+	}
+	
+	public void setDismissTime (int dismissTime) {
+		this.dismissTime = dismissTime;
+	}
+	
 	public String getName () {
 		return name;
 	}

@@ -61,7 +61,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	
 	private void checkDevices(CompanyUser companyUser) {
 		for (Device device : companyUser.getDeviceList()) {
-			device.calculateDates(this);
+			device.checkForWarnings(this);
 		}
 	}
 	

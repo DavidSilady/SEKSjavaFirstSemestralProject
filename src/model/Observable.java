@@ -5,4 +5,6 @@ import model.user.User;
 
 public interface Observable {
 	public void notifyUser(Notification notification, User user);
+	
+	String getName ();
 }

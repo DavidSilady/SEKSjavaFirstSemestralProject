@@ -41,11 +41,6 @@
                   <Font name="Roboto Black" size="14.0" />
                </font>
             </Label>
-            <JFXButton fx:id="showMessageButton" layoutX="2.0" layoutY="45.0" prefHeight="149.0" prefWidth="500.0" style="-fx-background-color: #383838;" text="Show Message" textFill="#838383">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </JFXButton>
          </children>
       </AnchorPane>
    </children>
