@@ -2,10 +2,13 @@ package controller;
 
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -36,14 +39,15 @@ public class SceneController {
 	
 	public void popUp (Notification notification, String sceneName) throws Exception {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/" + sceneName + ".fxml"));
-		Parent root1 = (Parent) fxmlLoader.load();
+		Parent root = (Parent) fxmlLoader.load();
 		NotificationController notificationController = fxmlLoader.getController();
 		notificationController.setNotification(notification);
 		Stage stage = new Stage();
 		stage.initModality(Modality.APPLICATION_MODAL);
 		stage.initStyle(StageStyle.UNDECORATED);
-		stage.setTitle("Pop Up");
-		stage.setScene(new Scene(root1, 500, 200));
+		stage.initStyle(StageStyle.TRANSPARENT);
+		stage.setScene(new Scene(root, 520, 220));
+		stage.getScene().setFill(Color.TRANSPARENT);
 		stage.show();
 	}
 }

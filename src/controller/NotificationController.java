@@ -39,7 +39,7 @@ public class NotificationController {
 		showMessageButton.setOnAction(event -> {
 			try {
 				textLabel.setText(notification.getText());
-				typeLabel.setText(notification.getClass().getName());
+				typeLabel.setText(notification.getClass().getSimpleName());
 				showMessageButton.setVisible(false);
 				showMessageButton.setManaged(false);
 			} catch (NullPointerException npe) {

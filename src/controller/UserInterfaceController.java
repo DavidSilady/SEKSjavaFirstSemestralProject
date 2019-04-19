@@ -2,26 +2,34 @@ package controller;
 
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXScrollPane;
 import controller.userController.UserController;
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import model.notification.Notification;
 
+import java.awt.*;
 import java.util.ArrayList;
 
 
 public class UserInterfaceController {
+	public FlowPane notificationPane;
 	@FXML
 	private AnchorPane dynamicPane;
 	@FXML
 	private JFXButton exitButton;
+	//@FXML
 	@FXML
-	private VBox vBox;
+	private ScrollPane scrollPane;
 	@FXML
 	private ArrayList<JFXButton> notificationButtons = new ArrayList<>();
 	
@@ -29,13 +37,17 @@ public class UserInterfaceController {
 	private UserController activeUser = UserController.getInstance();
 	
 	private void generateNotifications() {
+		/*notificationPane.prefWidthProperty().bind(Bindings.add(-5, scrollPane.widthProperty()));
+		notificationPane.prefHeightProperty().bind(Bindings.add(-5, scrollPane.heightProperty()));*/
+		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 		ArrayList<Notification> notifications = activeUser.getActiveUser().getNotifications();
 		for (Notification notification:
 				notifications) {
 			JFXButton button = new JFXButton();
 			button.setPrefWidth(300);
 			button.setPrefHeight(50);
-			button.setText(notification.getClass().getName());
+			button.setText(notification.getClass().getSimpleName());
 			button.setOnAction(event -> {
 				SceneController sceneController = new SceneController();
 				try {
@@ -47,12 +59,15 @@ public class UserInterfaceController {
 			});
 			notificationButtons.add(button);
 		}
-		vBox.getChildren().addAll(notificationButtons);
+		//notificationPane.setContent();
+		VBox notificationBox = new VBox();
+		notificationBox.getChildren().addAll(notificationButtons);
+		notificationPane.getChildren().add(notificationBox);
 	}
 	
 	@FXML
 	void initialize() {
-		//generateNotifications();
+		generateNotifications();
 		
 		try {
 			activeUser.showDefaultPane(dynamicPane);

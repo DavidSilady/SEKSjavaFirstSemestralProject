@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import com.jfoenix.controls.*?>
 <?import de.jensd.fx.glyphs.materialdesignicons.*?>
 <?import java.lang.*?>
@@ -74,7 +75,11 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <VBox prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #c2185b;" />
+            <ScrollPane fx:id="scrollPane" focusTraversable="true" maxHeight="320.0" maxWidth="300.0" prefHeight="320.0" prefWidth="300.0" style="-fx-background-color: #c2185b;" styleClass="notificationButtons">
+               <content>
+                     <FlowPane fx:id="notificationPane" prefWidth="280.0" style="-fx-background-color: #c2185b;" />
+               </content>
+               </ScrollPane>
             <JFXButton id=".button" fx:id="exitButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="220.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Exit" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
