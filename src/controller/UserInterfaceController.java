@@ -23,7 +23,8 @@ public class UserInterfaceController {
 	private AnchorPane dynamicPane;
 	@FXML
 	private JFXButton exitButton;
-	//@FXML
+	@FXML
+	private JFXButton notificationsInterfaceButton;
 	@FXML
 	private ScrollPane scrollPane;
 	@FXML
@@ -34,11 +35,11 @@ public class UserInterfaceController {
 	
 	private void generateNotifications() {
 		notificationPane.getChildren().clear();
+		notificationButtons.clear();
 		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 		ArrayList<Notification> notifications = activeUserController.getActiveUser().getNotifications();
-		for (Notification notification:
-				notifications) {
+		for (Notification notification: notifications) {
 			JFXButton button = new JFXButton();
 			button.setPrefWidth(300);
 			button.setPrefHeight(50);
@@ -55,7 +56,6 @@ public class UserInterfaceController {
 			});
 			notificationButtons.add(button);
 		}
-		//notificationPane.setContent();
 		VBox notificationBox = new VBox();
 		notificationBox.getChildren().addAll(notificationButtons);
 		notificationPane.getChildren().add(notificationBox);
@@ -64,6 +64,11 @@ public class UserInterfaceController {
 	@FXML
 	void initialize() {
 		generateNotifications();
+		
+		notificationsInterfaceButton.setOnAction(event -> {
+			activeUserController.getActiveUser().checkForNotifications();
+			generateNotifications();
+		});
 		
 		try {
 			activeUserController.showDefaultPane(dynamicPane);

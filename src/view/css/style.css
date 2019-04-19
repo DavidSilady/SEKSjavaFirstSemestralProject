@@ -63,7 +63,7 @@
 
 .table-row-cell:filled:hover {
     -fx-background-color: #c2185b;
-    -fx-size:50;
+    -fx-size:50px;
     -fx-alignment: CENTER;
     -fx-text-alignment: center;
 }
@@ -75,14 +75,19 @@
 .table-row-cell:selected .text {
        -fx-fill: white ;
 }
+
 .table-row-cell:hover .text {
        -fx-fill: white ;
+}
+.table-row-cell:selected:hover {
+    -fx-background-color: #6e74dc;
+    -fx-stroke: transparent;
 }
 
 .table-view:row-selection {
     -fx-background-color: transparent;
     -fx-text-fill: white;
-    -fx-fixed-cell-size: 50;
+    -fx-fixed-cell-size: 50px;
     -fx-alignment: CENTER;
     -fx-text-alignment: center;
 }

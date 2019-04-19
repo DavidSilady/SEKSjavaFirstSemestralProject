@@ -4,11 +4,8 @@ import model.notification.Notification;
 import model.Observable;
 import model.notification.notificationTypes.WarningNotification;
 import model.user.User;
-import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -44,20 +41,20 @@ public abstract class Device implements Serializable, Observable {
 	}
 	
 	
-	public void notifyUser(Notification notification, User user) {
-		user.update(notification);
+	public void notifyUser(User user) {
+		user.addNotification(this.notification);
 	}
 	
 	public void checkForWarnings(User user) {
 		Date today = new Date();
 		if (getNextAudition().before(today)) {
 			this.notification = new WarningNotification(getName() + " requires Audition!", this);
-			notifyUser(notification, user);
+			notifyUser(user);
 		}
 		
 		if (getNextInspection().before(today)) {
 			this.notification = new WarningNotification(getName() + " requires Inspection!", this);
-			notifyUser(notification, user);
+			notifyUser(user);
 		}
 	}
 	

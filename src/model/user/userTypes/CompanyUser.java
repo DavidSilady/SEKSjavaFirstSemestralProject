@@ -55,14 +55,15 @@ public class CompanyUser extends User implements Serializable, IUser {
 	@Override
 	public User loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
 		User user = super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
-		checkDevices((CompanyUser) user);
+		checkForNotifications();
 		return user;
 	}
 	
-	private void checkDevices(CompanyUser companyUser) {
-		for (Device device : companyUser.getDeviceList()) {
+	public void checkForNotifications() {
+		for (Device device : getDeviceList()) {
 			device.checkForWarnings(this);
 		}
+		super.printNotifications(this);
 	}
 	
 	public ArrayList<Device> getDeviceList () {

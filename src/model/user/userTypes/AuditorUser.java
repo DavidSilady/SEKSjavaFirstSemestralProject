@@ -19,4 +19,9 @@ public class AuditorUser extends User implements Serializable, IUser {
 	public User signUpUser (Event actionEvent, String companyName, String companyICO, String email, String phone, String password) throws Exception {
 		return null;
 	}
+	
+	@Override
+	public void checkForNotifications () {
+	
+	}
 }

@@ -3,17 +3,18 @@ package model.user;
 import model.Observer;
 import model.notification.Notification;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class User implements java.io.Serializable, IUser, Observer {
+public abstract class User implements Serializable, IUser, Observer {
 	private String name;
 	private String mail;
 	private String password;
-	private int  dismissTime = 1; // in days
+	private int dismissLimitInDays = 1; // in days
 	
 	private ArrayList<Notification> notifications = new ArrayList<>();
-	
-	public void update(Notification notification) {
+	public abstract void checkForNotifications();
+	public void addNotification (Notification notification) {
 		notifications.add(notification);
 	}
 	
@@ -36,22 +37,21 @@ public abstract class User implements java.io.Serializable, IUser, Observer {
 		return null;
 	}
 	
-	private void printNotifications(User user) {
+	public void printNotifications(User user) {
 		for (Notification tmp: user.getNotifications() ) {
 			System.out.println(tmp.getText());
 		}
 	}
 	
-	
 	//GETTERS AND SETTERS
 	
 	
-	public int getDismissTime () {
-		return dismissTime;
+	public int getDismissLimitInDays () {
+		return dismissLimitInDays;
 	}
 	
-	public void setDismissTime (int dismissTime) {
-		this.dismissTime = dismissTime;
+	public void setDismissLimitInDays (int dismissLimitInDays) {
+		this.dismissLimitInDays = dismissLimitInDays;
 	}
 	
 	public String getName () {
