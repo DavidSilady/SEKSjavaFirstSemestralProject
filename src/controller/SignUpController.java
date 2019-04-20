@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import controller.userController.UserController;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -38,26 +39,28 @@ public class SignUpController {
 	private UserController userController = UserController.getInstance();
 	private SceneController sceneController = new SceneController();
 	
+	private void signUpSequence(Event event) {
+		if (signUpPassword.getText().equals(signUpConfirmPassword.getText()) ) {
+			try {
+				userController.signUpUser(event,
+						signUpCompanyName.getText(),
+						signUpICO.getText(),
+						signUpEmail.getText(),
+						signUpPhone.getText(),
+						signUpPassword.getText());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		} else {
+			signUpPassword.clear();
+			signUpConfirmPassword.clear();
+			signUpConfirmPassword.setPromptText("Passwords must match!");
+		}
+	}
+	
 	@FXML
 	void initialize() {
-		signUpCompanyButton.setOnAction((ActionEvent event) -> {
-			if (signUpPassword.getText().equals(signUpConfirmPassword.getText()) ) {
-				try {
-					userController.signUpUser(event,
-							signUpCompanyName.getText(),
-							signUpICO.getText(),
-							signUpEmail.getText(),
-							signUpPhone.getText(),
-							signUpPassword.getText());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else {
-				signUpPassword.clear();
-				signUpConfirmPassword.clear();
-				signUpConfirmPassword.setPromptText("Passwords must match!");
-			}
-		});
+		signUpCompanyButton.setOnAction(this::signUpSequence);
 		
 		signUpCompanyName.setOnKeyPressed(event -> {
 			if(event.getCode() == KeyCode.ENTER) {
@@ -87,22 +90,7 @@ public class SignUpController {
 		
 		signUpConfirmPassword.setOnKeyPressed((KeyEvent event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
-				if (signUpPassword.getText().equals(signUpConfirmPassword.getText())) {
-					try {
-						userController.signUpUser(event,
-								signUpCompanyName.getText(),
-								signUpICO.getText(),
-								signUpEmail.getText(),
-								signUpPhone.getText(),
-								signUpPassword.getText());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				} else {
-					signUpPassword.clear();
-					signUpConfirmPassword.clear();
-					signUpConfirmPassword.setPromptText("Passwords must match!");
-				}
+				signUpSequence(event);
 			}
 		});
 	}

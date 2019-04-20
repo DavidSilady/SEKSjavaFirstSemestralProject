@@ -59,7 +59,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	
 	public void updateNotifications () {
 		for (Device device : getDeviceList()) {
-			device.checkNotification(this);
+			device.checkForNotifications(this);
 		}
 		super.printNotifications(this);
 	}

@@ -2,13 +2,14 @@ package model.device;
 
 import model.notification.Notification;
 import model.Observable;
+import model.notification.notificationTypes.Reminder;
 import model.notification.notificationTypes.Warning;
 import model.user.User;
 import model.user.userTypes.InspectionUser;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Objects;
 
 //gonna be abstract . . . one day. . .
 public abstract class Device implements Serializable, Observable {
@@ -20,20 +21,34 @@ public abstract class Device implements Serializable, Observable {
 	
 	private String note;
 	
-	private Date lastInspection = new Date(0);
-	private Date nextInspection = new Date();
+	private LocalDate lastInspection = LocalDate.now();
+	private LocalDate nextInspection = LocalDate.now();
 	
-	private Date lastAudition = new Date(0);
-	private Date nextAudition = new Date();
+	private LocalDate lastAudition = LocalDate.now();
+	private LocalDate nextAudition = LocalDate.now();
 	
-	private Notification notification;
+	private Notification inspectionNotification;
+	private Notification auditionNotification;
 	
 	public abstract void calculateNextInspection();
 	public abstract void calculateNextAudition ();
 	
-	public void checkNotification(User user) {
-		if (notification.getNextReminder().equals(LocalDate.now())) {
-			notifyUser(user);
+	public void checkForNotifications (User user) {
+		checkForReminders(user);
+		checkForWarnings(user);
+		try {
+			if (inspectionNotification.getNextReminder().isBefore(LocalDate.now().plusDays(1))) {
+				notifyUser(user, inspectionNotification);
+			}
+		} catch (NullPointerException npe) {
+			System.out.println("No notifications found!");
+		}
+		try {
+			if (auditionNotification.getNextReminder().isBefore(LocalDate.now().plusDays(1))) {
+				notifyUser(user, auditionNotification);
+			}
+		} catch (NullPointerException npe) {
+			System.out.println("No notifications found!");
 		}
 	}
 	
@@ -43,37 +58,41 @@ public abstract class Device implements Serializable, Observable {
 		this.serialNum = serialNum;
 	}
 	
-	
-	public void notifyUser(User user) {
-		user.addNotification(this.notification);
+	public void notifyUser(User user, Notification notification) {
+		if(!user.getNotifications().contains(notification))
+		user.addNotification(notification);
 	}
 	
-	public void checkForWarnings(User user) {
-		
-		if (getNextAudition().isBefore(LocalDate.now())) {
-			this.notification = new Warning(getName() + " requires Audition!", this);
-			notifyUser(user);
+	private void checkForWarnings(User user) {
+		if (auditionNotification == null || !auditionNotification.getClass().isInstance(new Warning("", this))) {
+			if (getNextAudition().isBefore(LocalDate.now().plusDays(1))) {
+				this.auditionNotification = new Warning(getName() + " requires Audition!", this);
+			}
 		}
-		
-		if (getNextInspection().before(today)) {
-			this.notification = new Warning(getName() + " requires Inspection!", this);
-			notifyUser(user);
-		}
-	}
-	public void checkForReminders(User user) {
-		Date today = new Date();
-		if (getNextAudition().before(today)) {
-			this.notification = new Warning(getName() + " requires Audition!", this);
-			notifyUser(user);
-		}
-		
-		if (getNextInspection().before(today)) {
-			this.notification = new Warning(getName() + " requires Inspection!", this);
-			notifyUser(user);
+		if (inspectionNotification == null || !inspectionNotification.getClass().isInstance(new Warning("", this))) {
+			if (getNextInspection().isBefore(LocalDate.now().plusDays(1))) {
+				this.inspectionNotification = new Warning(getName() + " requires Inspection!", this);
+			}
 		}
 	}
+	
+	private void checkForReminders(User user) {
+		if (this.auditionNotification == null) {
+			if (getNextAudition().isBefore(LocalDate.now().plusMonths(1))) {
+				this.auditionNotification = new Reminder(getName() + " requires Audition next Month.", this);
+			}
+		}
+		
+		if (this.inspectionNotification == null) {
+			if (getNextInspection().isBefore(LocalDate.now().plusMonths(1))) {
+				this.inspectionNotification = new Reminder(getName() + " requires Inspection next Month.", this);
+			}
+		}
+	}
+	
+	
 	//GETTERS N SETTERS
-	public void setNextInspection (Date nextInspection) {
+	public void setNextInspection (LocalDate nextInspection) {
 		this.nextInspection = nextInspection;
 	}
 	
@@ -102,31 +121,31 @@ public abstract class Device implements Serializable, Observable {
 	}
 	
 	
-	public Date getLastInspection () {
+	public LocalDate getLastInspection () {
 		return lastInspection;
 	}
 	
-	public void setLastInspection (Date lastInspection) {
+	public void setLastInspection (LocalDate lastInspection) {
 		this.lastInspection = lastInspection;
 	}
 	
-	public Date getNextInspection () {
+	public LocalDate getNextInspection () {
 		return nextInspection;
 	}
 	
-	public Date getLastAudition () {
+	public LocalDate getLastAudition () {
 		return lastAudition;
 	}
 	
-	public void setLastAudition (Date lastAudition) {
+	public void setLastAudition (LocalDate lastAudition) {
 		this.lastAudition = lastAudition;
 	}
 	
-	public Date getNextAudition () {
+	public LocalDate getNextAudition () {
 		return nextAudition;
 	}
 	
-	public void setNextAudition (Date nextAudition) {
+	public void setNextAudition (LocalDate nextAudition) {
 		this.nextAudition = nextAudition;
 	}
 }

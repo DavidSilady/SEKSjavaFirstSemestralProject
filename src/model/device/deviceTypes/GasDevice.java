@@ -3,6 +3,7 @@ package model.device.deviceTypes;
 import model.device.Device;
 import model.user.User;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class GasDevice extends Device {
@@ -14,15 +15,11 @@ public class GasDevice extends Device {
 	
 	public void calculateNextAudition () {
 		//just illustrative for now
-		Date tmp = new Date();
-		tmp.setTime(getLastAudition().getTime() + (86400000*365));
-		setNextAudition(tmp);
+		setNextAudition(LocalDate.now().plusWeeks(3));
 		
 	}
 	
 	public void calculateNextInspection () {
-		Date tmp = new Date();
-		tmp.setTime(getLastInspection().getTime() + (86400000*365));
-		setNextInspection(tmp);
+		setLastAudition(LocalDate.now().plusMonths(3));
 	}
 }

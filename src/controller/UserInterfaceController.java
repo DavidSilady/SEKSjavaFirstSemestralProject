@@ -63,9 +63,13 @@ public class UserInterfaceController {
 	
 	@FXML
 	void initialize() {
+		
+		activeUserController.getActiveUser().updateNotifications();
 		generateNotifications();
 		
 		notificationsInterfaceButton.setOnAction(event -> {
+			notificationPane.getChildren().clear();
+			notificationButtons.clear();
 			activeUserController.getActiveUser().updateNotifications();
 			generateNotifications();
 		});
