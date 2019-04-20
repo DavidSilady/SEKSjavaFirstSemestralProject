@@ -2,11 +2,12 @@ package model.device;
 
 import model.notification.Notification;
 import model.Observable;
-import model.notification.notificationTypes.WarningNotification;
+import model.notification.notificationTypes.Warning;
 import model.user.User;
 import model.user.userTypes.InspectionUser;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 
 //gonna be abstract . . . one day. . .
@@ -30,8 +31,10 @@ public abstract class Device implements Serializable, Observable {
 	public abstract void calculateNextInspection();
 	public abstract void calculateNextAudition ();
 	
-	public void checkForNotifications() {
-	
+	public void checkNotification(User user) {
+		if (notification.getNextReminder().equals(LocalDate.now())) {
+			notifyUser(user);
+		}
 	}
 	
 	public Device (String name, String location, String serialNum) {
@@ -46,18 +49,29 @@ public abstract class Device implements Serializable, Observable {
 	}
 	
 	public void checkForWarnings(User user) {
-		Date today = new Date();
-		if (getNextAudition().before(today)) {
-			this.notification = new WarningNotification(getName() + " requires Audition!", this);
+		
+		if (getNextAudition().isBefore(LocalDate.now())) {
+			this.notification = new Warning(getName() + " requires Audition!", this);
 			notifyUser(user);
 		}
 		
 		if (getNextInspection().before(today)) {
-			this.notification = new WarningNotification(getName() + " requires Inspection!", this);
+			this.notification = new Warning(getName() + " requires Inspection!", this);
 			notifyUser(user);
 		}
 	}
-	
+	public void checkForReminders(User user) {
+		Date today = new Date();
+		if (getNextAudition().before(today)) {
+			this.notification = new Warning(getName() + " requires Audition!", this);
+			notifyUser(user);
+		}
+		
+		if (getNextInspection().before(today)) {
+			this.notification = new Warning(getName() + " requires Inspection!", this);
+			notifyUser(user);
+		}
+	}
 	//GETTERS N SETTERS
 	public void setNextInspection (Date nextInspection) {
 		this.nextInspection = nextInspection;

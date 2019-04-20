@@ -1,24 +1,15 @@
 package model.notification;
 
-import model.notification.notificationTypes.WarningNotification;
 import model.user.User;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 
 public abstract class Notification implements Serializable {
 	private String text;
 	private String aggregatorName;
 	private String aggregatorType;
 	private LocalDate nextReminder;
-	
-	public void notify(User user) {
-		if (LocalDate.now().isAfter(getNextReminder())) {
-			user.getNotifications().add(this);
-		}
-	}
 	
 	public String getText () {
 		return text;

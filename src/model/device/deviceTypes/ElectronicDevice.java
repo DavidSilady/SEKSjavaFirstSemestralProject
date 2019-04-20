@@ -1,10 +1,7 @@
 package model.device.deviceTypes;
 
 import model.device.Device;
-import model.notification.Notification;
-import model.notification.notificationTypes.WarningNotification;
 import model.user.User;
-import model.user.userTypes.CompanyUser;
 
 import java.util.Date;
 

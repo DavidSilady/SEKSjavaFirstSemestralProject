@@ -66,7 +66,7 @@ public class UserInterfaceController {
 		generateNotifications();
 		
 		notificationsInterfaceButton.setOnAction(event -> {
-			activeUserController.getActiveUser().checkForNotifications();
+			activeUserController.getActiveUser().updateNotifications();
 			generateNotifications();
 		});
 		

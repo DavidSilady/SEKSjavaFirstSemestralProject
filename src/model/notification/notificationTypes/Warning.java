@@ -8,8 +8,8 @@ import model.user.User;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class WarningNotification extends Notification {
-	public WarningNotification(String text, Observable observable) {
+public class Warning extends Notification {
+	public Warning (String text, Observable observable) {
 		super.setText(text);
 		super.setAggregatorName(observable.getName());
 		super.setAggregatorType(observable.getClass().getSimpleName());

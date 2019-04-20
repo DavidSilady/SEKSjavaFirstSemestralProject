@@ -13,7 +13,7 @@ public abstract class User implements Serializable, IUser, Observer {
 	private int dismissLimitInDays = 1; // in days
 	
 	private ArrayList<Notification> notifications = new ArrayList<>();
-	public abstract void checkForNotifications();
+	public abstract void updateNotifications ();
 	public void addNotification (Notification notification) {
 		notifications.add(notification);
 	}

@@ -21,7 +21,7 @@ public class AuditorUser extends User implements Serializable, IUser {
 	}
 	
 	@Override
-	public void checkForNotifications () {
+	public void updateNotifications () {
 	
 	}
 }

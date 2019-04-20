@@ -6,7 +6,7 @@ import model.user.User;
 
 import java.time.LocalDate;
 
-public class ReminderNotification extends Notification {
+public class Reminder extends Notification {
 	
 	@Override
 	public void dismiss(User user) {
@@ -14,7 +14,7 @@ public class ReminderNotification extends Notification {
 		super.setNextReminder(LocalDate.now().plusDays(user.getDismissLimitInDays()));
 	}
 	
-	public ReminderNotification(String text, Observable observable) {
+	public Reminder (String text, Observable observable) {
 		super.setText(text);
 		super.setAggregatorName(observable.getName());
 		super.setAggregatorType(observable.getClass().getSimpleName());

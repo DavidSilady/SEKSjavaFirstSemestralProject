@@ -4,9 +4,7 @@ import javafx.event.Event;
 import model.DataStorage;
 import model.device.Device;
 import model.device.deviceTypes.ElectronicDevice;
-import model.notification.Notification;
 import model.user.IUser;
-import model.Observer;
 import model.user.User;
 
 import java.io.Serializable;
@@ -55,13 +53,13 @@ public class CompanyUser extends User implements Serializable, IUser {
 	@Override
 	public User loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
 		User user = super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
-		checkForNotifications();
+		updateNotifications();
 		return user;
 	}
 	
-	public void checkForNotifications() {
+	public void updateNotifications () {
 		for (Device device : getDeviceList()) {
-			device.checkForWarnings(this);
+			device.checkNotification(this);
 		}
 		super.printNotifications(this);
 	}
