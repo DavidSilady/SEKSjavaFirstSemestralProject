@@ -9,7 +9,6 @@ import model.user.userTypes.InspectionUser;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 //gonna be abstract . . . one day. . .
 public abstract class Device implements Serializable, Observable {
@@ -63,13 +62,17 @@ public abstract class Device implements Serializable, Observable {
 		user.addNotification(notification);
 	}
 	
+	private boolean isWarning (Notification notification) {
+		return notification.getClass().isInstance(new Warning("", this));
+	}
+	
 	private void checkForWarnings(User user) {
-		if (auditionNotification == null || !auditionNotification.getClass().isInstance(new Warning("", this))) {
+		if (auditionNotification == null || !isWarning(auditionNotification)) {
 			if (getNextAudition().isBefore(LocalDate.now().plusDays(1))) {
 				this.auditionNotification = new Warning(getName() + " requires Audition!", this);
 			}
 		}
-		if (inspectionNotification == null || !inspectionNotification.getClass().isInstance(new Warning("", this))) {
+		if (inspectionNotification == null || !isWarning(inspectionNotification)) {
 			if (getNextInspection().isBefore(LocalDate.now().plusDays(1))) {
 				this.inspectionNotification = new Warning(getName() + " requires Inspection!", this);
 			}
