@@ -17,7 +17,7 @@
       </Label>
       <Label fx:id="inspectorOrganizationLabel" alignment="CENTER" layoutX="115.0" layoutY="125.0" text="inspectorOrganization" textFill="#6e74dc">
          <font>
-            <Font name="Roboto Black" size="16.0" />
+            <Font name="Roboto Black" size="18.0" />
          </font>
       </Label>
       <Label fx:id="inspectorMailLabel" layoutX="115.0" layoutY="278.0" text="inspectorMail" textFill="#383838">
