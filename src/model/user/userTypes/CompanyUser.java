@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class CompanyUser extends User implements Serializable, IUser {
 	private String ICO;
 	private String phone;
-	private InspectionUser inspectionUser = new InspectionUser();
+	private InspectionUser inspectorUser;
 	private String inspectionName = "Mr. Inspector"; //inspectionUser.getName();
 	private ArrayList<Device> deviceList = new ArrayList<>();
 	
@@ -124,6 +124,14 @@ public class CompanyUser extends User implements Serializable, IUser {
 	
 	public void setPassword (String password) {
 		super.setPassword(password);
+	}
+	
+	public InspectionUser getInspectorUser () {
+		return inspectorUser;
+	}
+	
+	public void setInspectorUser (InspectionUser inspectorUser) {
+		this.inspectorUser = inspectorUser;
 	}
 	
 	public CompanyUser (String name, String ICO, String mail, String phone, String password) {

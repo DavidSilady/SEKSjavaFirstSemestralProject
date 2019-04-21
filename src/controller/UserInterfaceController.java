@@ -31,8 +31,13 @@ public class UserInterfaceController {
 	@FXML
 	private ArrayList<JFXButton> notificationButtons = new ArrayList<>();
 	
-	
 	private UserController activeUserController = UserController.getInstance();
+	
+	@FXML
+	private void showInspectionMenu(ActionEvent actionEvent) throws Exception {
+		SceneController sceneController = new SceneController();
+		sceneController.changeDynamicPane(dynamicPane, "inspectionMenu");
+	}
 	
 	private void generateNotifications() {
 		activeUserController.getActiveUser().updateNotifications();

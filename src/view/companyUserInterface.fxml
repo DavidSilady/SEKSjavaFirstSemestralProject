@@ -47,7 +47,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="689.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Inspection" textFill="WHITE">
+                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="689.0" onAction="#showInspectionMenu" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Inspection" textFill="WHITE">
                     <font>
                         <Font name="Roboto Light" size="18.0" />
                     </font>

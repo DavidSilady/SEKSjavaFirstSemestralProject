@@ -8,7 +8,7 @@ import model.user.userTypes.InspectionUser;
 import java.io.IOException;
 
 public class InspectionUserController extends UserController {
-	private InspectionUser user = new InspectionUser();
+	private InspectionUser user;
 	@Override
 	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
 	
