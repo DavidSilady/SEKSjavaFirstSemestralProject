@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -15,6 +16,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController {
+	@FXML
+	private JFXButton exitButton;
+	
 	@FXML
 	private JFXButton loginChooseUserButton;
 	
@@ -55,12 +59,24 @@ public class LoginController {
 	
 	@FXML
 	void initialize() {
-		userIdentityLabel.setText(activeUser.getClass().getSimpleName());
+		loginMail.requestFocus();
+		
+		userIdentityLabel.setText(activeUser.getClass().getSimpleName().replace("UserController", ""));
 		
 		loginMail.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
 				loginPassword.requestFocus();
 			}
+		});
+		
+		Transition transition = new Transition();
+		
+		exitButton.setOnMouseEntered(event -> transition.smoothScaleUp(exitButton, 1.0f, 1.3f));
+		exitButton.setOnMouseExited(event -> transition.smoothScaleDown(exitButton, 1.3f, 1.0f));
+		
+		exitButton.setOnAction((ActionEvent event) -> {
+			((Node) event.getSource()).getScene().getWindow().hide();
+			System.exit(0);
 		});
 	}
 	

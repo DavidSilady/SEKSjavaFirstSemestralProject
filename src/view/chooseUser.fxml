@@ -45,7 +45,7 @@
          <graphic>
             <VBox alignment="BOTTOM_CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
-                   <ImageView fx:id="auditorImage" fitHeight="130.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" styleClass="user-icon">
+                   <ImageView fx:id="auditorImage" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" styleClass="user-icon">
                        <image>
                          <Image url="@../assets/auditor.png" />
                        </image>

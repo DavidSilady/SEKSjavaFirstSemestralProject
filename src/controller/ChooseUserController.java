@@ -1,15 +1,18 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import controller.userController.UserController;
+import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-
-import java.net.URL;
-import java.util.ResourceBundle;
+import javafx.scene.layout.Pane;
+import javafx.util.Duration;
 
 public class ChooseUserController {
 	
@@ -36,20 +39,34 @@ public class ChooseUserController {
 	@FXML
 	private JFXButton chooseUserCompanyButton;
 	
-	
-	@FXML
-	void initialize() {
+	private void assignImages() {
 		try {
-			Image img = new Image("/assets/inspection.png", 130, 0, true, true);
+			Image img = new Image("/assets/inspection.png", 160, 0, true, true);
 			inspectionImage.setImage(img);
-			img = new Image("/assets/auditor.png", 130, 0, true, true);
+			img = new Image("/assets/auditor.png", 160, 0, true, true);
 			auditorImage.setImage(img);
-			img = new Image("/assets/company.png", 130, 0, true, true);
+			img = new Image("/assets/company.png", 160, 0, true, true);
 			companyImage.setImage(img);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@FXML
+	void initialize() {
+		assignImages();
 		
+		Transition transition = new Transition();
+		
+		chooseUserAuditorButton.setOnMouseEntered(event -> transition.smoothScaleUp(auditorImage));
+		chooseUserAuditorButton.setOnMouseExited(event -> transition.smoothScaleDown(auditorImage));
+		chooseUserCompanyButton.setOnMouseEntered(event -> transition.smoothScaleUp(companyImage));
+		chooseUserCompanyButton.setOnMouseExited(event -> transition.smoothScaleDown(companyImage));
+		chooseUserInspectionButton.setOnMouseEntered(event -> transition.smoothScaleUp(inspectionImage));
+		chooseUserInspectionButton.setOnMouseExited(event -> transition.smoothScaleDown(inspectionImage));
+		
+		exitButton.setOnMouseEntered(event -> transition.smoothScaleUp(exitButton, 1.0f, 1.3f));
+		exitButton.setOnMouseExited(event -> transition.smoothScaleDown(exitButton, 1.3f, 1.0f));
 		
 		exitButton.setOnAction((ActionEvent event) -> {
 			((Node) event.getSource()).getScene().getWindow().hide();

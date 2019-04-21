@@ -183,13 +183,18 @@
 .scroll-pane .corner {
     -fx-background-insets: 0;
 }
-
+/*
 .user-icon {
     -fx-pref-height: 130px;
     -fx-pref-width: 130px;
 }
+
 .chooseButton:hover .user-icon {
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
     -fx-scale-z: 1.1;
+}*/
+
+.pinkButton:hover {
+    -fx-background-color: #8c0032;
 }
