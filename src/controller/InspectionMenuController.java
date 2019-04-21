@@ -23,8 +23,24 @@ public class InspectionMenuController {
 	@FXML
 	private JFXButton assignNewInspectorButton;
 	
+	private SceneController sceneController = new SceneController();
+	
 	@FXML
 	void initialize() {
+		yourInspectorButton.setOnAction(event -> {
+			try {
+				sceneController.changeDynamicPane(dynamicInspectionPane, "yourInspector");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 	
+		assignNewInspectorButton.setOnAction(event -> {
+			try {
+				sceneController.changeDynamicPane(dynamicInspectionPane, "assignInspector");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
 	}
 }
