@@ -8,6 +8,7 @@ import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
@@ -33,6 +34,9 @@ public class SignUpController {
 	
 	@FXML
 	private JFXTextField signUpCompanyName;
+	
+	@FXML
+	private JFXButton exitButton;
 	
 	@FXML
 	private JFXTextField signUpICO;
@@ -93,6 +97,19 @@ public class SignUpController {
 				signUpSequence(event);
 			}
 		});
+		
+		Transition transition = new Transition();
+		exitButton.setOnMouseEntered(event -> transition.smoothScaleUp(exitButton, 1.0f, 1.3f));
+		exitButton.setOnMouseExited(event -> transition.smoothScaleDown(exitButton, 1.3f, 1.0f));
+		exitButton.setOnAction((ActionEvent event) -> {
+			((Node) event.getSource()).getScene().getWindow().hide();
+			System.exit(0);
+		});
+	}
+	
+	@FXML
+	public void loadChooseUser (ActionEvent actionEvent) throws Exception{
+		sceneController.setScene(actionEvent, "chooseUser");
 	}
 	
 	public void loadLoginScene (ActionEvent actionEvent) throws Exception {

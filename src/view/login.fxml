@@ -27,7 +27,7 @@
       <JFXTextField fx:id="loginMail" focusColor="#6f74dd" layoutX="177.0" layoutY="139.0" prefHeight="31.0" prefWidth="347.0" promptText="E-mail" />
 
       <JFXPasswordField fx:id="loginPassword" focusColor="#6f74dd" layoutX="177.0" layoutY="216.0" onKeyPressed="#onEnterLogin" prefHeight="31.0" prefWidth="347.0" promptText="Password" />
-      <JFXButton fx:id="loginButton" layoutX="300.0" layoutY="297.0" onAction="#buttonLogin" prefHeight="47.0" prefWidth="101.0" styleClass="pinkButton" text="Login" textFill="WHITE">
+      <JFXButton fx:id="loginButton" layoutX="300.0" layoutY="330.0" onAction="#buttonLogin" prefHeight="47.0" prefWidth="101.0" styleClass="pinkButton" text="Login" textFill="WHITE">
          <font>
             <Font name="Roboto Black" size="15.0" />
          </font>

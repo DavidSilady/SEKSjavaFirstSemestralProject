@@ -3,6 +3,7 @@ package controller;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import controller.userController.CompanyUserController;
 import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -47,7 +48,7 @@ public class LoginController {
 	private JFXPasswordField loginPassword;
 	
 	private SceneController sceneController = new SceneController();
-	private UserController activeUser = UserController.getInstance();
+	private UserController activeUserController = UserController.getInstance();
 	
 	public JFXTextField getLoginMail () {
 		return loginMail;
@@ -59,9 +60,17 @@ public class LoginController {
 	
 	@FXML
 	void initialize() {
+		if (activeUserController.getClass().isInstance(new CompanyUserController())) {
+			loginSignUpButton.setVisible(true);
+		} else {
+			loginSignUpButton.setVisible(false);
+		}
+		
+		
+		
 		loginMail.requestFocus();
 		
-		userIdentityLabel.setText(activeUser.getClass().getSimpleName().replace("UserController", ""));
+		userIdentityLabel.setText(activeUserController.getClass().getSimpleName().replace("UserController", ""));
 		
 		loginMail.setOnKeyPressed((event) -> {
 			if(event.getCode() == KeyCode.ENTER) {
@@ -70,10 +79,8 @@ public class LoginController {
 		});
 		
 		Transition transition = new Transition();
-		
 		exitButton.setOnMouseEntered(event -> transition.smoothScaleUp(exitButton, 1.0f, 1.3f));
 		exitButton.setOnMouseExited(event -> transition.smoothScaleDown(exitButton, 1.3f, 1.0f));
-		
 		exitButton.setOnAction((ActionEvent event) -> {
 			((Node) event.getSource()).getScene().getWindow().hide();
 			System.exit(0);
@@ -102,7 +109,7 @@ public class LoginController {
 	@FXML
 	public void buttonLogin (ActionEvent actionEvent) throws Exception{
 		if (isFilled()) {
-			activeUser.loginUser(actionEvent, loginMail.getText(), loginPassword.getText());
+			activeUserController.loginUser(actionEvent, loginMail.getText(), loginPassword.getText());
 		}
 	}
 	
@@ -110,7 +117,7 @@ public class LoginController {
 	public void onEnterLogin (KeyEvent keyEvent) throws Exception{
 		if(keyEvent.getCode() == KeyCode.ENTER) {
 			if (isFilled()) {
-				activeUser.loginUser(keyEvent, loginMail.getText(), loginPassword.getText());
+				activeUserController.loginUser(keyEvent, loginMail.getText(), loginPassword.getText());
 			}
 		}
 	}

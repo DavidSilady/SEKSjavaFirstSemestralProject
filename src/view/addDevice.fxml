@@ -14,7 +14,7 @@
       <JFXTextField fx:id="locationField" layoutX="119.0" layoutY="260.0" prefHeight="31.0" prefWidth="304.0" promptText="Location" />
       <JFXTextField fx:id="noteField" layoutX="119.0" layoutY="334.0" prefHeight="31.0" prefWidth="304.0" promptText="Note" />
       <JFXComboBox fx:id="deviceTypeComboBox" layoutX="556.0" layoutY="118.0" prefHeight="31.0" prefWidth="315.0" promptText="Device Type" />
-      <JFXButton layoutX="164.0" layoutY="425.0" onAction="#addDevice" prefHeight="40.0" prefWidth="215.0" text="Add Device" textFill="WHITE">
+      <JFXButton layoutX="164.0" layoutY="425.0" onAction="#addDevice" prefHeight="40.0" prefWidth="215.0" styleClass="pinkButton" text="Add Device" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></JFXButton>
