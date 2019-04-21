@@ -28,10 +28,10 @@ public class SceneController {
 	
 	public void changeDynamicPane(Pane dynamicPane, String name) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/" + name + ".fxml"));
-		Pane deviceListTable = (Pane) fxmlLoader.load();
+		Pane pane = (Pane) fxmlLoader.load();
 		try {
 			dynamicPane.getChildren().clear();
-			dynamicPane.getChildren().add(deviceListTable);
+			dynamicPane.getChildren().add(pane);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

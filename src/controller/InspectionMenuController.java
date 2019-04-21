@@ -2,17 +2,22 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import model.user.userTypes.CompanyUser;
 
 public class InspectionMenuController {
+	
+	@FXML
+	private AnchorPane tableButtonPane;
 	
 	@FXML
 	private ResourceBundle resources;
@@ -33,19 +38,19 @@ public class InspectionMenuController {
 	private JFXButton revokeAssignmentButton;
 	
 	@FXML
-	private Label inspectorMail;
+	private Label inspectorMailLabel;
 	
 	@FXML
-	private Label inspectorOrganization;
+	private Label inspectorOrganizationLabel;
 	
 	@FXML
-	private Label inspectorPhone;
+	private Label inspectorPhoneLabel;
 	
 	@FXML
-	private Label inspectorID;
+	private Label inspectorIDLabel;
 	
 	@FXML
-	private Label inspectorName;
+	private Label inspectorNameLabel;
 	
 	
 	@FXML
@@ -63,30 +68,35 @@ public class InspectionMenuController {
 			System.out.println("Not a company user!");
 		}
 		
-		yourInspectorButton.setOnAction(event -> {
-			try {
-				sceneController.changeDynamicPane(dynamicInspectionPane, "yourInspector");
-				try {
-					inspectorName.setText(company.getInspectorUser().getName());
-					inspectorOrganization.setText(company.getInspectorUser().getOrganizationName());
-					inspectorMail.setText(company.getInspectorUser().getMail());
-					inspectorID.setText(company.getInspectorUser().getIdentificationNumber());
-					inspectorPhone.setText(company.getInspectorUser().getPhone());
-				} catch (NullPointerException npe) {
-					System.out.println("Inspector not found!");
-				}
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
+	}
+	public void setLabels(CompanyUser company) {
+		try {
+			inspectorNameLabel.setText(company.getInspectorUser().getName());
+			inspectorOrganizationLabel.setText(company.getInspectorUser().getOrganizationName());
+			inspectorMailLabel.setText(company.getInspectorUser().getMail());
+			inspectorIDLabel.setText(company.getInspectorUser().getIdentificationNumber());
+			inspectorPhoneLabel.setText(company.getInspectorUser().getPhone());
+		} catch (NullPointerException npe) {
+			System.out.println("Something not found!");
+		}
+	}
 	
-		assignNewInspectorButton.setOnAction(event -> {
-			try {
-				sceneController.changeDynamicPane(dynamicInspectionPane, "assignInspector");
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-		});
+	@FXML
+	private void showYourInspector (ActionEvent actionEvent) throws Exception{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/yourInspector.fxml"));
+		Pane pane = (Pane) fxmlLoader.load();
+		InspectionMenuController inspectionMenuController = fxmlLoader.getController();
+		try {
+			dynamicInspectionPane.getChildren().clear();
+			dynamicInspectionPane.getChildren().add(pane);
+			inspectionMenuController.setLabels(company);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println(company.getInspectorUser().getOrganizationName());
+	}
+	@FXML
+	private void showInspectorList (ActionEvent actionEvent) throws Exception {
+		sceneController.changeDynamicPane(dynamicInspectionPane, "assignInspector");
 	}
 }

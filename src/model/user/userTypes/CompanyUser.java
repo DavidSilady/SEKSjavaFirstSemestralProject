@@ -13,8 +13,12 @@ import java.util.ArrayList;
 public class CompanyUser extends User implements Serializable, IUser {
 	private String ICO;
 	private String phone;
-	private InspectionUser inspectorUser;
-	private String inspectionName = "Mr. Inspector"; //inspectionUser.getName();
+	private InspectionUser inspectorUser = new InspectionUser("Siko",
+			"09487522001",
+			"0918259255",
+			"inspector@inspector.com",
+			"Mr. Inspector",
+			"password");
 	private ArrayList<Device> deviceList = new ArrayList<>();
 	
 	public CompanyUser () {

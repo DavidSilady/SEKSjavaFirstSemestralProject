@@ -8,34 +8,37 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="690.0" prefWidth="980.0" stylesheets="/view/css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InspectionMenuController">
    <children>
-      <Label id="inspectorName" layoutX="115.0" layoutY="80.0" text="inspectorName" textFill="#c2185b">
+      <Label fx:id="inspectorNameLabel" layoutX="115.0" layoutY="80.0" text="inspectorName" textFill="#c2185b">
          <font>
             <Font name="Roboto Light" size="42.0" />
          </font>
       </Label>
-      <Label id="inspectorOrganization" alignment="CENTER" layoutX="115.0" layoutY="125.0" text="inspectorOrganization" textFill="#6e74dc">
+      <Label fx:id="inspectorOrganizationLabel" alignment="CENTER" layoutX="115.0" layoutY="125.0" text="inspectorOrganization" textFill="#6e74dc">
          <font>
             <Font name="Roboto Black" size="16.0" />
          </font>
       </Label>
-      <Label id="inspectorMail" layoutX="115.0" layoutY="278.0" text="inspectorMail" textFill="#383838">
+      <Label fx:id="inspectorMailLabel" layoutX="115.0" layoutY="278.0" text="inspectorMail" textFill="#383838">
          <font>
             <Font name="Roboto Light" size="22.0" />
          </font>
       </Label>
-      <Label id="inspectorPhone" layoutX="115.0" layoutY="328.0" text="inspectorPhone" textFill="#383838">
+      <Label fx:id="inspectorPhoneLabel" layoutX="115.0" layoutY="328.0" text="inspectorPhone" textFill="#383838">
          <font>
             <Font name="Roboto Light" size="22.0" />
          </font>
       </Label>
-      <Label id="inspectorID" layoutX="115.0" layoutY="228.0" text="inspectorID" textFill="#383838">
+      <Label fx:id="inspectorIDLabel" layoutX="115.0" layoutY="228.0" text="inspectorID" textFill="#383838">
          <font>
             <Font name="Roboto Light" size="22.0" />
          </font>
       </Label>
-      <JFXButton fx:id="revokeAssignmentButton" layoutX="716.0" layoutY="558.0" onAction="#revokeAssignment" prefHeight="58.0" prefWidth="172.0" styleClass="pinkButton" text="Revoke Assignment" />
+      <AnchorPane fx:id="tableButtonPane" layoutX="750.0" layoutY="570.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <JFXButton fx:id="revokeAssignmentButton" layoutX="12.0" layoutY="18.0" onAction="#revokeAssignment" prefHeight="65.0" prefWidth="177.0" styleClass="pinkButton" text="Revoke Assignment" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
