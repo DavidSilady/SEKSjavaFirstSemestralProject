@@ -46,7 +46,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton id=".button" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="698.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Notifications" textFill="WHITE">
+                <JFXButton id=".button" fx:id="notificationsInterfaceButton" alignment="BASELINE_LEFT" layoutX="10.0" layoutY="698.0" prefHeight="80.0" prefWidth="300.0" style="-fx-border-radius: 0px;" text="Notifications" textFill="WHITE">
                     <font>
                         <Font name="Roboto Light" size="18.0" />
                     </font>

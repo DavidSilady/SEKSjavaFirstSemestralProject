@@ -34,6 +34,7 @@ public class UserInterfaceController {
 	private UserController activeUserController = UserController.getInstance();
 	
 	private void generateNotifications() {
+		activeUserController.getActiveUser().updateNotifications();
 		notificationPane.getChildren().clear();
 		notificationButtons.clear();
 		scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
@@ -63,15 +64,18 @@ public class UserInterfaceController {
 	
 	@FXML
 	void initialize() {
-		
-		activeUserController.getActiveUser().updateNotifications();
-		generateNotifications();
+		try {
+			generateNotifications();
+		} catch (NullPointerException npe) {
+			System.out.println("Notification pane not found!");
+		}
 		
 		notificationsInterfaceButton.setOnAction(event -> {
-			notificationPane.getChildren().clear();
-			notificationButtons.clear();
-			activeUserController.getActiveUser().updateNotifications();
-			generateNotifications();
+			try {
+				generateNotifications();
+			} catch (NullPointerException npe) {
+				System.out.println("Notification pane not found!");
+			}
 		});
 		
 		try {
