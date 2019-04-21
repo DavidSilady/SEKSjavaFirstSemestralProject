@@ -22,6 +22,8 @@ import model.user.userTypes.CompanyUser;
 
 public class DeviceMenuController {
 	@FXML
+	private AnchorPane tableButtonPane;
+	@FXML
 	private AnchorPane dynamicDevicePane;
 	
 	private UserController activeUser = UserController.getInstance();
@@ -64,6 +66,7 @@ public class DeviceMenuController {
 	@FXML
 	@SuppressWarnings("unchecked")
 	void initialize()  {
+		
 		try {
 			company = (CompanyUser) UserController.getInstance().getActiveUser();
 		} catch (ClassCastException cce) {
@@ -71,7 +74,7 @@ public class DeviceMenuController {
 			tableView.setSelectionModel(null);
 		}
 		
-		updateTable();
+		updateDeviceTable();
 		
 	}
 	
@@ -89,7 +92,7 @@ public class DeviceMenuController {
 	
 	public void deviceListScreen (ActionEvent actionEvent) throws Exception{
 		loadDefaultPane();
-		updateTable();
+		updateDeviceTable();
 	}
 	
 	public void removeSelectedDevice (ActionEvent actionEvent) throws Exception{
@@ -107,7 +110,7 @@ public class DeviceMenuController {
 		//Update the table  //Probably a temporary solution
 		SceneController sceneController = new SceneController();
 		sceneController.setScene(actionEvent, "companyUserInterface");*/
-		updateTable();
+		updateDeviceTable();
 	}
 	
 	public void assignInspectorButton (ActionEvent actionEvent) throws Exception{
@@ -123,11 +126,12 @@ public class DeviceMenuController {
 	
 	public void setCompany (CompanyUser company) {
 		this.company = company;
-		updateTable();
+		tableButtonPane.setVisible(false);
+		updateDeviceTable();
 	}
 	
 	@SuppressWarnings("unchecked")
-	private void updateTable () {
+	private void updateDeviceTable () {
 		try {
 			deviceObservableList = FXCollections.observableArrayList(company.getDeviceList());
 		} catch (NullPointerException npe) {

@@ -19,7 +19,7 @@
                     <TableColumn fx:id="nextAuditionCol" minWidth="1.0" prefWidth="151.0" text="Next Audition" />
                 </columns>
             </TableView>
-      <AnchorPane layoutX="750.0" layoutY="570.0" prefHeight="100.0" prefWidth="200.0">
+      <AnchorPane fx:id="tableButtonPane" layoutX="750.0" layoutY="570.0" prefHeight="100.0" prefWidth="200.0">
          <children>
             <JFXButton layoutX="12.0" layoutY="18.0" onAction="#removeSelectedDevice" prefHeight="65.0" prefWidth="177.0" styleClass="pinkButton" text="Remove Device" textFill="WHITE" />
          </children>

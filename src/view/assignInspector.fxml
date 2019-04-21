@@ -17,7 +17,7 @@
       </TableView>
       <AnchorPane layoutX="750.0" layoutY="570.0" prefHeight="100.0" prefWidth="200.0">
          <children>
-            <JFXButton layoutX="12.0" layoutY="18.0" prefHeight="65.0" prefWidth="177.0" styleClass="pinkButton" text="Request Assignment" />
+            <JFXButton fx:id="inspectionButton" layoutX="12.0" layoutY="18.0" prefHeight="65.0" prefWidth="177.0" styleClass="pinkButton" text="Request Assignment" />
          </children>
       </AnchorPane>
    </children>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InspectionMenuController">
+        <children>
+            <HBox prefHeight="30.0" prefWidth="980.0" style="-fx-background-color: #383838;">
+                <children>
+                    <JFXButton fx:id="yourInspectorButton" prefHeight="30.0" prefWidth="180.0" text="Your Inspector" textFill="WHITE">
+                        <font>
+                            <Font name="Roboto Light" size="14.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </JFXButton>
+                    <JFXButton fx:id="assignNewInspectorButton" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="180.0" text="Assign New Inspector" textFill="WHITE">
+                        <font>
+                            <Font name="Roboto Light" size="14.0" />
+                        </font>
+                        <cursor>
+                            <Cursor fx:constant="HAND" />
+                        </cursor>
+                    </JFXButton>
+                </children>
+            </HBox>
+            <AnchorPane fx:id="dynamicInspectionPane" layoutY="30.0" prefHeight="690.0" prefWidth="980.0" style="-fx-background-color: white;" />
+        </children>
+
+</AnchorPane>
