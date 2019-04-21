@@ -27,7 +27,7 @@
       <JFXTextField fx:id="loginMail" focusColor="#6f74dd" layoutX="177.0" layoutY="139.0" prefHeight="31.0" prefWidth="347.0" promptText="E-mail" />
 
       <JFXPasswordField fx:id="loginPassword" focusColor="#6f74dd" layoutX="177.0" layoutY="216.0" onKeyPressed="#onEnterLogin" prefHeight="31.0" prefWidth="347.0" promptText="Password" />
-      <JFXButton fx:id="loginButton" layoutX="300.0" layoutY="297.0" onAction="#buttonLogin" prefHeight="47.0" prefWidth="101.0" style="-fx-background-color: #c2185b;" styleClass="pinkButton" text="Login" textFill="WHITE">
+      <JFXButton fx:id="loginButton" layoutX="300.0" layoutY="297.0" onAction="#buttonLogin" prefHeight="47.0" prefWidth="101.0" styleClass="pinkButton" text="Login" textFill="WHITE">
          <font>
             <Font name="Roboto Black" size="15.0" />
          </font>
@@ -44,10 +44,10 @@
             </FontAwesomeIconView>
          </graphic>
       </JFXButton>
-      <AnchorPane layoutY="371.0" prefHeight="30.0" prefWidth="700.0" style="-fx-background-color: #c2185b;">
+      <AnchorPane layoutX="663.0" layoutY="115.0" prefHeight="182.0" prefWidth="30.0">
          <children>
-            <JFXButton fx:id="loginSignUpButton" layoutX="518.0" layoutY="1.0" onAction="#loadSignUp" prefHeight="30.0" style="-fx-background-color: #c2185b;" styleClass="pinkButton" text="Sign Up" textFill="WHITE" />
-            <JFXButton fx:id="loginChooseUserButton" layoutX="591.0" onAction="#loadChooseUser" prefHeight="30.0" style="-fx-background-color: #c2185b;" styleClass="pinkButton" text="Choose User" textFill="WHITE" />
+            <JFXButton fx:id="loginSignUpButton" layoutX="-15.0" layoutY="20.0" onAction="#loadSignUp" prefHeight="30.0" rotate="90.0" styleClass="pinkButton" text="Sign Up" textFill="WHITE" />
+            <JFXButton fx:id="loginChooseUserButton" layoutX="-30.0" layoutY="110.0" onAction="#loadChooseUser" prefHeight="30.0" rotate="90.0" styleClass="pinkButton" text="Choose User" textFill="WHITE" />
          </children>
       </AnchorPane>
    </children>

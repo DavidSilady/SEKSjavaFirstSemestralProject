@@ -44,7 +44,7 @@ public class UserInterfaceController {
 			JFXButton button = new JFXButton();
 			button.setPrefWidth(300);
 			button.setPrefHeight(50);
-			button.setText(notification.getClass().getSimpleName());
+			button.setText(notification.getClass().getSimpleName() + " from " + notification.getAggregatorName());
 			button.setOnAction(event -> {
 				SceneController sceneController = new SceneController();
 				try {

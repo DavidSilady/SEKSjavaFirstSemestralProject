@@ -23,16 +23,20 @@ public abstract class User implements Serializable, IUser, Observer {
 	}
 	
 	protected User isAuthenticated (ArrayList<? extends IUser> userList, String loginMail, String loginPassword) {
-		for (IUser temp: userList) {
-			if (temp.getMail().equals(loginMail)) {
-				if (temp.getPassword().equals(loginPassword)) {
-					User activeUser = (User) temp;
-					printNotifications(activeUser);
-					return (User) temp;
-				} else {
-					return null;
+		try {
+			for (IUser temp: userList) {
+				if (temp.getMail().equals(loginMail)) {
+					if (temp.getPassword().equals(loginPassword)) {
+						User activeUser = (User) temp;
+						printNotifications(activeUser);
+						return (User) temp;
+					} else {
+						return null;
+					}
 				}
 			}
+		} catch (NullPointerException npe) {
+			System.out.println("UserList not found!");
 		}
 		return null;
 	}

@@ -195,6 +195,11 @@
     -fx-scale-z: 1.1;
 }*/
 
-.pinkButton:hover {
-    -fx-background-color: #8c0032;
+
+
+.pinkButton {
+    -fx-background-color: #c2185b;
+}
+.pinkButton:hover{
+    -fx-background-color: #880e4f;
 }

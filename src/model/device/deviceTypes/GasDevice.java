@@ -3,10 +3,11 @@ package model.device.deviceTypes;
 import model.device.Device;
 import model.user.User;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class GasDevice extends Device {
+public class GasDevice extends Device implements Serializable {
 	public GasDevice (String name, String location, String serialNum, User user) {
 		super(name, location, serialNum);
 		calculateNextAudition();
