@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,6 +24,17 @@ public class SceneController {
 		Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
 		window.setScene(signUpScene);
 		window.show();
+	}
+	
+	public void changeDynamicPane(Pane dynamicPane, String name) throws Exception{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/" + name + ".fxml"));
+		Pane deviceListTable = (Pane) fxmlLoader.load();
+		try {
+			dynamicPane.getChildren().clear();
+			dynamicPane.getChildren().add(deviceListTable);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void switchStage (Event actionEvent, String sceneName) throws Exception {

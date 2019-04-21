@@ -76,10 +76,14 @@ public class DataStorage implements java.io.Serializable{
 			ois.close();
 			fis.close();
 			System.out.println(arrayList);
-			for (IUser temp : arrayList
-			     ) {
-				System.out.println(temp.getMail() + temp.getPassword());
+			try {
+				for (IUser temp : arrayList) {
+					System.out.println(temp.getMail() + " " + temp.getPassword());
+				}
+			} catch (NullPointerException npe) {
+				System.out.println("Empty user list!");
 			}
+			
 			return  arrayList;
 		} catch (FileNotFoundException f) {
 			System.out.println("File not found");
@@ -97,5 +101,11 @@ public class DataStorage implements java.io.Serializable{
 	
 	public void serializeCurrentCompany () {
 		save(companyUserList, "companyUserData");
+	}
+	
+	public void serializeAll () {
+		save(companyUserList, "companyUserData");
+		save(auditorUserList, "auditorUserData");
+		save(inspectionUserList, "inspectionUserData");
 	}
 }

@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            stylesheets="@css/style.css"
-            fx:controller="controller.DeviceMenuController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeviceMenuController">
         <children>
             <TableView fx:id="tableView" prefHeight="690.0" prefWidth="980.0">
                 <columns>
@@ -23,5 +19,10 @@
                     <TableColumn fx:id="nextAuditionCol" minWidth="1.0" prefWidth="151.0" text="Next Audition" />
                 </columns>
             </TableView>
+      <AnchorPane layoutX="750.0" layoutY="570.0" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <JFXButton layoutX="12.0" layoutY="18.0" onAction="#removeSelectedDevice" prefHeight="65.0" prefWidth="177.0" styleClass="pinkButton" text="Remove Device" textFill="WHITE" />
+         </children>
+      </AnchorPane>
         </children>
 </AnchorPane>

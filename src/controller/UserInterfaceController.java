@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import model.DataStorage;
 import model.notification.Notification;
 
 import java.util.ArrayList;
@@ -70,6 +71,12 @@ public class UserInterfaceController {
 			System.out.println("Notification pane not found!");
 		}
 		
+		try {
+			activeUserController.showDefaultPane(dynamicPane);
+		} catch (java.io.IOException e) {
+			e.printStackTrace();
+		}
+		
 		notificationsInterfaceButton.setOnAction(event -> {
 			try {
 				generateNotifications();
@@ -78,27 +85,15 @@ public class UserInterfaceController {
 			}
 		});
 		
-		try {
-			activeUserController.showDefaultPane(dynamicPane);
-		} catch (java.io.IOException e) {
-			e.printStackTrace();
-		}
-		
 		exitButton.setOnAction((ActionEvent event) -> {
+			DataStorage.getInstance().serializeAll();
 			((Node) event.getSource()).getScene().getWindow().hide();
 			System.exit(0);
 		});
 	}
 	
 	public void showDeviceList (ActionEvent actionEvent) throws Exception{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceMenu.fxml"));
-		Pane deviceListTable = (Pane) fxmlLoader.load();
-		try {
-			dynamicPane.getChildren().clear();
-			dynamicPane.getChildren().add(deviceListTable);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		activeUserController.showDefaultPane(dynamicPane);
 	}
 	
 	public void companyListButton (ActionEvent actionEvent) throws Exception{

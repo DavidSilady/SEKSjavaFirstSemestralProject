@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,15 +21,9 @@ import model.user.userTypes.CompanyUser;
 
 
 public class DeviceMenuController {
+	@FXML
+	private AnchorPane dynamicDevicePane;
 	
-	public AnchorPane dynamicDevicePane;
-	public TableColumn nameCol;
-	public TableColumn locationCol;
-	public TableColumn serialNumCol;
-	public TableColumn lastInspectionCol;
-	public TableColumn nextInspectionCol;
-	public TableColumn lastAuditionCol;
-	public TableColumn nextAuditionCol;
 	private UserController activeUser = UserController.getInstance();
 	
 	@FXML
@@ -42,27 +37,42 @@ public class DeviceMenuController {
 	
 	private CompanyUser company;
 	private ObservableList<Device> deviceObservableList = null;
+	@FXML
+	private TableColumn nameCol;
+	@FXML
+	private TableColumn lastInspectionCol;
+	@FXML
+	private TableColumn nextInspectionCol;
+	@FXML
+	private TableColumn lastAuditionCol;
+	@FXML
+	private TableColumn nextAuditionCol;
+	@FXML
+	private TableColumn serialNumCol;
+	@FXML
+	private TableColumn locationCol;
+	
+	public void setDynamicDevicePane(Node node) {
+		dynamicDevicePane.getChildren().add(node);
+	}
+	
+	private void loadDefaultPane() throws Exception{
+		SceneController sceneController = new SceneController();
+		sceneController.changeDynamicPane(dynamicDevicePane, "deviceList");
+	}
 	
 	@FXML
 	@SuppressWarnings("unchecked")
-	void initialize() {
+	void initialize()  {
 		try {
 			company = (CompanyUser) UserController.getInstance().getActiveUser();
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
 			tableView.setSelectionModel(null);
 		}
+		
 		updateTable();
-		/*
-		tableView.getSelectionModel().selectedItemProperty().addListener( new ChangeListener() {
-			@Override
-			public void changed (ObservableValue observable, Object oldValue, Object newValue) {
-				if (tableView.getSelectionModel().getSelectedItem() != null) {
-					selectedDevice = tableView.getSelectionModel().getSelectedItem();
-					System.out.println(selectedDevice.getName() + " selected!");
-				}
-			}
-		});*/
+		
 	}
 	
 	
@@ -78,7 +88,30 @@ public class DeviceMenuController {
 	}
 	
 	public void deviceListScreen (ActionEvent actionEvent) throws Exception{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
+		loadDefaultPane();
+		updateTable();
+	}
+	
+	public void removeSelectedDevice (ActionEvent actionEvent) throws Exception{
+		// Add a pop up for confirmation - later
+		
+		//Remove the selected device from the active company's device list
+		CompanyUser companyUser = (CompanyUser) activeUser.getActiveUser();
+		try {
+			companyUser.removeDevice(tableView.getSelectionModel().getSelectedItem());
+		} catch (NullPointerException npe) {
+			System.out.println("Device not selected!");
+		}
+		
+		/*
+		//Update the table  //Probably a temporary solution
+		SceneController sceneController = new SceneController();
+		sceneController.setScene(actionEvent, "companyUserInterface");*/
+		updateTable();
+	}
+	
+	public void assignInspectorButton (ActionEvent actionEvent) throws Exception{
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/assignInspector.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
 		try {
 			dynamicDevicePane.getChildren().clear();
@@ -86,22 +119,6 @@ public class DeviceMenuController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public void removeSelectedDeviceButton (ActionEvent actionEvent) throws Exception{
-		// Add a pop up for confirmation - later
-		
-		//Remove the selected device from the active company's device list
-		CompanyUser companyUser = (CompanyUser) activeUser.getActiveUser();
-		companyUser.removeDevice(tableView.getSelectionModel().getSelectedItem());
-		
-		//Update the table  //Probably a temporary solution
-		SceneController sceneController = new SceneController();
-		sceneController.setScene(actionEvent, "companyUserInterface");
-		
-	}
-	
-	public void addInspectorButton (ActionEvent actionEvent) {
 	}
 	
 	public void setCompany (CompanyUser company) {

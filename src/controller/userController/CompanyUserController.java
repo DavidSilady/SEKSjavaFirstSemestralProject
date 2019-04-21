@@ -1,5 +1,6 @@
 package controller.userController;
 
+import controller.DeviceMenuController;
 import controller.SceneController;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +14,7 @@ import java.io.IOException;
 public class CompanyUserController extends UserController {
 	private CompanyUser activeUser;
 	
+	@Override
 	public User getActiveUser () {
 		return activeUser;
 	}
@@ -20,13 +22,18 @@ public class CompanyUserController extends UserController {
 	@Override
 	public void showDefaultPane (AnchorPane dynamicPane) throws IOException {
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceMenu.fxml"));
-		Pane deviceListTable = (Pane) fxmlLoader.load();
+		Pane deviceMenu = (Pane) fxmlLoader.load();
+		DeviceMenuController deviceMenuController = fxmlLoader.getController();
+		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
+		Pane deviceList = (Pane) fxmlLoader1.load();
+		deviceMenuController.setDynamicDevicePane(deviceList);
 		try {
 			dynamicPane.getChildren().clear();
-			dynamicPane.getChildren().add(deviceListTable);
+			dynamicPane.getChildren().add(deviceMenu);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 	}
 	
 	@Override

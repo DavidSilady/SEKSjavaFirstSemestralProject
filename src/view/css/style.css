@@ -200,6 +200,9 @@
 .pinkButton {
     -fx-background-color: #c2185b;
 }
+.pinkButton .text {
+    -fx-fill: white;
+}
 .pinkButton:hover{
     -fx-background-color: #880e4f;
 }
