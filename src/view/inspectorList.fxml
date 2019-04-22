@@ -12,7 +12,6 @@
       <TableView fx:id="inspectionListTable" prefHeight="690.0" prefWidth="980.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
         </columns>
       </TableView>
       <AnchorPane layoutX="750.0" layoutY="570.0" prefHeight="100.0" prefWidth="200.0">

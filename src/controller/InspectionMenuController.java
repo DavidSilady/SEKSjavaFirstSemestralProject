@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 
+import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -70,6 +71,9 @@ public class InspectionMenuController {
 	@FXML
 	private Label inspectorNameLabel;
 	
+	@FXML
+	private JFXButton showAddInspectorPaneButton;
+	
 	
 	@FXML
 	void revokeAssignment(ActionEvent event) {
@@ -82,11 +86,13 @@ public class InspectionMenuController {
 	void initialize() {
 		try {
 			company = (CompanyUser) UserController.getInstance().getActiveUser();
+			showAddInspectorPaneButton.setVisible(false);
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
+			yourInspectorButton.setVisible(false);
 		}
-		
 	}
+	
 	public void setLabels(CompanyUser company) {
 		try {
 			inspectorNameLabel.setText(company.getInspectorUser().getName());
@@ -115,11 +121,17 @@ public class InspectionMenuController {
 	}
 	@FXML
 	private void showInspectorList (ActionEvent actionEvent) throws Exception {
-		sceneController.changeDynamicPane(dynamicInspectionPane, "assignInspector");
+		sceneController.changeDynamicPane(dynamicInspectionPane, "inspectorList");
 	}
 	
 	@FXML
-	void addNewInspectionUser(ActionEvent event) {
+	private void showAddInspectorPane(ActionEvent event) throws Exception{
+		SceneController sceneController = new SceneController();
+		sceneController.changeDynamicPane(dynamicInspectionPane, "signUpInspection");
+	}
+	
+	@FXML
+	private void addNewInspectionUser(ActionEvent event) {
 		String id;
 		try {
 			id = inspectorIDLabel.getText();
@@ -133,7 +145,6 @@ public class InspectionMenuController {
 				inspectionPhoneNumberField.getText(),
 				id
 				);
-		
 	}
 	
 }

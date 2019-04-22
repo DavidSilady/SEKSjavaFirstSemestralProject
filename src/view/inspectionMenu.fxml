@@ -23,7 +23,7 @@
                             <Cursor fx:constant="HAND" />
                         </cursor>
                     </JFXButton>
-                    <JFXButton fx:id="assignNewInspectorButton" layoutX="10.0" layoutY="10.0" onAction="#showInspectorList" prefHeight="30.0" prefWidth="180.0" text="Assign New Inspector" textFill="WHITE">
+                    <JFXButton fx:id="assignNewInspectorButton" layoutX="10.0" layoutY="10.0" onAction="#showInspectorList" prefHeight="30.0" prefWidth="180.0" text="Inspector List" textFill="WHITE">
                         <font>
                             <Font name="Roboto Light" size="14.0" />
                         </font>
@@ -31,6 +31,14 @@
                             <Cursor fx:constant="HAND" />
                         </cursor>
                     </JFXButton>
+            <JFXButton fx:id="showAddInspectorPaneButton" layoutX="190.0" layoutY="10.0" onAction="#showAddInspectorPane" prefHeight="30.0" prefWidth="180.0" text="New Inspector" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font name="Roboto Light" size="14.0" />
+               </font>
+            </JFXButton>
                 </children>
             </HBox>
             <AnchorPane fx:id="dynamicInspectionPane" layoutY="30.0" prefHeight="690.0" prefWidth="980.0" style="-fx-background-color: white;" />

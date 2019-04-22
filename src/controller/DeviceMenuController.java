@@ -114,7 +114,7 @@ public class DeviceMenuController {
 	}
 	
 	public void assignInspectorButton (ActionEvent actionEvent) throws Exception{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/assignInspector.fxml"));
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/inspectorList.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
 		try {
 			dynamicDevicePane.getChildren().clear();
