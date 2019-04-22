@@ -89,11 +89,15 @@ public class InspectionMenuController {
 			showAddInspectorPaneButton.setVisible(false);
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
-			yourInspectorButton.setVisible(false);
+			try {
+				yourInspectorButton.setVisible(false);
+			} catch (NullPointerException npe) {
+				//
+			}
 		}
 	}
 	
-	public void setLabels(CompanyUser company) {
+	private void setLabels(CompanyUser company) {
 		try {
 			inspectorNameLabel.setText(company.getInspectorUser().getName());
 			inspectorOrganizationLabel.setText(company.getInspectorUser().getOrganizationName());
@@ -128,10 +132,11 @@ public class InspectionMenuController {
 	private void showAddInspectorPane(ActionEvent event) throws Exception{
 		SceneController sceneController = new SceneController();
 		sceneController.changeDynamicPane(dynamicInspectionPane, "signUpInspection");
+		inspectorIDLabel.setText(new InspectionUser().generateID());
 	}
 	
 	@FXML
-	private void addNewInspectionUser(ActionEvent event) {
+	private void addNewInspectionUser(ActionEvent event) throws Exception {
 		String id;
 		try {
 			id = inspectorIDLabel.getText();
@@ -139,7 +144,7 @@ public class InspectionMenuController {
 			id = new InspectionUser().generateID();
 		}
 		InspectionUserController inspectionUserController = new InspectionUserController();
-		inspectionUserController.signUpUser(inspectionNameField.getText(),
+		inspectionUserController.signUpUser(event, inspectionNameField.getText(),
 				inspectionOrganizationField.getText(),
 				inspectionMailField.getText(),
 				inspectionPhoneNumberField.getText(),

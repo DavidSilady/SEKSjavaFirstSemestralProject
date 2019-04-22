@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import com.jfoenix.controls.JFXButton?>
 
-<AnchorPane prefHeight="400.0" prefWidth="700.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.SignUpController">
-   <children>
-      <JFXButton fx:id="signUpInspectionButton" layoutX="314.0" layoutY="337.0" style="-fx-background-color: #c2185b;" text="Sign Up" textFill="WHITE" />
-      <JFXTextField fx:id="signUpFirstName" focusColor="#3949ab" layoutX="57.0" layoutY="113.0" prefHeight="31.0" prefWidth="257.0" promptText="First Name" />
-      <JFXTextField fx:id="signUpLastName" focusColor="#3949ab" layoutX="387.0" layoutY="113.0" prefHeight="31.0" prefWidth="257.0" promptText="Last Name" />
-      <JFXTextField fx:id="signUpEmail" focusColor="#3949ab" layoutX="57.0" layoutY="169.0" prefHeight="31.0" prefWidth="257.0" promptText="E-mail" />
-      <JFXTextField fx:id="signUpPhone" focusColor="#3949ab" layoutX="387.0" layoutY="169.0" prefHeight="31.0" prefWidth="257.0" promptText="Phone Number" />
-      <JFXPasswordField fx:id="signUpPassword" focusColor="#3949ab" layoutX="57.0" layoutY="270.0" prefHeight="31.0" prefWidth="257.0" promptText="Password" />
-      <JFXPasswordField fx:id="signUpConfirmPassword" focusColor="#3949ab" layoutX="387.0" layoutY="270.0" prefHeight="31.0" prefWidth="257.0" promptText="Confirm Password" />
-      <AnchorPane prefHeight="72.0" prefWidth="701.0" style="-fx-background-color: #c2185b;">
-         <children>
-            <Label layoutX="291.0" layoutY="5.0" text="Sign Up" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="32.0" />
-               </font>
-            </Label>
-            <JFXButton fx:id="signUpLoginButton" layoutX="604.0" layoutY="21.0" style="-fx-background-color: white;" text="Login" textFill="#c2185b" />
-            <Label layoutX="306.0" layoutY="45.0" text="Inspection" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="18.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </children>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InspectionMenuController">
+
+    <children>
+        <Label fx:id="inspectorIDLabel" layoutX="545.0" layoutY="116.0" text="inspectorID" textFill="#6e74dc">
+            <font>
+                <Font name="Roboto Light" size="22.0" />
+            </font>
+        </Label>
+        <AnchorPane fx:id="tableButtonPane" layoutX="750.0" layoutY="570.0" prefHeight="100.0" prefWidth="200.0">
+            <children>
+                <JFXButton fx:id="addInspectionUserButton" layoutX="12.0" layoutY="18.0" onAction="#addNewInspectionUser" prefHeight="65.0" prefWidth="177.0" styleClass="pinkButton" text="Add Inspector" />
+            </children>
+        </AnchorPane>
+      <JFXTextField fx:id="inspectionNameField" layoutX="115.0" layoutY="90.0" prefHeight="31.0" prefWidth="288.0" promptText="Name" />
+      <JFXTextField fx:id="inspectionOrganizationField" layoutX="115.0" layoutY="151.0" prefHeight="31.0" prefWidth="288.0" promptText="Name" text="Organization" />
+      <JFXTextField fx:id="inspectionMailField" layoutX="115.0" layoutY="212.0" prefHeight="31.0" prefWidth="288.0" promptText="Name" text="Mail" />
+      <JFXTextField fx:id="inspectionPhoneNumberField" layoutX="115.0" layoutY="273.0" prefHeight="31.0" prefWidth="288.0" promptText="Name" text="Phone Number" />
+      <Label layoutX="545.0" layoutY="64.0" text="ID:" textFill="#c2185b">
+         <font>
+            <Font name="Roboto Light" size="42.0" />
+         </font>
+      </Label>
+    </children>
 </AnchorPane>

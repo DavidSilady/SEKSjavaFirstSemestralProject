@@ -112,7 +112,4 @@ public class UserInterfaceController {
 		}
 		
 	}
-	
-	public void inspectionAuditorInterfaceButton (ActionEvent actionEvent) {
-	}
 }
