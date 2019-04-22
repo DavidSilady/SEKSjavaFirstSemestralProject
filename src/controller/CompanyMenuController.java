@@ -51,6 +51,7 @@ public class CompanyMenuController {
 		Pane companyListPane = (Pane) fxmlLoader.load();
 		DeviceMenuController deviceMenuController = fxmlLoader.getController();
 		deviceMenuController.setCompany(selectedItem);
+		deviceMenuController.showDefault();
 		try {
 			root.getChildren().clear();
 			root.getChildren().add(companyListPane);
@@ -105,7 +106,8 @@ public class CompanyMenuController {
 			inspectionUser = (InspectionUser) UserController.getInstance().getActiveUser();
 			expandButton.setOnAction(event -> {
 				try {
-					showDeviceMenu(tableView.getSelectionModel().getSelectedItem());
+					if(tableView.getSelectionModel().getSelectedItem() != null)
+						showDeviceMenu(tableView.getSelectionModel().getSelectedItem());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -113,7 +115,8 @@ public class CompanyMenuController {
 		} catch (ClassCastException cce) {
 			expandButton.setOnAction(event -> {
 				try {
-					showDeviceList(tableView.getSelectionModel().getSelectedItem());
+					if(tableView.getSelectionModel().getSelectedItem() != null)
+						showDeviceList(tableView.getSelectionModel().getSelectedItem());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -132,22 +135,20 @@ public class CompanyMenuController {
 	
 	@SuppressWarnings("unchecked")
 	private void updateTableView() {
-		/*if (inspectionUser != null) {
+		if (inspectionUser != null) {
 			try {
 				companyUsers = FXCollections.observableArrayList(inspectionUser.getCompanyUsers());
 			} catch (NullPointerException e) {
 				companyUsers = FXCollections.observableArrayList();
 			}
-		} else {*/
+		} else {
 			try {
 				companyUsers = FXCollections.observableArrayList((ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList());
 			} catch (NullPointerException npe) {
 				companyUsers = FXCollections.observableArrayList();
 				System.out.println("No companies found!");
 			}
-		//}
-		
-		
+		}
 		
 		name.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("name"));
 		mail.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("mail"));

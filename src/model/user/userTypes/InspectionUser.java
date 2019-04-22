@@ -13,7 +13,7 @@ public class InspectionUser extends User implements Serializable, IUser {
 	private String identificationNumber;
 	private String phone;
 	
-	private ArrayList<CompanyUser> companyUsers;
+	private ArrayList<CompanyUser> companyUsers = new ArrayList<>();
 	
 	public InspectionUser() {
 	}

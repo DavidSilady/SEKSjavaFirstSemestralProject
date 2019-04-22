@@ -57,7 +57,7 @@ public class DeviceMenuController {
 	public void setDynamicDevicePane(Node node) {
 		dynamicDevicePane.getChildren().add(node);
 	}
-	private void loadDefaultPane() throws Exception{
+	public void showDefault() throws Exception{
 		SceneController sceneController = new SceneController();
 		sceneController.changeDynamicPane(dynamicDevicePane, "deviceList");
 	}
@@ -90,7 +90,7 @@ public class DeviceMenuController {
 	}
 	
 	public void deviceListScreen (ActionEvent actionEvent) throws Exception{
-		loadDefaultPane();
+		showDefault();
 		updateDeviceTable();
 	}
 	
@@ -130,7 +130,6 @@ public class DeviceMenuController {
 		} catch (NullPointerException npe) {
 			//
 		}
-		
 		updateDeviceTable();
 	}
 	

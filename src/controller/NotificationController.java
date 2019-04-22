@@ -42,6 +42,7 @@ public class NotificationController {
 			acceptButton.setOnAction(event -> {
 				request.acceptAssignment((InspectionUser) UserController.getInstance().getActiveUser());
 				request.dismiss(UserController.getInstance().getActiveUser());
+				((Node) event.getSource()).getScene().getWindow().hide();
 			});
 		}
 		catch (ClassCastException cce) {
