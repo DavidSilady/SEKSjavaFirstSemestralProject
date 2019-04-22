@@ -37,12 +37,29 @@ public class InspectionUser extends User implements Serializable, IUser {
 	}
 	
 	@Override
-	public User signUpUser (String name, String companyICO, String email, String phone, String password){
-		ArrayList<CompanyUser> companyUserList = new ArrayList<>();
+	@SuppressWarnings("unchecked")
+	public User signUpUser (String name, String organizationID, String email, String phone, String password){
+		ArrayList<InspectionUser> inspectionUsers = new ArrayList<>();
 		if (DataStorage.getInstance().getCompanyUserList() != null) {
-			companyUserList = (ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList();
+			inspectionUsers = (ArrayList<InspectionUser>) DataStorage.getInstance().getInspectionUserList();
 		}
-		return null;
+		InspectionUser inspectionUser = new InspectionUser(
+				organizationID,
+				password,
+				phone,
+				email,
+				name,
+				password
+		);
+		
+		try {
+			inspectionUsers.add(inspectionUser);
+			DataStorage.getInstance().setCompanyUserList(inspectionUsers);
+			return inspectionUser;
+		} catch (NullPointerException npe) {
+			System.out.println("Empty List!");
+			return null;
+		}
 	}
 	
 	@Override

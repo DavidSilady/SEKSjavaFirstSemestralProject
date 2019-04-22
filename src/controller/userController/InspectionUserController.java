@@ -1,10 +1,8 @@
 package controller.userController;
 
-import controller.SceneController;
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;
 import model.user.User;
-import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
 import java.io.IOException;
@@ -20,8 +18,6 @@ public class InspectionUserController extends UserController {
 		InspectionUser temp = new InspectionUser();
 		activeUser = (InspectionUser) temp.signUpUser(name, organizationID, email, phone, password);
 		System.out.println("Signed up!");
-		SceneController sceneController = new SceneController();
-		sceneController.switchStage(actionEvent, "companyUserInterface");
 	}
 	
 	@Override

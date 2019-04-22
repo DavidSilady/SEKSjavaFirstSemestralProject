@@ -27,7 +27,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	@Override
 	@SuppressWarnings("unchecked")
 	public User signUpUser(String name,
-	                       String companyICO,
+	                       String organizationID,
 	                       String email,
 	                       String phone,
 	                       String password) {
@@ -37,7 +37,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 		}
 		CompanyUser company = new CompanyUser(
 				name,
-				companyICO,
+				organizationID,
 				email,
 				phone,
 				password);

@@ -16,7 +16,7 @@ public class AuditorUser extends User implements Serializable, IUser {
 	}
 	
 	@Override
-	public User signUpUser (String name, String companyICO, String email, String phone, String password) {
+	public User signUpUser (String name, String organizationID, String email, String phone, String password) {
 		return null;
 	}
 	
