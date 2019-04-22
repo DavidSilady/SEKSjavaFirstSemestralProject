@@ -101,7 +101,7 @@ public class UserInterfaceController {
 		activeUserController.showDefaultPane(dynamicPane);
 	}
 	
-	public void companyListButton (ActionEvent actionEvent) throws Exception{
+	public void showCompanyList (ActionEvent actionEvent) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/companyMenu.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
 		try {
