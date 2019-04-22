@@ -42,7 +42,7 @@ public class InspectionUser extends User implements Serializable, IUser {
 	@SuppressWarnings("unchecked")
 	public User signUpUser (String name, String organizationID, String email, String phone, String password){
 		ArrayList<InspectionUser> inspectionUsers = new ArrayList<>();
-		if (DataStorage.getInstance().getCompanyUserList() != null) {
+		if (DataStorage.getInstance().getInspectionUserList() != null) {
 			inspectionUsers = (ArrayList<InspectionUser>) DataStorage.getInstance().getInspectionUserList();
 		}
 		InspectionUser inspectionUser = new InspectionUser(
@@ -109,5 +109,9 @@ public class InspectionUser extends User implements Serializable, IUser {
 	
 	public void setCompanyUsers (ArrayList<CompanyUser> companyUsers) {
 		this.companyUsers = companyUsers;
+	}
+	
+	public void addCompanyUser (CompanyUser newCompanyUser) {
+		companyUsers.add(newCompanyUser);
 	}
 }

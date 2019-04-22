@@ -98,9 +98,9 @@ public class DeviceMenuController {
 		// Add a pop up for confirmation - later
 		
 		//Remove the selected device from the active company's device list
-		CompanyUser companyUser = (CompanyUser) activeUser.getActiveUser();
+		//CompanyUser companyUser = (CompanyUser) activeUser.getActiveUser();
 		try {
-			companyUser.removeDevice(tableView.getSelectionModel().getSelectedItem());
+			company.removeDevice(tableView.getSelectionModel().getSelectedItem());
 		} catch (NullPointerException npe) {
 			System.out.println("Device not selected!");
 		}
@@ -125,7 +125,12 @@ public class DeviceMenuController {
 	
 	public void setCompany (CompanyUser company) {
 		this.company = company;
-		tableButtonPane.setVisible(false);
+		try {
+			tableButtonPane.setVisible(false);
+		} catch (NullPointerException npe) {
+			//
+		}
+		
 		updateDeviceTable();
 	}
 	

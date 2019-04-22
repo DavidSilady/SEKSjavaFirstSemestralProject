@@ -16,7 +16,7 @@ public class Request extends Notification {
 	}
 	
 	public void acceptAssignment(InspectionUser inspectionUser) {
-		inspectionUser.getCompanyUsers().add(this.sender);
+		inspectionUser.addCompanyUser(this.sender);
 		sender.assignInspector(inspectionUser);
 	}
 	

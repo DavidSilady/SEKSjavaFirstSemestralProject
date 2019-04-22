@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -7,11 +13,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TableColumn?>
-<AnchorPane prefHeight="720.0" prefWidth="980.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyMenuController">
+
+<AnchorPane fx:id="root" prefHeight="720.0" prefWidth="980.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CompanyMenuController">
     <children>
         <HBox prefHeight="30.0" prefWidth="980.0" style="-fx-background-color: #383838;">
             <children>
-                <JFXButton onAction="#companyListButton" prefHeight="30.0" prefWidth="180.0" text="Company List" textFill="WHITE">
+                <JFXButton onAction="#showCompanyList" prefHeight="30.0" prefWidth="180.0" text="Company List" textFill="WHITE">
                     <font>
                         <Font name="Roboto Light" size="14.0" />
                     </font>
@@ -19,7 +26,7 @@
                         <Cursor fx:constant="HAND" />
                     </cursor>
                 </JFXButton>
-                <JFXButton layoutX="370.0" layoutY="10.0" onAction="#viewDeviceButton" prefHeight="30.0" prefWidth="180.0" text="View Device List" textFill="WHITE">
+                <JFXButton fx:id="expandButton" layoutX="370.0" layoutY="10.0" prefHeight="30.0" prefWidth="180.0" text="View Device List" textFill="WHITE">
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>

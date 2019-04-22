@@ -104,12 +104,13 @@ public class UserInterfaceController {
 	public void showCompanyList (ActionEvent actionEvent) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/companyMenu.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
+		CompanyMenuController companyMenuController = fxmlLoader.getController();
+		companyMenuController.showDefault();
 		try {
 			dynamicPane.getChildren().clear();
 			dynamicPane.getChildren().add(deviceListTable);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
 }
