@@ -8,6 +8,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class ElectronicDevice extends Device implements Serializable {
+	private int voltage;
 	
 	public ElectronicDevice (String name, String location, String serialNum, User user) {
 		super(name, location, serialNum);

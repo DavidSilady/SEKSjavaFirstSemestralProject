@@ -12,6 +12,15 @@ import java.time.LocalDate;
 
 //gonna be abstract . . . one day. . .
 public abstract class Device implements Serializable, Observable {
+	private enum deviceClass {
+		A,
+		B,
+		C,
+		D,
+		E,
+		F
+	}
+	
 	private String name;
 	private String location;
 	private String serialNum;
