@@ -85,7 +85,12 @@ public class InspectionMenuController {
 	void initialize() {
 		try {
 			company = (CompanyUser) UserController.getInstance().getActiveUser();
-			showAddInspectorPaneButton.setVisible(false);
+			try {
+				showAddInspectorPaneButton.setVisible(false);
+			} catch (NullPointerException npe) {
+				//
+			}
+			
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
 			try {
@@ -155,6 +160,7 @@ public class InspectionMenuController {
 				inspectionPhoneNumberField.getText(),
 				id
 				);
+		inspectorIDLabel.setText(new InspectionUser().generateIdentificationNumber());
 	}
 	
 }

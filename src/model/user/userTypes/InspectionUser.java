@@ -23,7 +23,7 @@ public class InspectionUser extends User implements Serializable, IUser {
 	public InspectionUser (String organizationICO, String identificationNumber, String phone, String mail, String name, String password) {
 		super.setMail(mail);
 		super.setName(name);
-		super.setPassword("password");
+		super.setPassword("password"); // temporary simplification
 		this.organizationICO = organizationICO;
 		this.identificationNumber = identificationNumber;
 		this.phone = phone;
@@ -53,11 +53,21 @@ public class InspectionUser extends User implements Serializable, IUser {
 		try {
 			inspectionUsers.add(inspectionUser);
 			DataStorage.getInstance().setInspectionUserList(inspectionUsers);
+			//sendSignUpMail();
 			return inspectionUser;
 		} catch (NullPointerException npe) {
 			System.out.println("Empty List!");
 			return null;
 		}
+		
+	
+	}
+	
+	private void sendSignUpMail() {
+		/*
+		* Sends a mail containing the generated password, which will be recommended
+		* to change.
+		 */
 	}
 	
 	@Override

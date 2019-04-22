@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.*?>
-<?import javafx.scene.text.*?>
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import com.jfoenix.controls.JFXButton?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InspectionMenuController">
 
@@ -24,9 +23,9 @@
             </children>
         </AnchorPane>
       <JFXTextField fx:id="inspectionNameField" layoutX="115.0" layoutY="90.0" prefHeight="31.0" prefWidth="288.0" promptText="Name" />
-      <JFXTextField fx:id="inspectionOrganizationField" layoutX="115.0" layoutY="151.0" prefHeight="31.0" prefWidth="288.0" promptText="Name" text="Organization" />
-      <JFXTextField fx:id="inspectionMailField" layoutX="115.0" layoutY="212.0" prefHeight="31.0" prefWidth="288.0" promptText="Name" text="Mail" />
-      <JFXTextField fx:id="inspectionPhoneNumberField" layoutX="115.0" layoutY="273.0" prefHeight="31.0" prefWidth="288.0" promptText="Name" text="Phone Number" />
+      <JFXTextField fx:id="inspectionOrganizationField" layoutX="115.0" layoutY="151.0" prefHeight="31.0" prefWidth="288.0" promptText="Organization" />
+      <JFXTextField fx:id="inspectionMailField" layoutX="115.0" layoutY="212.0" prefHeight="31.0" prefWidth="288.0" promptText="Mail" />
+      <JFXTextField fx:id="inspectionPhoneNumberField" layoutX="115.0" layoutY="273.0" prefHeight="31.0" prefWidth="288.0" promptText="Phone Number" />
       <Label layoutX="545.0" layoutY="64.0" text="ID:" textFill="#c2185b">
          <font>
             <Font name="Roboto Light" size="42.0" />

@@ -10,27 +10,22 @@
 
 <AnchorPane prefHeight="690.0" prefWidth="980.0" stylesheets="/view/css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InspectionMenuController">
    <children>
-      <Label fx:id="inspectorNameLabel" layoutX="115.0" layoutY="80.0" text="inspectorName" textFill="#c2185b">
+      <Label fx:id="inspectorNameLabel" layoutX="115.0" layoutY="80.0" text="Inspector Not Assigned!" textFill="#c2185b">
          <font>
             <Font name="Roboto Light" size="42.0" />
          </font>
       </Label>
-      <Label fx:id="inspectorOrganizationLabel" alignment="CENTER" layoutX="115.0" layoutY="125.0" text="inspectorOrganization" textFill="#6e74dc">
+      <Label fx:id="inspectorOrganizationLabel" alignment="CENTER" layoutX="115.0" layoutY="125.0" textFill="#6e74dc">
          <font>
             <Font name="Roboto Black" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="inspectorMailLabel" layoutX="115.0" layoutY="278.0" text="inspectorMail" textFill="#383838">
+      <Label fx:id="inspectorMailLabel" layoutX="115.0" layoutY="278.0" textFill="#383838">
          <font>
             <Font name="Roboto Light" size="22.0" />
          </font>
       </Label>
-      <Label fx:id="inspectorPhoneLabel" layoutX="115.0" layoutY="328.0" text="inspectorPhone" textFill="#383838">
-         <font>
-            <Font name="Roboto Light" size="22.0" />
-         </font>
-      </Label>
-      <Label fx:id="inspectorIDLabel" layoutX="115.0" layoutY="228.0" text="inspectorID" textFill="#383838">
+      <Label fx:id="inspectorPhoneLabel" layoutX="115.0" layoutY="328.0" textFill="#383838">
          <font>
             <Font name="Roboto Light" size="22.0" />
          </font>
