@@ -98,5 +98,8 @@ public class InspectionMenuController {
 	@FXML
 	private void showInspectorList (ActionEvent actionEvent) throws Exception {
 		sceneController.changeDynamicPane(dynamicInspectionPane, "assignInspector");
+		
 	}
+	
+	
 }

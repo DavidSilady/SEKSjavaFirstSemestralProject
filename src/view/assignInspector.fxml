@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="690.0" prefWidth="980.0" stylesheets="/view/css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AssignInspectorController">
    <children>
-      <TableView prefHeight="690.0" prefWidth="980.0">
+      <TableView fx:id="inspectionListTable" prefHeight="690.0" prefWidth="980.0">
         <columns>
           <TableColumn prefWidth="75.0" text="C1" />
           <TableColumn prefWidth="75.0" text="C2" />
