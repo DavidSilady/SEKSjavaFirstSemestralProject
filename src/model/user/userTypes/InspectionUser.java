@@ -23,7 +23,7 @@ public class InspectionUser extends User implements Serializable, IUser {
 	public InspectionUser (String organizationICO, String identificationNumber, String phone, String mail, String name, String password) {
 		super.setMail(mail);
 		super.setName(name);
-		super.setPassword(password);
+		super.setPassword("password");
 		this.organizationICO = organizationICO;
 		this.identificationNumber = identificationNumber;
 		this.phone = phone;
