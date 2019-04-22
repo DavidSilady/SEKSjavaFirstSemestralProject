@@ -31,6 +31,7 @@ public abstract class UserController {
 	                 String email,
 	                 String phone,
 	                 String password) throws Exception;
+	public abstract void signUpUser (String name, String organization, String mail, String phone, String identificationNumber);
 	
 	public abstract User getActiveUser ();
 	

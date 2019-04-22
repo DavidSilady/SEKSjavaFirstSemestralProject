@@ -206,3 +206,9 @@
 .pinkButton:hover{
     -fx-background-color: #880e4f;
 }
+
+.jfx-text-field
+{
+    -jfx-focus-color: #6e74dc;
+    -jfx-unfocus-color: #383838;
+}

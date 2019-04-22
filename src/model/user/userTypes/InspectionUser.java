@@ -1,15 +1,25 @@
 package model.user.userTypes;
 
 import javafx.event.Event;
+import model.DataStorage;
 import model.user.IUser;
 import model.user.User;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class InspectionUser extends User implements Serializable, IUser {
 	private String organizationName;
 	private String identificationNumber;
 	private String phone;
+	
+	public InspectionUser() {
+	}
+	
+	public String generateID() {
+		return UUID.randomUUID().toString();
+	}
 	
 	public InspectionUser (String organizationName, String identificationNumber, String phone, String mail, String name, String password) {
 		super.setMail(mail);

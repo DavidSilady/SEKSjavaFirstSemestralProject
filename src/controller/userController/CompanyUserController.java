@@ -61,4 +61,9 @@ public class CompanyUserController extends UserController {
 		SceneController sceneController = new SceneController();
 		sceneController.switchStage(actionEvent, "companyUserInterface");
 	}
+	
+	@Override
+	public void signUpUser (String name, String organization, String mail, String phone, String identificationNumber) {
+	
+	}
 }

@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXTextField;
+import controller.userController.InspectionUserController;
 import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,17 +15,36 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.user.userTypes.CompanyUser;
+import model.user.userTypes.InspectionUser;
 
 public class InspectionMenuController {
-	
-	@FXML
-	private AnchorPane tableButtonPane;
-	
 	@FXML
 	private ResourceBundle resources;
 	
 	@FXML
 	private URL location;
+	
+	@FXML
+	private JFXTextField inspectionNameField;
+	
+	@FXML
+	private JFXTextField inspectionMailField;
+	
+	@FXML
+	private JFXTextField inspectionPhoneNumberField;
+	
+	@FXML
+	private JFXTextField inspectionOrganizationField;
+	
+	
+	@FXML
+	private AnchorPane tableButtonPane;
+	
+	@FXML
+	private JFXButton addInspectionUserButton;
+	
+	@FXML
+	private Label inspectorIDLabel;
 	
 	@FXML
 	private JFXButton yourInspectorButton;
@@ -45,9 +66,6 @@ public class InspectionMenuController {
 	
 	@FXML
 	private Label inspectorPhoneLabel;
-	
-	@FXML
-	private Label inspectorIDLabel;
 	
 	@FXML
 	private Label inspectorNameLabel;
@@ -98,8 +116,24 @@ public class InspectionMenuController {
 	@FXML
 	private void showInspectorList (ActionEvent actionEvent) throws Exception {
 		sceneController.changeDynamicPane(dynamicInspectionPane, "assignInspector");
-		
 	}
 	
+	@FXML
+	void addNewInspectionUser(ActionEvent event) {
+		String id;
+		try {
+			id = inspectorIDLabel.getText();
+		} catch (NullPointerException npe) {
+			id = new InspectionUser().generateID();
+		}
+		InspectionUserController inspectionUserController = new InspectionUserController();
+		inspectionUserController.signUpUser(inspectionNameField.getText(),
+				inspectionOrganizationField.getText(),
+				inspectionMailField.getText(),
+				inspectionPhoneNumberField.getText(),
+				id
+				);
+		
+	}
 	
 }

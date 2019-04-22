@@ -26,6 +26,10 @@ public class AuditorUserController extends UserController {
 	}
 	
 	@Override
+	public void signUpUser (String name, String organization, String mail, String phone, String identificationNumber) {
+	}
+	
+	@Override
 	public User getActiveUser () {
 		return user;
 	}

@@ -11,11 +11,12 @@ public class InspectionUserController extends UserController {
 	private InspectionUser user;
 	@Override
 	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
-	
 	}
 	
 	@Override
 	public void signUpUser (Event actionEvent, String companyName, String companyICO, String email, String phone, String password) throws Exception {
+	}
+	public void signUpUser (String name, String organization, String mail, String phone, String identificationNumber) {
 	
 	}
 	
