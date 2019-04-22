@@ -1,5 +1,6 @@
 package controller.userController;
 
+import controller.SceneController;
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;
 import model.user.User;
@@ -15,6 +16,12 @@ public class InspectionUserController extends UserController {
 	
 	@Override
 	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
+		SceneController sceneController = new SceneController();
+		InspectionUser temp = new InspectionUser();
+		activeUser = (InspectionUser) temp.loginUser(loginMail, loginPassword);
+		if (activeUser != null){
+			sceneController.switchStage(actionEvent, "inspectionUserInterface");
+		}
 	}
 	
 	

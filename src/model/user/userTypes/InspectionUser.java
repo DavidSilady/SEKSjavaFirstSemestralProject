@@ -33,7 +33,9 @@ public class InspectionUser extends User implements Serializable, IUser {
 	
 	@Override
 	public User loginUser (String loginMail, String loginPassword) {
-		return null;
+		User user = super.isAuthenticated(DataStorage.getInstance().getInspectionUserList(), loginMail, loginPassword);
+		updateNotifications();
+		return user;
 	}
 	
 	@Override
