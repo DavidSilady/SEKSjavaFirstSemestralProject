@@ -12,13 +12,22 @@ import java.util.ArrayList;
 public class CompanyUser extends User implements Serializable, IUser {
 	private String ICO;
 	private String phone;
-	private InspectionUser inspectorUser = new InspectionUser("Siko",
-			"09487522001",
-			"0918259255",
-			"inspector@inspector.com",
-			"Mr. Inspector",
-			"password");
+	private String inspectorID;
 	private ArrayList<Device> deviceList = new ArrayList<>();
+	
+	@SuppressWarnings("unchecked")
+	public InspectionUser getInspectorUser() {
+		for (InspectionUser tmp : (ArrayList<InspectionUser>) DataStorage.getInstance().getInspectionUserList()) {
+			if (tmp.getIdentificationNumber().equals(this.inspectorID)) {
+				return tmp;
+			}
+		}
+		return null;
+	}
+	
+	public void assignInspector(InspectionUser inspectionUser) {
+		this.inspectorID = inspectionUser.getIdentificationNumber();
+	}
 	
 	public CompanyUser () {
 	}
@@ -126,14 +135,6 @@ public class CompanyUser extends User implements Serializable, IUser {
 	
 	public void setPassword (String password) {
 		super.setPassword(password);
-	}
-	
-	public InspectionUser getInspectorUser () {
-		return inspectorUser;
-	}
-	
-	public void setInspectorUser (InspectionUser inspectorUser) {
-		this.inspectorUser = inspectorUser;
 	}
 	
 	public CompanyUser (String name, String ICO, String mail, String phone, String password) {

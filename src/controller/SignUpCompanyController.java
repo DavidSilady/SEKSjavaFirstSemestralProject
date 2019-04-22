@@ -12,7 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
-public class SignUpController {
+public class SignUpCompanyController {
 	
 	@FXML
 	private JFXTextField signUpEmail;

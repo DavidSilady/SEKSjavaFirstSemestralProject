@@ -2,7 +2,6 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 
-import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -100,7 +99,7 @@ public class InspectionMenuController {
 	private void setLabels(CompanyUser company) {
 		try {
 			inspectorNameLabel.setText(company.getInspectorUser().getName());
-			inspectorOrganizationLabel.setText(company.getInspectorUser().getOrganizationName());
+			inspectorOrganizationLabel.setText(company.getInspectorUser().getOrganizationICO());
 			inspectorMailLabel.setText(company.getInspectorUser().getMail());
 			inspectorIDLabel.setText(company.getInspectorUser().getIdentificationNumber());
 			inspectorPhoneLabel.setText(company.getInspectorUser().getPhone());
@@ -121,7 +120,6 @@ public class InspectionMenuController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(company.getInspectorUser().getOrganizationName());
 	}
 	@FXML
 	private void showInspectorList (ActionEvent actionEvent) throws Exception {
@@ -130,9 +128,16 @@ public class InspectionMenuController {
 	
 	@FXML
 	private void showAddInspectorPane(ActionEvent event) throws Exception{
-		SceneController sceneController = new SceneController();
-		sceneController.changeDynamicPane(dynamicInspectionPane, "signUpInspection");
-		inspectorIDLabel.setText(new InspectionUser().generateID());
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/signUpInspection.fxml"));
+		Pane pane = (Pane) fxmlLoader.load();
+		InspectionMenuController inspectionMenuController = fxmlLoader.getController();
+		try {
+			dynamicInspectionPane.getChildren().clear();
+			dynamicInspectionPane.getChildren().add(pane);
+			inspectionMenuController.inspectorIDLabel.setText(new InspectionUser().generateIdentificationNumber());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@FXML
@@ -141,7 +146,7 @@ public class InspectionMenuController {
 		try {
 			id = inspectorIDLabel.getText();
 		} catch (NullPointerException npe) {
-			id = new InspectionUser().generateID();
+			id = new InspectionUser().generateIdentificationNumber();
 		}
 		InspectionUserController inspectionUserController = new InspectionUserController();
 		inspectionUserController.signUpUser(event, inspectionNameField.getText(),

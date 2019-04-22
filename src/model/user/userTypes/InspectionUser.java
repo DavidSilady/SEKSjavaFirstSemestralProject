@@ -1,6 +1,5 @@
 package model.user.userTypes;
 
-import javafx.event.Event;
 import model.DataStorage;
 import model.user.IUser;
 import model.user.User;
@@ -10,29 +9,28 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class InspectionUser extends User implements Serializable, IUser {
-	private String organizationName;
+	private String organizationICO;
 	private String identificationNumber;
 	private String phone;
 	
 	public InspectionUser() {
 	}
 	
-	public String generateID() {
+	public String generateIdentificationNumber () {
 		return UUID.randomUUID().toString();
 	}
 	
-	public InspectionUser (String organizationName, String identificationNumber, String phone, String mail, String name, String password) {
+	public InspectionUser (String organizationICO, String identificationNumber, String phone, String mail, String name, String password) {
 		super.setMail(mail);
 		super.setName(name);
 		super.setPassword(password);
-		this.organizationName = organizationName;
+		this.organizationICO = organizationICO;
 		this.identificationNumber = identificationNumber;
 		this.phone = phone;
 	}
 	
 	@Override
 	public User loginUser (String loginMail, String loginPassword) {
-		
 		return null;
 	}
 	
@@ -67,12 +65,12 @@ public class InspectionUser extends User implements Serializable, IUser {
 	
 	}
 	
-	public String getOrganizationName () {
-		return organizationName;
+	public String getOrganizationICO () {
+		return organizationICO;
 	}
 	
-	public void setOrganizationName (String organizationName) {
-		this.organizationName = organizationName;
+	public void setOrganizationICO (String organizationICO) {
+		this.organizationICO = organizationICO;
 	}
 	
 	public String getIdentificationNumber () {
