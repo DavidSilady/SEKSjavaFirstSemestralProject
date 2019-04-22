@@ -40,7 +40,7 @@ public class CompanyUserController extends UserController {
 	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
 		SceneController sceneController = new SceneController();
 		CompanyUser temp = new CompanyUser();
-		activeUser = (CompanyUser) temp.loginUser(actionEvent, loginMail, loginPassword);
+		activeUser = (CompanyUser) temp.loginUser(loginMail, loginPassword);
 		if (activeUser != null){
 			sceneController.switchStage(actionEvent, "companyUserInterface");
 		}
@@ -50,20 +50,16 @@ public class CompanyUserController extends UserController {
 	@Override
 	@SuppressWarnings("unchecked")
 	public void signUpUser (Event actionEvent,
-	                        String companyName,
-	                        String companyICO,
+	                        String name,
+	                        String organizationID,
 	                        String email,
 	                        String phone,
 	                        String password) throws Exception{
 		CompanyUser temp = new CompanyUser();
-		activeUser = (CompanyUser) temp.signUpUser(actionEvent, companyName, companyICO, email, phone, password);
+		activeUser = (CompanyUser) temp.signUpUser(name, organizationID, email, phone, password);
 		System.out.println("Signed up!");
 		SceneController sceneController = new SceneController();
 		sceneController.switchStage(actionEvent, "companyUserInterface");
 	}
 	
-	@Override
-	public void signUpUser (String name, String organization, String mail, String phone, String identificationNumber) {
-	
-	}
 }

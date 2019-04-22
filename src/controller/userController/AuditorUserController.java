@@ -14,7 +14,7 @@ public class AuditorUserController extends UserController {
 	private AuditorUser user;
 	@Override
 	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
-		user = (AuditorUser) new AuditorUser().loginUser(actionEvent, loginMail, loginPassword);
+		user = (AuditorUser) new AuditorUser().loginUser(loginMail, loginPassword);
 		if (user != null) {
 			SceneController sceneController = new SceneController();
 			sceneController.switchStage(actionEvent, "auditorUserInterface");
@@ -22,11 +22,7 @@ public class AuditorUserController extends UserController {
 	}
 	
 	@Override
-	public void signUpUser (Event actionEvent, String companyName, String companyICO, String email, String phone, String password) throws Exception {
-	}
-	
-	@Override
-	public void signUpUser (String name, String organization, String mail, String phone, String identificationNumber) {
+	public void signUpUser (Event actionEvent, String name, String organizationID, String email, String phone, String password) throws Exception {
 	}
 	
 	@Override

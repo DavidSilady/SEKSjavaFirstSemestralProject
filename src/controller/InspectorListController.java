@@ -7,7 +7,7 @@ import javafx.scene.control.TableView;
 import model.DataStorage;
 import model.user.userTypes.InspectionUser;
 
-public class AssignInspectorController {
+public class InspectorListController {
 	@FXML
 	private TableView inspectionListTable;
 	
@@ -19,9 +19,9 @@ public class AssignInspectorController {
 		try {
 			inspectionUsers = FXCollections.observableArrayList((ObservableList<InspectionUser>) DataStorage.getInstance().getInspectionUserList());
 		} catch (Exception e) {
+			System.out.println("InspectorList not found!");
 			//e.printStackTrace();
 		}
-		
 		inspectionListTable.setItems(inspectionUsers);
 	}
 }

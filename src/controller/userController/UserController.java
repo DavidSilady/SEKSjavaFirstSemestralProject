@@ -26,12 +26,11 @@ public abstract class UserController {
 	                String loginPassword) throws Exception;
 	
 	public abstract void signUpUser (Event actionEvent,
-	                 String companyName,
-	                 String companyICO,
+	                 String name,
+	                 String organizationID,
 	                 String email,
 	                 String phone,
 	                 String password) throws Exception;
-	public abstract void signUpUser (String name, String organization, String mail, String phone, String identificationNumber);
 	
 	public abstract User getActiveUser ();
 	

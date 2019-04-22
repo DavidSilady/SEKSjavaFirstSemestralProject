@@ -9,14 +9,14 @@ import java.io.Serializable;
 public class AuditorUser extends User implements Serializable, IUser {
 	
 	@Override
-	public User loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
+	public User loginUser (String loginMail, String loginPassword) {
 		if(loginMail.equals("admin") && loginPassword.equals("admin"))
 			return new AuditorUser();
 		return null;
 	}
 	
 	@Override
-	public User signUpUser (Event actionEvent, String companyName, String companyICO, String email, String phone, String password) throws Exception {
+	public User signUpUser (String name, String companyICO, String email, String phone, String password) {
 		return null;
 	}
 	

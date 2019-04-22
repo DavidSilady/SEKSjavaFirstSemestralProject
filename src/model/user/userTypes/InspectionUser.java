@@ -31,13 +31,17 @@ public class InspectionUser extends User implements Serializable, IUser {
 	}
 	
 	@Override
-	public User loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
+	public User loginUser (String loginMail, String loginPassword) {
 		
 		return null;
 	}
 	
 	@Override
-	public User signUpUser (Event actionEvent, String companyName, String companyICO, String email, String phone, String password) throws Exception {
+	public User signUpUser (String name, String companyICO, String email, String phone, String password){
+		ArrayList<CompanyUser> companyUserList = new ArrayList<>();
+		if (DataStorage.getInstance().getCompanyUserList() != null) {
+			companyUserList = (ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList();
+		}
 		return null;
 	}
 	

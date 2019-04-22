@@ -1,28 +1,32 @@
 package controller.userController;
 
+import controller.SceneController;
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;
 import model.user.User;
+import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
 import java.io.IOException;
 
 public class InspectionUserController extends UserController {
-	private InspectionUser user;
+	private InspectionUser activeUser;
 	@Override
 	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
 	}
 	
 	@Override
-	public void signUpUser (Event actionEvent, String companyName, String companyICO, String email, String phone, String password) throws Exception {
-	}
-	public void signUpUser (String name, String organization, String mail, String phone, String identificationNumber) {
-	
+	public void signUpUser (Event actionEvent, String name, String organizationID, String email, String phone, String password) throws Exception {
+		InspectionUser temp = new InspectionUser();
+		activeUser = (InspectionUser) temp.signUpUser(name, organizationID, email, phone, password);
+		System.out.println("Signed up!");
+		SceneController sceneController = new SceneController();
+		sceneController.switchStage(actionEvent, "companyUserInterface");
 	}
 	
 	@Override
 	public User getActiveUser () {
-		return user;
+		return activeUser;
 	}
 	
 	@Override

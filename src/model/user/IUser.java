@@ -5,11 +5,10 @@ import javafx.event.Event;
 public interface IUser {
 	String getMail ();
 	String getPassword ();
-	User loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception;
-	User signUpUser(Event actionEvent,
-	                       String companyName,
-	                       String companyICO,
+	User loginUser(String loginMail, String loginPassword);
+	User signUpUser(String name,
+	                       String organizationID,
 	                       String email,
 	                       String phone,
-	                       String password) throws Exception;
+	                       String password);
 }

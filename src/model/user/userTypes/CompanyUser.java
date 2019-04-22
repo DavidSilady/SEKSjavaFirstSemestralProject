@@ -1,6 +1,5 @@
 package model.user.userTypes;
 
-import javafx.event.Event;
 import model.DataStorage;
 import model.device.Device;
 import model.device.deviceTypes.ElectronicDevice;
@@ -27,18 +26,17 @@ public class CompanyUser extends User implements Serializable, IUser {
 	//Sign up method
 	@Override
 	@SuppressWarnings("unchecked")
-	public User signUpUser(Event actionEvent,
-	                       String companyName,
+	public User signUpUser(String name,
 	                       String companyICO,
 	                       String email,
 	                       String phone,
-	                       String password) throws Exception{
+	                       String password) {
 		ArrayList<CompanyUser> companyUserList = new ArrayList<>();
 		if (DataStorage.getInstance().getCompanyUserList() != null) {
 			companyUserList = (ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList();
 		}
 		CompanyUser company = new CompanyUser(
-				companyName,
+				name,
 				companyICO,
 				email,
 				phone,
@@ -55,7 +53,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	
 	//Login method
 	@Override
-	public User loginUser(Event actionEvent, String loginMail, String loginPassword) throws Exception {
+	public User loginUser(String loginMail, String loginPassword){
 		User user = super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
 		updateNotifications();
 		return user;
