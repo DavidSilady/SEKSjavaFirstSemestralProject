@@ -13,6 +13,8 @@ public class InspectionUser extends User implements Serializable, IUser {
 	private String identificationNumber;
 	private String phone;
 	
+	private ArrayList<CompanyUser> companyUsers;
+	
 	public InspectionUser() {
 	}
 	
@@ -97,5 +99,13 @@ public class InspectionUser extends User implements Serializable, IUser {
 	
 	public void setPhone (String phone) {
 		this.phone = phone;
+	}
+	
+	public ArrayList<CompanyUser> getCompanyUsers () {
+		return companyUsers;
+	}
+	
+	public void setCompanyUsers (ArrayList<CompanyUser> companyUsers) {
+		this.companyUsers = companyUsers;
 	}
 }

@@ -3,15 +3,20 @@ package controller.userController;
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;
 import model.user.User;
+import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class InspectionUserController extends UserController {
 	private InspectionUser activeUser;
+	
+	
 	@Override
 	public void loginUser (Event actionEvent, String loginMail, String loginPassword) throws Exception {
 	}
+	
 	
 	@Override
 	public void signUpUser (Event actionEvent, String name, String organizationID, String email, String phone, String password) throws Exception {

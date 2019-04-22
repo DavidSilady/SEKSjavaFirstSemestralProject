@@ -3,6 +3,7 @@ package model.user.userTypes;
 import model.DataStorage;
 import model.device.Device;
 import model.device.deviceTypes.ElectronicDevice;
+import model.notification.notificationTypes.Request;
 import model.user.IUser;
 import model.user.User;
 
@@ -26,7 +27,15 @@ public class CompanyUser extends User implements Serializable, IUser {
 	}
 	
 	public void assignInspector(InspectionUser inspectionUser) {
-		this.inspectorID = inspectionUser.getIdentificationNumber();
+		if (this.inspectorID == null) {
+			this.inspectorID = inspectionUser.getIdentificationNumber();
+			return;
+		}
+		System.out.println("You already have an inspector!");
+	}
+	
+	public void requestInspectorAssignment(InspectionUser inspectionUser) {
+		inspectionUser.addNotification(new Request(this));
 	}
 	
 	public CompanyUser () {
@@ -143,5 +152,9 @@ public class CompanyUser extends User implements Serializable, IUser {
 		super.setMail(mail);
 		this.phone = phone;
 		super.setPassword(password);
+	}
+	
+	public void revokeAssignment () {
+		this.inspectorID = null;
 	}
 }

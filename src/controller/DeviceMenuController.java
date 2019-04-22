@@ -57,7 +57,6 @@ public class DeviceMenuController {
 	public void setDynamicDevicePane(Node node) {
 		dynamicDevicePane.getChildren().add(node);
 	}
-	
 	private void loadDefaultPane() throws Exception{
 		SceneController sceneController = new SceneController();
 		sceneController.changeDynamicPane(dynamicDevicePane, "deviceList");

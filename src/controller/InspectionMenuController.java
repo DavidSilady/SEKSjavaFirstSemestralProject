@@ -76,7 +76,7 @@ public class InspectionMenuController {
 	
 	@FXML
 	void revokeAssignment(ActionEvent event) {
-	
+		company.revokeAssignment();
 	}
 	
 	private SceneController sceneController = new SceneController();
@@ -90,7 +90,6 @@ public class InspectionMenuController {
 			} catch (NullPointerException npe) {
 				//
 			}
-			
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
 			try {
