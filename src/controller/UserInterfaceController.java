@@ -7,14 +7,20 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.DataStorage;
 import model.notification.Notification;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 
@@ -93,7 +99,21 @@ public class UserInterfaceController {
 		exitButton.setOnAction((ActionEvent event) -> {
 			DataStorage.getInstance().serializeAll();
 			((Node) event.getSource()).getScene().getWindow().hide();
-			System.exit(0);
+			
+			FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/chooseUser.fxml"));
+			Parent root1 = null;
+			try {
+				root1 = (Parent) fxmlLoader.load();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			Stage stage = new Stage();
+			stage.initModality(Modality.APPLICATION_MODAL);
+			stage.initStyle(StageStyle.UNDECORATED);
+			stage.setScene(new Scene(root1, 700, 400));
+			stage.show();
+			
+			//System.exit(0);
 		});
 	}
 	
