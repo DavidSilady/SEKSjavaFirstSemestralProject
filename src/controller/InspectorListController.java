@@ -37,7 +37,7 @@ public class InspectorListController {
 		try {
 			companyUser = (CompanyUser) UserController.getInstance().getActiveUser();
 			inspectionTableButton.setOnAction(event -> {
-				companyUser.assignInspector(inspectionListTable.getSelectionModel().getSelectedItem());
+				companyUser.requestInspectorAssignment(inspectionListTable.getSelectionModel().getSelectedItem());
 			});
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");

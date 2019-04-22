@@ -31,11 +31,15 @@ public class CompanyUser extends User implements Serializable, IUser {
 			this.inspectorID = inspectionUser.getIdentificationNumber();
 			return;
 		}
-		System.out.println("You already have an inspector!");
+		System.out.println("This company already has an inspector!");
 	}
 	
 	public void requestInspectorAssignment(InspectionUser inspectionUser) {
-		inspectionUser.addNotification(new Request(this));
+		if (this.inspectorID == null) {
+			inspectionUser.addNotification(new Request(this));
+			return;
+		}
+		System.out.println("This company already has an inspector!");
 	}
 	
 	public CompanyUser () {

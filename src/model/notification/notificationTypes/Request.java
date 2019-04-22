@@ -7,8 +7,12 @@ import model.user.userTypes.InspectionUser;
 
 public class Request extends Notification {
 	private CompanyUser sender;
+	
 	public Request (CompanyUser sender) {
 		this.sender = sender;
+		super.setAggregatorName(sender.getName());
+		super.setAggregatorType("CompanyUser");
+		super.setText(sender.getName() + " has requested your assignment to the company.");
 	}
 	
 	public void acceptAssignment(InspectionUser inspectionUser) {
