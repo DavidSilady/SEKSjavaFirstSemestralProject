@@ -54,7 +54,7 @@ public class InspectionUser extends User implements Serializable, IUser {
 		
 		try {
 			inspectionUsers.add(inspectionUser);
-			DataStorage.getInstance().setCompanyUserList(inspectionUsers);
+			DataStorage.getInstance().setInspectionUserList(inspectionUsers);
 			return inspectionUser;
 		} catch (NullPointerException npe) {
 			System.out.println("Empty List!");
