@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="220.0" prefWidth="520.0" style="-fx-background-color: transparent;" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ConfirmationPopUp">
+    <children>
+        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="500.0" style="-fx-background-color: white;">
+            <children>
+                <JFXButton fx:id="cancelButton" contentDisplay="CENTER" layoutX="439.0" layoutY="3.0" prefHeight="42.0" prefWidth="56.0" ripplerFill="WHITE" style="-fx-background-color: white;" text=" ">
+                    <graphic>
+                        <FontAwesomeIconView fill="#c2185b" glyphName="CLOSE" size="25">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </FontAwesomeIconView>
+                    </graphic>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                </JFXButton>
+                <Label fx:id="typeLabel" contentDisplay="CENTER" layoutX="31.0" layoutY="26.0" text="Are you sure?" textAlignment="CENTER" textFill="#c2185b">
+                    <font>
+                        <Font name="Roboto Light" size="32.0" />
+                    </font>
+                </Label>
+                <JFXButton fx:id="cancelButton" layoutX="165.0" layoutY="144.0" prefHeight="42.0" prefWidth="84.0" text="Cancel" textFill="WHITE" />
+                <JFXButton fx:id="confirmButton" layoutX="251.0" layoutY="144.0" prefHeight="42.0" prefWidth="84.0" styleClass="pinkButton" text="Confirm" />
+            </children>
+        </AnchorPane>
+    </children>
+    <effect>
+        <DropShadow />
+    </effect>
+</AnchorPane>

@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import model.user.userTypes.CompanyUser;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -35,9 +36,11 @@ public class AddDeviceController {
 	private UserController activeUserController = UserController.getInstance();
 	
 	@FXML
-	void addDevice(ActionEvent event) {
-		CompanyUser company = (CompanyUser) activeUserController.getActiveUser();
-		company.addDevice(nameField.getText(), locationField.getText(), serialNumField.getText());
+	void addDevice(ActionEvent event) throws IOException {
+		if(new ConfirmationPopUp().isConfirmed()) {
+			CompanyUser company = (CompanyUser) activeUserController.getActiveUser();
+			company.addDevice(nameField.getText(), locationField.getText(), serialNumField.getText());
+		}
 	}
 	
 	@FXML
