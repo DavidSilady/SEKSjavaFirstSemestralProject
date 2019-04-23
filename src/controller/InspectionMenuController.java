@@ -2,6 +2,7 @@ package controller;
 
 import com.jfoenix.controls.JFXButton;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -75,12 +76,15 @@ public class InspectionMenuController {
 	
 	
 	@FXML
-	void revokeAssignment(ActionEvent event) {
-		company.revokeAssignment();
+	void revokeAssignment(ActionEvent event) throws IOException {
+		if (new ConfirmationPopUp().isConfirmed()) {
+			company.revokeAssignment();
+		}
 	}
 	
 	private SceneController sceneController = new SceneController();
 	private CompanyUser company;
+	
 	@FXML
 	void initialize() {
 		try {

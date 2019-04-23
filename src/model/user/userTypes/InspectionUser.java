@@ -76,7 +76,7 @@ public class InspectionUser extends User implements Serializable, IUser {
 	
 	@Override
 	public void updateNotifications () {
-	
+		System.out.println("No new notifications.");
 	}
 	
 	public String getOrganizationICO () {

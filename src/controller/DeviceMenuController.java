@@ -114,16 +114,6 @@ public class DeviceMenuController {
 		updateDeviceTable();
 	}
 	
-	public void assignInspectorButton (ActionEvent actionEvent) throws Exception{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/inspectorList.fxml"));
-		Pane deviceListTable = (Pane) fxmlLoader.load();
-		try {
-			dynamicDevicePane.getChildren().clear();
-			dynamicDevicePane.getChildren().add(deviceListTable);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
 	
 	public void setCompany (CompanyUser company) {
 		this.company = company;

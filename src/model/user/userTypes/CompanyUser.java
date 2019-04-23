@@ -159,6 +159,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	}
 	
 	public void revokeAssignment () {
+		getInspectorUser().getCompanyUsers().remove(this);
 		this.inspectorID = null;
 	}
 }

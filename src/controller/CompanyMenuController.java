@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class CompanyMenuController {
 	@FXML
+	private JFXButton removeCompanyButton;
+	@FXML
 	private AnchorPane root;
 	
 	@FXML
@@ -71,6 +73,7 @@ public class CompanyMenuController {
 	public void setRoot(AnchorPane root) {
 		this.root = root;
 	}
+	
 	public void setDynamicPane(AnchorPane dynamicPane) {
 		this.dynamicPane = dynamicPane;
 	}
@@ -117,6 +120,7 @@ public class CompanyMenuController {
 				}
 			});
 		} catch (ClassCastException cce) {
+			removeCompanyButton.setVisible(false);
 			expandButton.setOnAction(event -> {
 				try {
 					if(tableView.getSelectionModel().getSelectedItem() != null)
@@ -133,7 +137,6 @@ public class CompanyMenuController {
 	public void showCompanyList (ActionEvent actionEvent) throws Exception{
 		//temporary fix to reloading the selection model
 		showDefault();
-		updateTableView();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -144,7 +147,8 @@ public class CompanyMenuController {
 			} catch (NullPointerException e) {
 				companyUsers = FXCollections.observableArrayList();
 			}
-		} else {
+		}
+		else {
 			try {
 				companyUsers = FXCollections.observableArrayList((ArrayList<CompanyUser>) DataStorage.getInstance().getCompanyUserList());
 			} catch (NullPointerException npe) {
@@ -159,5 +163,12 @@ public class CompanyMenuController {
 		phone.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("phone"));
 		inspectionName.setCellValueFactory(new PropertyValueFactory<CompanyUser, String>("inspectionName"));
 		tableView.setItems(companyUsers);
+	}
+	
+	public void removeCompany (ActionEvent actionEvent) throws IOException {
+		if (new ConfirmationPopUp().isConfirmed()) {
+			inspectionUser.getCompanyUsers().remove(tableView.getSelectionModel().getSelectedItem());
+		}
+		updateTableView();
 	}
 }

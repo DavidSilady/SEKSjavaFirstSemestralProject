@@ -17,9 +17,10 @@
                 <TableColumn fx:id="inspectionName" prefWidth="152.0" text="Inspection" />
             </columns>
         </TableView>
-      <AnchorPane fx:id="tableButtonPane" layoutX="750.0" layoutY="570.0" prefHeight="100.0" prefWidth="200.0">
+      <AnchorPane fx:id="tableButtonPane" layoutX="568.0" layoutY="570.0" prefHeight="100.0" prefWidth="382.0">
          <children>
             <JFXButton fx:id="expandButton" layoutX="12.0" layoutY="18.0" onAction="#expand" prefHeight="65.0" prefWidth="177.0" styleClass="pinkButton" text="Expand" textFill="WHITE" />
+            <JFXButton fx:id="removeCompanyButton" layoutX="192.0" layoutY="18.0" onAction="#removeCompany" prefHeight="65.0" prefWidth="177.0" styleClass="pinkButton" text="Remove Company" textFill="WHITE" />
          </children>
       </AnchorPane>
     </children>
