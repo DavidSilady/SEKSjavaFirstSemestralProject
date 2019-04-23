@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
@@ -72,7 +73,6 @@ public class DeviceMenuController {
 			System.out.println("Not a company user!");
 			tableView.setSelectionModel(null);
 		}
-		
 		updateDeviceTable();
 		
 	}
@@ -140,5 +140,16 @@ public class DeviceMenuController {
 		lastAuditionCol.setCellValueFactory(new PropertyValueFactory<Date, String>("lastAudition"));
 		nextAuditionCol.setCellValueFactory(new PropertyValueFactory<Date, String>("nextAudition"));
 		tableView.setItems(deviceObservableList);
+	}
+	
+	public void markAsInspected (ActionEvent actionEvent) throws IOException {
+		if(new ConfirmationPopUp().isConfirmed()) {
+			try {
+				tableView.getSelectionModel().getSelectedItem().calculateNextInspection();
+			} catch (NullPointerException npe) {
+				//
+			}
+		}
+		updateDeviceTable();
 	}
 }
