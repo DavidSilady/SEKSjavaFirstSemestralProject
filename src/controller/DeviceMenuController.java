@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import com.jfoenix.controls.JFXButton;
 import controller.userController.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,6 +23,8 @@ import model.user.userTypes.CompanyUser;
 
 
 public class DeviceMenuController {
+	@FXML
+	private JFXButton markAsInspectedButton;
 	@FXML
 	private AnchorPane tableButtonPane;
 	@FXML
@@ -66,9 +69,9 @@ public class DeviceMenuController {
 	@FXML
 	@SuppressWarnings("unchecked")
 	void initialize()  {
-		
 		try {
 			company = (CompanyUser) UserController.getInstance().getActiveUser();
+			markAsInspectedButton.setVisible(false);
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
 			tableView.setSelectionModel(null);
