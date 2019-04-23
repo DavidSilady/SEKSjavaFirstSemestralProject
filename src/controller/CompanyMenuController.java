@@ -71,13 +71,16 @@ public class CompanyMenuController {
 	public void setRoot(AnchorPane root) {
 		this.root = root;
 	}
+	public void setDynamicPane(AnchorPane dynamicPane) {
+		this.dynamicPane = dynamicPane;
+	}
 	
 	private void showDeviceList(CompanyUser company) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
 		Pane companyListPane = (Pane) fxmlLoader.load();
 		DeviceMenuController deviceMenuController = fxmlLoader.getController();
 		deviceMenuController.setCompany(company);
-		try {
+		try {//issue here
 			dynamicPane.getChildren().clear();
 			dynamicPane.getChildren().add(companyListPane);
 		} catch (Exception e) {
@@ -90,6 +93,7 @@ public class CompanyMenuController {
 		Pane companyListPane = (Pane) fxmlLoader.load();
 		CompanyMenuController companyMenuController = fxmlLoader.getController();
 		companyMenuController.setRoot(this.root);
+		companyMenuController.setDynamicPane(this.dynamicPane);
 		try {
 			dynamicPane.getChildren().clear();
 			dynamicPane.getChildren().add(companyListPane);
@@ -128,8 +132,7 @@ public class CompanyMenuController {
 	
 	public void showCompanyList (ActionEvent actionEvent) throws Exception{
 		//temporary fix to reloading the selection model
-		SceneController sceneController = new SceneController();
-		sceneController.changeDynamicPane(dynamicPane, "companyList");
+		showDefault();
 		updateTableView();
 	}
 	
