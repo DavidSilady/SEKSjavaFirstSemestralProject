@@ -146,20 +146,22 @@ public class InspectionMenuController {
 	
 	@FXML
 	private void addNewInspectionUser(ActionEvent event) throws Exception {
-		String id;
-		try {
-			id = inspectorIDLabel.getText();
-		} catch (NullPointerException npe) {
-			id = new InspectionUser().generateIdentificationNumber();
+		if (new ConfirmationPopUp().isConfirmed()) {
+			String id;
+			try {
+				id = inspectorIDLabel.getText();
+			} catch (NullPointerException npe) {
+				id = new InspectionUser().generateIdentificationNumber();
+			}
+			InspectionUserController inspectionUserController = new InspectionUserController();
+			inspectionUserController.signUpUser(event, inspectionNameField.getText(),
+					inspectionOrganizationField.getText(),
+					inspectionMailField.getText(),
+					inspectionPhoneNumberField.getText(),
+					id
+			);
+			inspectorIDLabel.setText(new InspectionUser().generateIdentificationNumber());
 		}
-		InspectionUserController inspectionUserController = new InspectionUserController();
-		inspectionUserController.signUpUser(event, inspectionNameField.getText(),
-				inspectionOrganizationField.getText(),
-				inspectionMailField.getText(),
-				inspectionPhoneNumberField.getText(),
-				id
-				);
-		inspectorIDLabel.setText(new InspectionUser().generateIdentificationNumber());
 	}
 	
 }

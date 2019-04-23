@@ -5,7 +5,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 
-public class DataStorage implements java.io.Serializable{
+public class DataStorage implements Serializable{
 	private static DataStorage thisInstance = new DataStorage();
 	private ArrayList<? extends IUser> companyUserList = new ArrayList<>();
 	private ArrayList<? extends IUser> inspectionUserList = new ArrayList<>();

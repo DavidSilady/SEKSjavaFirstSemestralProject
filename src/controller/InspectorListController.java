@@ -13,6 +13,7 @@ import model.Observable;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class InspectorListController {
@@ -37,14 +38,26 @@ public class InspectorListController {
 		try {
 			companyUser = (CompanyUser) UserController.getInstance().getActiveUser();
 			inspectionTableButton.setOnAction(event -> {
-				companyUser.requestInspectorAssignment(inspectionListTable.getSelectionModel().getSelectedItem());
+				try {
+					if( new ConfirmationPopUp().isConfirmed()) {
+						companyUser.requestInspectorAssignment(inspectionListTable.getSelectionModel().getSelectedItem());
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			});
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
 			inspectionTableButton.setText("Remove Inspector");
 			inspectionTableButton.setOnAction(event -> {
-				DataStorage.getInstance().getInspectionUserList().remove(inspectionListTable.getSelectionModel().getSelectedItem());
-				updateTable();
+				try {
+					if (new ConfirmationPopUp().isConfirmed()) {
+						DataStorage.getInstance().getInspectionUserList().remove(inspectionListTable.getSelectionModel().getSelectedItem());
+						updateTable();
+					}
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			});
 		}
 		
