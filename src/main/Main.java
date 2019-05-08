@@ -12,7 +12,13 @@ import model.DataStorage;
 public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
-        DataStorage.getInstance().init();
+        class InitThread extends Thread {
+            public void run(){
+                DataStorage.getInstance().init();
+            }
+        }
+        InitThread initThread = new InitThread();
+        initThread.start();
         Parent root = FXMLLoader.load(getClass().getResource("../view/chooseUser.fxml"));
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("SEKS");

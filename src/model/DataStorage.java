@@ -45,24 +45,48 @@ public class DataStorage implements Serializable{
 	}
 	
 	public void init () {
-		companyUserList = deserializeUsers("companyUserData");
-		inspectionUserList = deserializeUsers("inspectionUserData");
-		auditorUserList = deserializeUsers("auditorUserData");
+		class Thread1 extends Thread {
+			public void run() {
+				companyUserList = deserializeUsers("companyUserData");
+			}
+		}
+		class Thread2 extends Thread {
+			public void run() {
+				inspectionUserList = deserializeUsers("inspectionUserData");
+			}
+		}
+		class Thread3 extends Thread {
+			public void run() {
+				auditorUserList = deserializeUsers("auditorUserData");
+			}
+		}
+		Thread1 thread1 = new Thread1();
+		Thread1 thread2 = new Thread1();
+		Thread1 thread3 = new Thread1();
+		thread1.start();
+		thread2.start();
+		thread3.start();
 	}
 	
 	private void serialize (ArrayList arrayList, String fileName) {
-		try
-		{
-			FileOutputStream fos = new FileOutputStream(fileName + ".ser");
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(arrayList);
-			oos.close();
-			fos.close();
+		class SThread extends Thread{
+			public void run(){
+				try
+				{
+					FileOutputStream fos = new FileOutputStream(fileName + ".ser");
+					ObjectOutputStream oos = new ObjectOutputStream(fos);
+					oos.writeObject(arrayList);
+					oos.close();
+					fos.close();
+				}
+				catch (IOException ioe)
+				{
+					ioe.printStackTrace();
+				}
+			}
 		}
-		catch (IOException ioe)
-		{
-			ioe.printStackTrace();
-		}
+		SThread sThread = new SThread();
+		sThread.start();
 	}
 	
 	@SuppressWarnings("unchecked")
