@@ -53,7 +53,7 @@ public class CompanyMenuController {
 		Pane companyListPane = (Pane) fxmlLoader.load();
 		DeviceMenuController deviceMenuController = fxmlLoader.getController();
 		deviceMenuController.setCompany(selectedItem);
-		deviceMenuController.showDefault();
+	//	deviceMenuController.showDefault();
 		try {
 			root.getChildren().clear();
 			root.getChildren().add(companyListPane);

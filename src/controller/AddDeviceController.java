@@ -34,16 +34,24 @@ public class AddDeviceController {
 	private JFXComboBox<?> deviceTypeComboBox;
 	
 	private UserController activeUserController = UserController.getInstance();
+	private CompanyUser company;
+	public void setCompany(CompanyUser company) {
+		this.company = company;
+	}
 	
 	@FXML
 	void addDevice(ActionEvent event) throws IOException {
 		if(new ConfirmationPopUp().isConfirmed()) {
-			CompanyUser company = (CompanyUser) activeUserController.getActiveUser();
 			company.addDevice(nameField.getText(), locationField.getText(), serialNumField.getText());
 		}
 	}
 	
 	@FXML
 	void initialize() {
+		try {
+			company = (CompanyUser) activeUserController.getActiveUser();
+		} catch (ClassCastException cce) {
+			//
+		}
 	}
 }

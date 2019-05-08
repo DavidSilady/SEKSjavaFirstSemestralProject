@@ -6,19 +6,19 @@ import controller.userController.UserController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.DataStorage;
 import model.notification.Notification;
+import model.notification.notificationTypes.Warning;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -53,15 +53,19 @@ public class UserInterfaceController {
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 		ArrayList<Notification> notifications = activeUserController.getActiveUser().getNotifications();
 		for (Notification notification: notifications) {
+			
 			JFXButton button = new JFXButton();
 			button.setPrefWidth(300);
 			button.setPrefHeight(50);
 			button.setText(notification.getClass().getSimpleName() + " from " + notification.getAggregatorName());
+			if (notification instanceof Warning) {
+				button.setBackground(new Background(new BackgroundFill(Color.web("#ffb300"), CornerRadii.EMPTY, Insets.EMPTY)));
+			}
 			button.setOnAction(event -> {
 				SceneController sceneController = new SceneController();
 				try {
 					sceneController.popUp(notification,"notificationPopUp");
-					notification.dismiss(activeUserController.getActiveUser());
+					//notification.dismiss(activeUserController.getActiveUser());
 					generateNotifications();
 				} catch (Exception e) {
 					e.printStackTrace();

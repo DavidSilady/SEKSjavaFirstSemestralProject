@@ -24,7 +24,7 @@ public class DataStorage implements Serializable{
 	
 	public void setCompanyUserList (ArrayList<? extends IUser> companyUserList) {
 		thisInstance.companyUserList = companyUserList;
-		thisInstance.save(companyUserList, "companyUserData");
+		thisInstance.serialize(companyUserList, "companyUserData");
 	}
 	
 	public ArrayList<? extends IUser> getInspectionUserList () {
@@ -33,7 +33,7 @@ public class DataStorage implements Serializable{
 	
 	public void setInspectionUserList (ArrayList<? extends IUser> inspectionUserList) {
 		thisInstance.inspectionUserList = inspectionUserList;
-		thisInstance.save(companyUserList, "companyUserData");
+		thisInstance.serialize(companyUserList, "companyUserData");
 	}
 	
 	public ArrayList<? extends IUser> getAuditorUserList () {
@@ -42,19 +42,19 @@ public class DataStorage implements Serializable{
 	
 	public void setAuditorUserList (ArrayList<? extends IUser> auditorUserList) {
 		thisInstance.auditorUserList = auditorUserList;
-		thisInstance.save(auditorUserList, "auditorUserData");
+		thisInstance.serialize(auditorUserList, "auditorUserData");
 	}
 	
 	public void init () {
-		companyUserList = load("companyUserData");
-		inspectionUserList = load("inspectionUserData");
-		auditorUserList = load("auditorUserData");
+		companyUserList = deserializeUsers("companyUserData");
+		inspectionUserList = deserializeUsers("inspectionUserData");
+		auditorUserList = deserializeUsers("auditorUserData");
 	}
 	
-	private void save (ArrayList arrayList, String name) {
+	private void serialize (ArrayList arrayList, String fileName) {
 		try
 		{
-			FileOutputStream fos = new FileOutputStream(name + ".ser");
+			FileOutputStream fos = new FileOutputStream(fileName + ".ser");
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 			oos.writeObject(arrayList);
 			oos.close();
@@ -67,10 +67,10 @@ public class DataStorage implements Serializable{
 	}
 	
 	@SuppressWarnings("unchecked")
-	private ArrayList<? extends IUser> load (String name) {
+	private ArrayList<? extends IUser> deserializeUsers (String fileName) {
 		try
 		{
-			FileInputStream fis = new FileInputStream(name + ".ser");
+			FileInputStream fis = new FileInputStream(fileName + ".ser");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			ArrayList<? extends IUser> arrayList = (ArrayList<? extends IUser>) ois.readObject();
 			ois.close();
@@ -100,12 +100,12 @@ public class DataStorage implements Serializable{
 	}
 	
 	public void serializeCurrentCompany () {
-		save(companyUserList, "companyUserData");
+		serialize(companyUserList, "companyUserData");
 	}
 	
 	public void serializeAll () {
-		save(companyUserList, "companyUserData");
-		save(auditorUserList, "auditorUserData");
-		save(inspectionUserList, "inspectionUserData");
+		serialize(companyUserList, "companyUserData");
+		serialize(auditorUserList, "auditorUserData");
+		serialize(inspectionUserList, "inspectionUserData");
 	}
 }

@@ -29,7 +29,9 @@ public class NotificationController {
 		this.notification = notification;
 		textLabel.setText(notification.getText());
 		typeLabel.setText(notification.getClass().getSimpleName());
-		try {
+		
+		//RTTI
+		if (notification instanceof Request) {
 			Request request = (Request) notification;
 			acceptButton.setOnAction(event -> {
 				request.acceptAssignment((InspectionUser) UserController.getInstance().getActiveUser());
@@ -37,7 +39,7 @@ public class NotificationController {
 				((Node) event.getSource()).getScene().getWindow().hide();
 			});
 		}
-		catch (ClassCastException cce) {
+		else {
 			acceptButton.setVisible(false);
 			dismissButton.setLayoutX(208);
 		}

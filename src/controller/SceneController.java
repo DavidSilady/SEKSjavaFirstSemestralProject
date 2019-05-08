@@ -60,6 +60,6 @@ public class SceneController {
 		stage.initStyle(StageStyle.TRANSPARENT);
 		stage.setScene(new Scene(root, 520, 220));
 		stage.getScene().setFill(Color.TRANSPARENT);
-		stage.show();
+		stage.showAndWait();
 	}
 }

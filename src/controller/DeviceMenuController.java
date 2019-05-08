@@ -19,6 +19,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.device.Device;
+import model.user.userTypes.AuditorUser;
 import model.user.userTypes.CompanyUser;
 
 
@@ -28,7 +29,9 @@ public class DeviceMenuController {
 	@FXML
 	private AnchorPane tableButtonPane;
 	@FXML
-	private AnchorPane dynamicDevicePane;
+	private AnchorPane dynamicPane;
+	@FXML
+	private AnchorPane root;
 	
 	private UserController activeUser = UserController.getInstance();
 	
@@ -58,35 +61,57 @@ public class DeviceMenuController {
 	@FXML
 	private TableColumn locationCol;
 	
-	public void setDynamicDevicePane(Node node) {
-		dynamicDevicePane.getChildren().add(node);
+	public void setRoot(AnchorPane root) {
+		this.root = root;
 	}
+	
+	public void setDynamicPane(AnchorPane dynamicPane) {
+		this.dynamicPane = dynamicPane;
+	}
+	
 	public void showDefault() throws Exception{
-		SceneController sceneController = new SceneController();
-		sceneController.changeDynamicPane(dynamicDevicePane, "deviceList");
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
+		Pane pane = (Pane) fxmlLoader.load();
+		DeviceMenuController deviceMenuController = fxmlLoader.getController();
+		deviceMenuController.setCompany(this.company);
+		deviceMenuController.setRoot(this.root);
+		deviceMenuController.setDynamicPane(this.dynamicPane);
+		try {
+			dynamicPane.getChildren().clear();
+			dynamicPane.getChildren().add(pane);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		updateDeviceTable();
 	}
 	
 	@FXML
 	@SuppressWarnings("unchecked")
 	void initialize()  {
-		try {
+		//RTTI
+		if (UserController.getInstance().getActiveUser() instanceof CompanyUser) {
 			company = (CompanyUser) UserController.getInstance().getActiveUser();
-			//markAsInspectedButton.setVisible(false);
-		} catch (ClassCastException cce) {
-			System.out.println("Not a company user!");
+			try {
+				markAsInspectedButton.setVisible(false);
+			} catch (NullPointerException npe) {
+				//
+			}
+		} else if (UserController.getInstance().getActiveUser() instanceof AuditorUser){
 			tableView.setSelectionModel(null);
 		}
-		updateDeviceTable();
 		
+		updateDeviceTable();
 	}
 	
 	
 	public void addDeviceScreen (ActionEvent actionEvent) throws Exception{
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/addDevice.fxml"));
 		Pane deviceListTable = (Pane) fxmlLoader.load();
+		AddDeviceController addDeviceController = fxmlLoader.getController();
+		addDeviceController.setCompany(this.company);
 		try {
-			dynamicDevicePane.getChildren().clear();
-			dynamicDevicePane.getChildren().add(deviceListTable);
+			dynamicPane.getChildren().clear();
+			dynamicPane.getChildren().add(deviceListTable);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -118,13 +143,13 @@ public class DeviceMenuController {
 	}
 	
 	
-	public void setCompany (CompanyUser company) {
-		this.company = company;
+	public void setCompany (CompanyUser company) throws Exception{
+		this.company = company;/*
 		try {
 			tableButtonPane.setVisible(false);
 		} catch (NullPointerException npe) {
 			//
-		}
+		}*/
 		updateDeviceTable();
 	}
 	
@@ -154,5 +179,9 @@ public class DeviceMenuController {
 			}
 		}
 		updateDeviceTable();
+	}
+	
+	public void setDynamicDevicePane (Pane deviceList) {
+		this.dynamicPane.getChildren().add(deviceList);
 	}
 }

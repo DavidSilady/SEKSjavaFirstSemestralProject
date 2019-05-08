@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import model.Exceptions.FieldNotFilledException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -102,7 +103,6 @@ public class LoginController {
 		} else {
 			loginPassword.setPromptText("Password");
 		}
-		
 		return filled;
 	}
 	
