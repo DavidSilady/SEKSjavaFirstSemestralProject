@@ -170,7 +170,7 @@ public class DeviceMenuController {
 		tableView.setItems(deviceObservableList);
 	}
 	
-	public void markAsInspected (ActionEvent actionEvent) throws IOException {
+	public void markAsInspected (ActionEvent actionEvent) throws Exception {
 		if(new ConfirmationPopUp().isConfirmed()) {
 			try {
 				tableView.getSelectionModel().getSelectedItem().calculateNextInspection();
@@ -179,6 +179,7 @@ public class DeviceMenuController {
 			}
 		}
 		updateDeviceTable();
+		showDefault();
 	}
 	
 	public void setDynamicDevicePane (Pane deviceList) {
