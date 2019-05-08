@@ -11,8 +11,7 @@ public class DataStorage implements Serializable{
 	private ArrayList<? extends IUser> inspectionUserList = new ArrayList<>();
 	private ArrayList<? extends IUser> auditorUserList = new ArrayList<>();
 	
-	private DataStorage(){
-	}
+	private DataStorage(){}
 	
 	public static DataStorage getInstance () {
 		return thisInstance;

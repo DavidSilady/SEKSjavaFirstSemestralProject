@@ -24,6 +24,9 @@ import model.user.userTypes.CompanyUser;
 
 
 public class DeviceMenuController {
+	
+	@FXML
+	private AnchorPane listRoot;
 	@FXML
 	private JFXButton markAsInspectedButton;
 	@FXML
@@ -74,8 +77,8 @@ public class DeviceMenuController {
 		Pane pane = (Pane) fxmlLoader.load();
 		DeviceMenuController deviceMenuController = fxmlLoader.getController();
 		deviceMenuController.setCompany(this.company);
-		deviceMenuController.setRoot(this.root);
-		deviceMenuController.setDynamicPane(this.dynamicPane);
+		/*deviceMenuController.setRoot(this.root);
+		deviceMenuController.setDynamicPane(this.dynamicPane);*/
 		try {
 			dynamicPane.getChildren().clear();
 			dynamicPane.getChildren().add(pane);
@@ -97,7 +100,8 @@ public class DeviceMenuController {
 				//
 			}
 		} else if (UserController.getInstance().getActiveUser() instanceof AuditorUser){
-			tableView.setSelectionModel(null);
+			//tableView.setSelectionModel(null);
+			markAsInspectedButton.setText("Audit");
 		}
 		
 		updateDeviceTable();
@@ -173,13 +177,26 @@ public class DeviceMenuController {
 	public void markAsInspected (ActionEvent actionEvent) throws Exception {
 		if(new ConfirmationPopUp().isConfirmed()) {
 			try {
-				tableView.getSelectionModel().getSelectedItem().calculateNextInspection();
+				activeUser.getActiveUser().updateDevice(tableView.getSelectionModel().getSelectedItem());
 			} catch (NullPointerException npe) {
-				//
+				//Might not be selected
 			}
 		}
 		updateDeviceTable();
-		showDefault();
+		
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
+		Pane pane = (Pane) fxmlLoader.load();
+		DeviceMenuController deviceMenuController = fxmlLoader.getController();
+		deviceMenuController.setCompany(this.company);
+		/*deviceMenuController.setRoot(this.root);
+		deviceMenuController.setDynamicPane(this.dynamicPane);*/
+		try {
+			listRoot.getChildren().clear();
+			listRoot.getChildren().add(pane);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	//	showDefault();
 	}
 	
 	public void setDynamicDevicePane (Pane deviceList) {

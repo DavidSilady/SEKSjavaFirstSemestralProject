@@ -81,6 +81,11 @@ public class CompanyUser extends User implements Serializable, IUser {
 		return user;
 	}
 	
+	@Override
+	public void updateDevice (Device device) {
+	
+	}
+	
 	public void updateNotifications () {
 		for (Device device : getDeviceList()) {
 			device.checkForNotifications(this);
@@ -93,7 +98,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	}
 	
 	public void addDevice(String name, String location, String serialNum) {
-		Device newDevice = new ElectronicDevice(name, location, serialNum, this);
+		Device newDevice = new ElectronicDevice(name, location, serialNum, this, 100);
 		deviceList.add(newDevice);
 		DataStorage.getInstance().serializeCurrentCompany();
 		System.out.println("Device " + newDevice.getName() + " added!");

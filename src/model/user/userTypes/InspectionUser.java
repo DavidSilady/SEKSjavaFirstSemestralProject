@@ -1,6 +1,7 @@
 package model.user.userTypes;
 
 import model.DataStorage;
+import model.device.Device;
 import model.user.IUser;
 import model.user.User;
 
@@ -72,6 +73,11 @@ public class InspectionUser extends User implements Serializable, IUser {
 		* Sends a mail containing the generated password, which will be recommended
 		* to change.
 		 */
+	}
+	
+	@Override
+	public void updateDevice (Device device) {
+		device.calculateNextInspection();
 	}
 	
 	@Override

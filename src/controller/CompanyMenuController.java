@@ -26,6 +26,7 @@ public class CompanyMenuController {
 	@FXML
 	private AnchorPane root;
 	
+	
 	@FXML
 	private TableColumn mail;
 	
@@ -79,16 +80,13 @@ public class CompanyMenuController {
 	}
 	
 	private void showDeviceList(CompanyUser company) throws Exception{
-		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceMenu.fxml"));
-		Pane deviceMenu = (Pane) fxmlLoader.load();
+		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
+		Pane companyListPane = (Pane) fxmlLoader.load();
 		DeviceMenuController deviceMenuController = fxmlLoader.getController();
-		FXMLLoader fxmlLoader1 = new FXMLLoader(getClass().getResource("/view/deviceList.fxml"));
-		Pane deviceList = (Pane) fxmlLoader1.load();
-		deviceMenuController.setDynamicDevicePane(deviceList);
 		deviceMenuController.setCompany(company);
-		try {
+		try {//issue here
 			dynamicPane.getChildren().clear();
-			dynamicPane.getChildren().add(deviceMenu);
+			dynamicPane.getChildren().add(companyListPane);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

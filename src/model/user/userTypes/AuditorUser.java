@@ -1,6 +1,7 @@
 package model.user.userTypes;
 
 import javafx.event.Event;
+import model.device.Device;
 import model.user.IUser;
 import model.user.User;
 
@@ -18,6 +19,11 @@ public class AuditorUser extends User implements Serializable, IUser {
 	@Override
 	public User signUpUser (String name, String organizationID, String email, String phone, String password) {
 		return null;
+	}
+	
+	@Override
+	public void updateDevice (Device device) {
+		device.calculateNextAudition();
 	}
 	
 	@Override

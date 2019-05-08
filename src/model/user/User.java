@@ -1,6 +1,7 @@
 package model.user;
 
 import model.Observer;
+import model.device.Device;
 import model.notification.Notification;
 
 import java.io.Serializable;
@@ -11,6 +12,8 @@ public abstract class User implements Serializable, IUser, Observer {
 	private String mail;
 	private String password;
 	private int dismissLimitInDays = 1; // in days
+	
+	public abstract void updateDevice(Device device);
 	
 	private ArrayList<Notification> notifications = new ArrayList<>();
 	public abstract void updateNotifications ();
