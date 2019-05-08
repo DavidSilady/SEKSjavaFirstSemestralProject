@@ -19,7 +19,6 @@ public class GasDevice extends Device implements Serializable {
 	public void calculateNextAudition () {
 		//just illustrative for now
 		setNextAudition(LocalDate.now().plusWeeks(3));
-		
 	}
 	
 	public void calculateNextInspection () {

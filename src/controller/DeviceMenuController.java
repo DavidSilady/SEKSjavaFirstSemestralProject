@@ -71,7 +71,7 @@ public class DeviceMenuController {
 	void initialize()  {
 		try {
 			company = (CompanyUser) UserController.getInstance().getActiveUser();
-			markAsInspectedButton.setVisible(false);
+			//markAsInspectedButton.setVisible(false);
 		} catch (ClassCastException cce) {
 			System.out.println("Not a company user!");
 			tableView.setSelectionModel(null);

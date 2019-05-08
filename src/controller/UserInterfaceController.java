@@ -112,7 +112,6 @@ public class UserInterfaceController {
 			stage.initStyle(StageStyle.UNDECORATED);
 			stage.setScene(new Scene(root1, 700, 400));
 			stage.show();
-			
 			//System.exit(0);
 		});
 	}

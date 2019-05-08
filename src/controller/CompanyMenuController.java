@@ -120,7 +120,7 @@ public class CompanyMenuController {
 				}
 			});
 		} catch (ClassCastException cce) {
-			removeCompanyButton.setVisible(false);
+			//removeCompanyButton.setVisible(false);
 			expandButton.setOnAction(event -> {
 				try {
 					if(tableView.getSelectionModel().getSelectedItem() != null)

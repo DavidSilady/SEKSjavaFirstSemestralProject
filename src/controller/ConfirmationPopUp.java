@@ -58,7 +58,6 @@ public class ConfirmationPopUp {
 		return confirmationPopUp.getConfirmed();
 	}
 	
-	
 	@FXML
 	void initialize() {
 		confirmed = false;
