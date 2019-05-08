@@ -12,13 +12,23 @@ import java.time.LocalDate;
 
 //gonna be abstract . . . one day. . .
 public abstract class Device implements Serializable, Observable {
-	private enum deviceClass {
+	public enum DeviceClass {
 		A,
 		B,
 		C,
 		D,
 		E,
 		F
+	}
+	DeviceClass deviceClass;
+	public DeviceClass getDeviceClass() {
+		return this.deviceClass;
+	}
+	
+	
+	
+	public void setDeviceClass (DeviceClass deviceClass) {
+		this.deviceClass = deviceClass;
 	}
 	
 	private String name;
