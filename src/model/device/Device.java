@@ -155,7 +155,6 @@ public abstract class Device implements Serializable, Observable {
 		this.serialNum = serialNum;
 	}
 	
-	
 	public LocalDate getLastInspection () {
 		return lastInspection;
 	}
