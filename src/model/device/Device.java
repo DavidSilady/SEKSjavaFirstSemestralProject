@@ -57,6 +57,11 @@ public abstract class Device implements Serializable, Observable {
 	public abstract void calculateNextInspection();
 	public abstract void calculateNextAudition ();
 	
+	/**
+	 * @see model.Observer
+	 * @see Observable
+	 * Checks notifications and whether they should be sent to the user (observer)
+	 */
 	public void checkForNotifications (User user) {
 		checkForReminders(user);
 		checkForWarnings(user);
@@ -76,6 +81,9 @@ public abstract class Device implements Serializable, Observable {
 		}
 	}
 	
+	/**
+	 * @see Observable
+	 */
 	public void notifyUser(User user, Notification notification) {
 		if(!user.getNotifications().contains(notification))
 		user.addNotification(notification);

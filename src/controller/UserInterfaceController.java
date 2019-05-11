@@ -23,7 +23,9 @@ import model.notification.notificationTypes.Warning;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
+/**
+ * Used by all types of users to control the main navigation pane
+ */
 public class UserInterfaceController {
 	public FlowPane notificationPane;
 	@FXML
@@ -53,7 +55,6 @@ public class UserInterfaceController {
 		scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
 		ArrayList<Notification> notifications = activeUserController.getActiveUser().getNotifications();
 		for (Notification notification: notifications) {
-			
 			JFXButton button = new JFXButton();
 			button.setPrefWidth(300);
 			button.setPrefHeight(50);
@@ -65,7 +66,6 @@ public class UserInterfaceController {
 				SceneController sceneController = new SceneController();
 				try {
 					sceneController.popUp(notification,"notificationPopUp");
-					//notification.dismiss(activeUserController.getActiveUser());
 					generateNotifications();
 				} catch (Exception e) {
 					e.printStackTrace();

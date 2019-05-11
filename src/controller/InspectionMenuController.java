@@ -18,6 +18,9 @@ import javafx.scene.layout.Pane;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
+/**
+ * Controls the inspection management menu
+ */
 public class InspectionMenuController {
 	@FXML
 	private ResourceBundle resources;

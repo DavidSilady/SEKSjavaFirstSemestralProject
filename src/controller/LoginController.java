@@ -66,8 +66,6 @@ public class LoginController {
 			loginSignUpButton.setVisible(false);
 		}
 		
-		
-		
 		loginMail.requestFocus();
 		
 		userIdentityLabel.setText(activeUserController.getClass().getSimpleName().replace("UserController", ""));

@@ -22,6 +22,9 @@ import model.user.userTypes.InspectionUser;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Controls the company management menu
+ */
 public class CompanyMenuController {
 	@FXML
 	private JFXButton removeCompanyButton;

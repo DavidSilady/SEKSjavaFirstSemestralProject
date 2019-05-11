@@ -15,6 +15,9 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.notification.Notification;
 
+/**
+ * Used for changing scenes/stages/panes
+ */
 public class SceneController {
 	public void setScene (javafx.event.ActionEvent actionEvent, String sceneName) throws Exception{
 		FXMLLoader loader = new FXMLLoader();

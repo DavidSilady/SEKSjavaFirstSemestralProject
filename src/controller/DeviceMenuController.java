@@ -22,7 +22,9 @@ import model.device.Device;
 import model.user.userTypes.AuditorUser;
 import model.user.userTypes.CompanyUser;
 
-
+/**
+ * Controls the device management menu
+ */
 public class DeviceMenuController {
 	
 	@FXML

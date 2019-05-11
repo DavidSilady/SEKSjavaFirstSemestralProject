@@ -18,6 +18,13 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+/**
+ * Creates a pop up, that stops the application until an action is confirmed.
+ * Usage: surround a body of code to be confirmed with
+ * if(new ConfirmationPopUp.isConfirmed()) {
+ *     //Body
+ * }
+ */
 public class ConfirmationPopUp {
 	
 	@FXML

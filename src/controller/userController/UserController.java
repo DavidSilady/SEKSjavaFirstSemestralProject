@@ -6,6 +6,10 @@ import model.user.User;
 
 import java.io.IOException;
 
+/**
+ * Design Pattern: Singleton
+ * Used for controlling different types of users
+ */
 public abstract class UserController {
 	private static UserController userController;
 	public static UserController getInstance() {

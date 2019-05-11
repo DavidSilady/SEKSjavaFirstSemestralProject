@@ -25,6 +25,9 @@ public class NotificationController {
 	@FXML
 	private JFXButton acceptButton;
 	
+	/**
+	 * Sets all the labels and button functionality according to the notification
+	 */
 	public void setNotification(Notification notification) {
 		this.notification = notification;
 		textLabel.setText(notification.getText());
