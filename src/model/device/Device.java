@@ -12,7 +12,7 @@ import java.time.LocalDate;
 
 //gonna be abstract . . . one day. . .
 public abstract class Device implements Serializable, Observable {
-	public enum DeviceClass {
+	public enum DeviceClassification {
 		A,
 		B,
 		C,
@@ -20,15 +20,15 @@ public abstract class Device implements Serializable, Observable {
 		E,
 		F
 	}
-	DeviceClass deviceClass;
-	public DeviceClass getDeviceClass() {
-		return this.deviceClass;
+	DeviceClassification deviceClassification;
+	public DeviceClassification getDeviceClassification () {
+		return this.deviceClassification;
 	}
 	
 	
 	
-	public void setDeviceClass (DeviceClass deviceClass) {
-		this.deviceClass = deviceClass;
+	public void setDeviceClassification (DeviceClassification deviceClassification) {
+		this.deviceClassification = deviceClassification;
 	}
 	
 	private String name;

@@ -3,6 +3,7 @@ package model.user.userTypes;
 import model.DataStorage;
 import model.device.Device;
 import model.device.deviceTypes.ElectronicDevice;
+import model.device.deviceTypes.GasDevice;
 import model.notification.notificationTypes.Request;
 import model.user.IUser;
 import model.user.User;
@@ -86,6 +87,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	
 	}
 	
+	
 	public void updateNotifications () {
 		for (Device device : getDeviceList()) {
 			device.checkForNotifications(this);
@@ -97,10 +99,17 @@ public class CompanyUser extends User implements Serializable, IUser {
 		return deviceList;
 	}
 	
-	public void addDevice(String name, String location, String serialNum) {
-		Device newDevice = new ElectronicDevice(name, location, serialNum, this, 100);
+	public void addElectronicDevice(String name, String location, String serialNum, int mod) {
+		Device newDevice = new ElectronicDevice(name, location, serialNum, this, mod);
 		deviceList.add(newDevice);
-		DataStorage.getInstance().serializeCurrentCompany();
+		DataStorage.getInstance().serializeAll();
+		System.out.println("Device " + newDevice.getName() + " added!");
+	}
+	
+	public void addGasDevice(String name, String location, String serialNum, int mod) {
+		Device newDevice = new GasDevice(name, location, serialNum, this, mod);
+		deviceList.add(newDevice);
+		DataStorage.getInstance().serializeAll();
 		System.out.println("Device " + newDevice.getName() + " added!");
 	}
 	

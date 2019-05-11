@@ -14,6 +14,8 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.DataStorage;
+import model.user.User;
+import model.user.userTypes.AuditorUser;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
@@ -167,6 +169,9 @@ public class CompanyMenuController {
 	}
 	
 	public void removeCompany (ActionEvent actionEvent) throws IOException {
+		if (UserController.getInstance().getActiveUser() instanceof AuditorUser) {
+			DataStorage.getInstance().getCompanyUserList().remove(tableView.getSelectionModel().getSelectedItem());
+		} else
 		if (new ConfirmationPopUp().isConfirmed()) {
 			inspectionUser.getCompanyUsers().remove(tableView.getSelectionModel().getSelectedItem());
 		}

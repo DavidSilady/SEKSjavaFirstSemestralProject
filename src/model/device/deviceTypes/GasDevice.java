@@ -5,7 +5,6 @@ import model.user.User;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 import static java.lang.StrictMath.round;
 
@@ -14,26 +13,26 @@ public class GasDevice extends Device implements Serializable {
 	private double modifier = 1;
 	private int defaultTimeDistance = 100;
 	
-	private DeviceClass calculateDeviceClass() {
+	private DeviceClassification calculateDeviceClass() {
 		if (volume > 8000)
-			return DeviceClass.A;
+			return DeviceClassification.A;
 		if (volume > 5000)
-			return DeviceClass.B;
+			return DeviceClassification.B;
 		if (volume > 1250)
-			return DeviceClass.C;
+			return DeviceClassification.C;
 		if (volume > 500)
-			return DeviceClass.D;
+			return DeviceClassification.D;
 		if (volume > 50)
-			return DeviceClass.E;
+			return DeviceClassification.E;
 		else
-			return DeviceClass.F;
+			return DeviceClassification.F;
 	}
 	
 	
 	public GasDevice (String name, String location, String serialNum, User user, int mod) {
 		super(name, location, serialNum);
 		this.volume = mod;
-		super.setDeviceClass(calculateDeviceClass());
+		super.setDeviceClassification(calculateDeviceClass());
 		calculateNextAudition();
 		calculateNextInspection();
 	}
@@ -41,15 +40,15 @@ public class GasDevice extends Device implements Serializable {
 	private void calculateModifier() {
 		double newMod = this.modifier * 0.95;
 		double classMod;
-		if (getDeviceClass().equals(DeviceClass.A))
+		if (getDeviceClassification().equals(DeviceClassification.A))
 			classMod = 0.3;
-		else if (getDeviceClass().equals(DeviceClass.B))
+		else if (getDeviceClassification().equals(DeviceClassification.B))
 			classMod = 0.5;
-		else if (getDeviceClass().equals(DeviceClass.C))
+		else if (getDeviceClassification().equals(DeviceClassification.C))
 			classMod = 0.7;
-		else if (getDeviceClass().equals(DeviceClass.D))
+		else if (getDeviceClassification().equals(DeviceClassification.D))
 			classMod = 0.85;
-		else if (getDeviceClass().equals(DeviceClass.E))
+		else if (getDeviceClassification().equals(DeviceClassification.E))
 			classMod = 0.95;
 		else classMod = 1;
 		

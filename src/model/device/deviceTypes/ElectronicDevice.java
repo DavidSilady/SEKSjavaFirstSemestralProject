@@ -5,7 +5,6 @@ import model.user.User;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Date;
 
 import static java.lang.StrictMath.round;
 
@@ -16,15 +15,15 @@ public class ElectronicDevice extends Device implements Serializable {
 	
 	private void calculateModifier() {
 		double classMod;
-		if (getDeviceClass().equals(DeviceClass.A))
+		if (getDeviceClassification().equals(DeviceClassification.A))
 			classMod = 0.3;
-		else if (getDeviceClass().equals(DeviceClass.B))
+		else if (getDeviceClassification().equals(DeviceClassification.B))
 			classMod = 0.5;
-		else if (getDeviceClass().equals(DeviceClass.C))
+		else if (getDeviceClassification().equals(DeviceClassification.C))
 			classMod = 0.7;
-		else if (getDeviceClass().equals(DeviceClass.D))
+		else if (getDeviceClassification().equals(DeviceClassification.D))
 			classMod = 0.85;
-		else if (getDeviceClass().equals(DeviceClass.E))
+		else if (getDeviceClassification().equals(DeviceClassification.E))
 			classMod = 0.95;
 		else classMod = 1;
 		
@@ -34,24 +33,24 @@ public class ElectronicDevice extends Device implements Serializable {
 	public ElectronicDevice (String name, String location, String serialNum, User user, int mod) {
 		super(name, location, serialNum);
 		this.voltage = mod;
-		super.setDeviceClass(calculateDeviceClass());
+		super.setDeviceClassification(calculateDeviceClass());
 		calculateNextAudition();
 		calculateNextInspection();
 	}
 	
-	private DeviceClass calculateDeviceClass() {
+	private DeviceClassification calculateDeviceClass() {
 		if (voltage > 800)
-			return DeviceClass.A;
+			return DeviceClassification.A;
 		if (voltage > 450)
-			return DeviceClass.B;
+			return DeviceClassification.B;
 		if (voltage > 300)
-			return DeviceClass.C;
+			return DeviceClassification.C;
 		if (voltage > 150)
-			return DeviceClass.D;
+			return DeviceClassification.D;
 		if (voltage > 100)
-			return DeviceClass.E;
+			return DeviceClassification.E;
 		else
-			return DeviceClass.F;
+			return DeviceClassification.F;
 	}
 	
 	public void calculateNextAudition () {
