@@ -4,11 +4,9 @@ import controller.SceneController;
 import javafx.event.Event;
 import javafx.scene.layout.AnchorPane;
 import model.user.User;
-import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class InspectionUserController extends UserController {
 	private InspectionUser activeUser;

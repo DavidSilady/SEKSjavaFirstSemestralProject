@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="690.0" prefWidth="980.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AddDeviceController">
    <children>
       <JFXTextField fx:id="nameField" layoutX="119.0" layoutY="118.0" prefHeight="31.0" prefWidth="304.0" promptText="Name" />

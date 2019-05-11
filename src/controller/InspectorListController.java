@@ -9,7 +9,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.DataStorage;
-import model.Observable;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
 

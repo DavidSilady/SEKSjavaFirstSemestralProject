@@ -6,7 +6,6 @@ import model.notification.Notification;
 import model.user.IUser;
 import model.user.User;
 
-import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;

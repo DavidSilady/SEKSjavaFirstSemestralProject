@@ -1,11 +1,6 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-
-import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import com.jfoenix.controls.JFXTextField;
 import controller.userController.InspectionUserController;
 import controller.userController.UserController;
@@ -17,6 +12,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import model.user.userTypes.CompanyUser;
 import model.user.userTypes.InspectionUser;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Controls the inspection management menu
