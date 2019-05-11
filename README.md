@@ -114,6 +114,7 @@ Hodnotenie:
               .model.controller.NotificationController (riadok: 52 - 60)
               .model.controller.ConfirmationPopUp (riadok: 68 - 77)
          - AspectJ: bohužiaľ som to nerozbehal
+         
      Hlavné: 
          Dedenie/Polymorfizmus:
               .model.notification
