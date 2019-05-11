@@ -5,38 +5,43 @@ import model.Observable;
 import model.notification.notificationTypes.Reminder;
 import model.notification.notificationTypes.Warning;
 import model.user.User;
-import model.user.userTypes.InspectionUser;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-//gonna be abstract . . . one day. . .
 public abstract class Device implements Serializable, Observable {
+	public Device (String name, String location, String serialNum) {
+		this.name = name;
+		this.location = location;
+		this.serialNum = serialNum;
+	}
+	
+	/**
+	 * Depends on parameters of a device
+	 */
 	public enum DeviceClassification {
 		A,
 		B,
 		C,
 		D,
 		E,
-		F
+		F;
+		
 	}
 	
-	DeviceClassification deviceClassification;
-	public DeviceClassification getDeviceClassification () {
+	private DeviceClassification deviceClassification;
+	
+	protected DeviceClassification getDeviceClassification () {
 		return this.deviceClassification;
 	}
 	
-	
-	
-	public void setDeviceClassification (DeviceClassification deviceClassification) {
+	protected void setDeviceClassification (DeviceClassification deviceClassification) {
 		this.deviceClassification = deviceClassification;
 	}
 	
 	private String name;
 	private String location;
 	private String serialNum;
-	
-	private InspectionUser inspection;
 	
 	private String note;
 	
@@ -71,34 +76,34 @@ public abstract class Device implements Serializable, Observable {
 		}
 	}
 	
-	public Device (String name, String location, String serialNum) {
-		this.name = name;
-		this.location = location;
-		this.serialNum = serialNum;
-	}
-	
 	public void notifyUser(User user, Notification notification) {
 		if(!user.getNotifications().contains(notification))
 		user.addNotification(notification);
 	}
 	
-	private boolean isWarning (Notification notification) {
-		return notification.getClass().isInstance(new Warning("", this));
+	private boolean notWarning (Notification notification) {
+		return ! (notification instanceof Warning);
 	}
 	
+	/**
+	 * Checks whether any devices are out of date and generates warnings if need to.
+	 */
 	private void checkForWarnings(User user) {
-		if (auditionNotification == null || !isWarning(auditionNotification)) {
+		if (notWarning(auditionNotification)) {
 			if (getNextAudition().isBefore(LocalDate.now().plusDays(1))) {
 				this.auditionNotification = new Warning(getName() + " requires Audition!", this);
 			}
 		}
-		if (inspectionNotification == null || !isWarning(inspectionNotification)) {
+		if (notWarning(inspectionNotification)) {
 			if (getNextInspection().isBefore(LocalDate.now().plusDays(1))) {
 				this.inspectionNotification = new Warning(getName() + " requires Inspection!", this);
 			}
 		}
 	}
 	
+	/**
+	 * Checks whether any devices are out of date and generates reminders if need to.
+	 */
 	private void checkForReminders(User user) {
 		if (this.auditionNotification == null) {
 			if (getNextAudition().isBefore(LocalDate.now().plusMonths(1))) {
@@ -112,7 +117,6 @@ public abstract class Device implements Serializable, Observable {
 			}
 		}
 	}
-	
 	
 	//GETTERS N SETTERS
 	public void setNextInspection (LocalDate nextInspection) {

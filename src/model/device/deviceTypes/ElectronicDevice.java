@@ -13,6 +13,9 @@ public class ElectronicDevice extends Device implements Serializable {
 	private int voltage;
 	private int defaultTimeDistance = 365;
 	
+	/**
+	 * Modifier changes depending on the classification of device
+	 */
 	private void calculateModifier() {
 		double classMod;
 		if (getDeviceClassification().equals(DeviceClassification.A))

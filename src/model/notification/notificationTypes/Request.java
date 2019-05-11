@@ -10,8 +10,8 @@ public class Request extends Notification {
 	
 	public Request (CompanyUser sender) {
 		this.sender = sender;
-		super.setAggregatorName(sender.getName());
-		super.setAggregatorType("CompanyUser");
+		super.setGeneratorName(sender.getName());
+		super.setGeneratorType("CompanyUser");
 		super.setText(sender.getName() + " has requested your assignment to the company.");
 	}
 	
@@ -20,6 +20,9 @@ public class Request extends Notification {
 		sender.assignInspector(inspectionUser);
 	}
 	
+	/**
+	 * Removes the notification permanently
+	 */
 	@Override
 	public void dismiss (User user) {
 		user.getNotifications().remove(this);

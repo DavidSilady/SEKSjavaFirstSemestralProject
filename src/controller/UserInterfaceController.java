@@ -57,7 +57,7 @@ public class UserInterfaceController {
 			JFXButton button = new JFXButton();
 			button.setPrefWidth(300);
 			button.setPrefHeight(50);
-			button.setText(notification.getClass().getSimpleName() + " from " + notification.getAggregatorName());
+			button.setText(notification.getClass().getSimpleName() + " from " + notification.getGeneratorName());
 			if (notification instanceof Warning) {
 				button.setBackground(new Background(new BackgroundFill(Color.web("#ffb300"), CornerRadii.EMPTY, Insets.EMPTY)));
 			}

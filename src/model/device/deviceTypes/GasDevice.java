@@ -11,7 +11,6 @@ import static java.lang.StrictMath.round;
 public class GasDevice extends Device implements Serializable {
 	private int volume;
 	private double modifier = 1;
-	private int defaultTimeDistance = 100;
 	
 	private DeviceClassification calculateDeviceClass() {
 		if (volume > 8000)
@@ -28,7 +27,6 @@ public class GasDevice extends Device implements Serializable {
 			return DeviceClassification.F;
 	}
 	
-	
 	public GasDevice (String name, String location, String serialNum, User user, int mod) {
 		super(name, location, serialNum);
 		this.volume = mod;
@@ -37,6 +35,9 @@ public class GasDevice extends Device implements Serializable {
 		calculateNextInspection();
 	}
 	
+	/**
+	 * Modifiers change based on previous modifiers and device class
+	 */
 	private void calculateModifier() {
 		double newMod = this.modifier * 0.95;
 		double classMod;
@@ -55,15 +56,23 @@ public class GasDevice extends Device implements Serializable {
 		this.modifier = newMod * classMod;
 	}
 	
+	/**
+	 * Uses the devices modifier to calculate when the next audition will be needed
+	 */
 	public void calculateNextAudition () {
 		calculateModifier();
 		setLastAudition(LocalDate.now());
-		setNextAudition(LocalDate.now().plusDays(round(defaultTimeDistance*modifier)));
+		int defaultTimeDistanceAudition = 100;
+		setNextAudition(LocalDate.now().plusDays(round(defaultTimeDistanceAudition *modifier)));
 	}
 	
+	/**
+	 * Uses the devices modifier to calculate when the next inspection will be needed
+	 */
 	public void calculateNextInspection () {
 		calculateModifier();
 		setLastInspection(LocalDate.now());
-		setNextInspection(LocalDate.now().plusDays(round(defaultTimeDistance*modifier)));
+		int defaultTimeDistanceInspection = 50;
+		setNextInspection(LocalDate.now().plusDays(round(defaultTimeDistanceInspection *modifier)));
 	}
 }

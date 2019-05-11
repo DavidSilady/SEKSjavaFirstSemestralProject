@@ -7,8 +7,8 @@ import java.time.LocalDate;
 
 public abstract class Notification implements Serializable {
 	private String text;
-	private String aggregatorName;
-	private String aggregatorType;
+	private String generatorName;
+	private String generatorType;
 	private LocalDate nextReminder;
 	
 	public String getText () {
@@ -21,20 +21,20 @@ public abstract class Notification implements Serializable {
 	
 	public abstract void dismiss(User user);
 	
-	public String getAggregatorName () {
-		return aggregatorName;
+	public String getGeneratorName () {
+		return generatorName;
 	}
 	
-	public void setAggregatorName (String aggregatorName) {
-		this.aggregatorName = aggregatorName;
+	public void setGeneratorName (String generatorName) {
+		this.generatorName = generatorName;
 	}
 	
-	public String getAggregatorType () {
-		return aggregatorType;
+	public String getGeneratorType () {
+		return generatorType;
 	}
 	
-	public void setAggregatorType (String aggregatorType) {
-		this.aggregatorType = aggregatorType;
+	public void setGeneratorType (String generatorType) {
+		this.generatorType = generatorType;
 	}
 	
 	public LocalDate getNextReminder () {
