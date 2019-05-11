@@ -27,7 +27,7 @@ import model.DataStorage;
  *          - removes any user
  *          - signs up new inspector users
  *          - marks devices as audited
- * The whole system of calculating next audition or inspection is automated.
+ * The whole system of calculating next audition or inspection is automated, but simplified.
  * If a new audition/inspection is required, the company is notified via notification system.
  *
  * @author David Silady
