@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * Design pattern: Singleton
- * Use: Main storage of user data & serialization of it
+ * Use: Main storage of user data and serialization of it
  */
 public class DataStorage implements Serializable{
 	private static DataStorage thisInstance = new DataStorage();
@@ -24,9 +24,6 @@ public class DataStorage implements Serializable{
 		return companyUserList;
 	}
 	
-	/**
-	 * Automatically serializes afterwards
-	 */
 	public void setCompanyUserList (ArrayList<? extends IUser> companyUserList) {
 		thisInstance.companyUserList = companyUserList;
 		thisInstance.serialize(companyUserList, "companyUserData");
@@ -36,9 +33,7 @@ public class DataStorage implements Serializable{
 		return inspectionUserList;
 	}
 	
-	/**
-	 * Automatically serializes afterwards
-	 */
+	
 	public void setInspectionUserList (ArrayList<? extends IUser> inspectionUserList) {
 		thisInstance.inspectionUserList = inspectionUserList;
 		thisInstance.serialize(companyUserList, "companyUserData");
@@ -48,9 +43,7 @@ public class DataStorage implements Serializable{
 		return auditorUserList;
 	}
 	
-	/**
-	 * Automatically serializes afterwards
-	 */
+	
 	public void setAuditorUserList (ArrayList<? extends IUser> auditorUserList) {
 		thisInstance.auditorUserList = auditorUserList;
 		thisInstance.serialize(auditorUserList, "auditorUserData");

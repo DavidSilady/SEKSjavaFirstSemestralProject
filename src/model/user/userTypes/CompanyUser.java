@@ -48,6 +48,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	
 	/**
 	 * Sends a notification to the inspectionUser, asking for assignment
+	 * @param inspectionUser requested inspector
 	 */
 	public void requestInspectorAssignment(InspectionUser inspectionUser) {
 		if (this.inspectorID == null) {
