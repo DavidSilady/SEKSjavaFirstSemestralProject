@@ -78,6 +78,13 @@ Každý používateľ bude dostávať upozornenia adekvátne k ich úlohe, či f
 
 Hodnotenie:
       
+      UML:
+        documentation/Package model.png
+        documentation/model.uml
+        documentation/modelDepndency.uml
+      JavaDoc:
+        documentation/javaDoc
+      
       -Ďalšie:
         - použitie návrhových vzorov: 
             Observer - package: .model
@@ -124,9 +131,6 @@ Hodnotenie:
               model.Observer
               model.Observable
               model.user.IUser
-              (Skôr používam abstractné classy - vyššie uvedené)
+              (Skôr používam abstract classy - vyššie uvedené)
        
-          
-          
-      
-    
+
