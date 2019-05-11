@@ -25,6 +25,11 @@ public abstract class User implements Serializable, IUser, Observer {
 		return notifications;
 	}
 	
+	/**
+	 * Used while logging in a user
+	 * @param userList - from which to compare user id
+	 * @return - logged in user if authenticated or null if not authenticated
+	 */
 	protected User isAuthenticated (ArrayList<? extends IUser> userList, String loginMail, String loginPassword) {
 		try {
 			for (IUser temp: userList) {
@@ -44,7 +49,7 @@ public abstract class User implements Serializable, IUser, Observer {
 		return null;
 	}
 	
-	public void printNotifications(User user) {
+	protected void printNotifications (User user) {
 		for (Notification tmp: user.getNotifications() ) {
 			System.out.println(tmp.getText());
 		}

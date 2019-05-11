@@ -11,12 +11,19 @@ import model.user.User;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * Commercial user - owns devices, which are audited and inspected.
+ */
 public class CompanyUser extends User implements Serializable, IUser {
 	private String ICO;
 	private String phone;
 	private String inspectorID;
 	private ArrayList<Device> deviceList = new ArrayList<>();
 	
+	/**
+	 * Iterates through whole inspector list and returns the inspector with matching ID
+	 * @return the found inspector.
+	 */
 	@SuppressWarnings("unchecked")
 	public InspectionUser getInspectorUser() {
 		for (InspectionUser tmp : (ArrayList<InspectionUser>) DataStorage.getInstance().getInspectionUserList()) {
@@ -27,6 +34,10 @@ public class CompanyUser extends User implements Serializable, IUser {
 		return null;
 	}
 	
+	/**
+	 * Adds the inspectorID of the inspectionUser (from param) to the current company
+	 * @param inspectionUser - the concrete user to whose array list the current company is added
+	 */
 	public void assignInspector(InspectionUser inspectionUser) {
 		if (this.inspectorID == null) {
 			this.inspectorID = inspectionUser.getIdentificationNumber();
@@ -35,6 +46,9 @@ public class CompanyUser extends User implements Serializable, IUser {
 		System.out.println("This company already has an inspector!");
 	}
 	
+	/**
+	 * Sends a notification to the inspectionUser, asking for assignment
+	 */
 	public void requestInspectorAssignment(InspectionUser inspectionUser) {
 		if (this.inspectorID == null) {
 			inspectionUser.addNotification(new Request(this));
@@ -46,7 +60,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 	public CompanyUser () {
 	}
 	
-	//Sign up method
+	
 	@Override
 	@SuppressWarnings("unchecked")
 	public User signUpUser(String name,
@@ -74,7 +88,6 @@ public class CompanyUser extends User implements Serializable, IUser {
 		}
 	}
 	
-	//Login method
 	@Override
 	public User loginUser(String loginMail, String loginPassword){
 		User user = super.isAuthenticated(DataStorage.getInstance().getCompanyUserList(), loginMail, loginPassword);
@@ -82,11 +95,13 @@ public class CompanyUser extends User implements Serializable, IUser {
 		return user;
 	}
 	
+	/**
+	 * Empty - can't update devices as of now
+	 * Might remove and move the method to separate interface in the future
+	 */
 	@Override
 	public void updateDevice (Device device) {
-	
 	}
-	
 	
 	public void updateNotifications () {
 		for (Device device : getDeviceList()) {

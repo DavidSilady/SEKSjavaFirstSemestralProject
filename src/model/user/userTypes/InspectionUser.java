@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Commercial user -
+ */
 public class InspectionUser extends User implements Serializable, IUser {
 	private String organizationICO;
 	private String identificationNumber;
@@ -75,6 +78,10 @@ public class InspectionUser extends User implements Serializable, IUser {
 		 */
 	}
 	
+	/**
+	 * Updates the devices inspection dates (last - today, next - calculates in the device)
+	 * @see Device
+	 */
 	@Override
 	public void updateDevice (Device device) {
 		device.calculateNextInspection();
