@@ -4,7 +4,10 @@ import model.user.IUser;
 import java.io.*;
 import java.util.ArrayList;
 
-
+/**
+ * Design pattern: Singleton
+ * Use: Main storage of user data & serialization of it
+ */
 public class DataStorage implements Serializable{
 	private static DataStorage thisInstance = new DataStorage();
 	private ArrayList<? extends IUser> companyUserList = new ArrayList<>();
@@ -21,6 +24,9 @@ public class DataStorage implements Serializable{
 		return companyUserList;
 	}
 	
+	/**
+	 * Automatically serializes afterwards
+	 */
 	public void setCompanyUserList (ArrayList<? extends IUser> companyUserList) {
 		thisInstance.companyUserList = companyUserList;
 		thisInstance.serialize(companyUserList, "companyUserData");
@@ -30,6 +36,9 @@ public class DataStorage implements Serializable{
 		return inspectionUserList;
 	}
 	
+	/**
+	 * Automatically serializes afterwards
+	 */
 	public void setInspectionUserList (ArrayList<? extends IUser> inspectionUserList) {
 		thisInstance.inspectionUserList = inspectionUserList;
 		thisInstance.serialize(companyUserList, "companyUserData");
@@ -39,11 +48,17 @@ public class DataStorage implements Serializable{
 		return auditorUserList;
 	}
 	
+	/**
+	 * Automatically serializes afterwards
+	 */
 	public void setAuditorUserList (ArrayList<? extends IUser> auditorUserList) {
 		thisInstance.auditorUserList = auditorUserList;
 		thisInstance.serialize(auditorUserList, "auditorUserData");
 	}
 	
+	/**
+	 * Used for initial deserialization of ALL the user data in 3 separate threads.
+	 */
 	public void init () {
 		class Thread1 extends Thread {
 			public void run() {
@@ -68,6 +83,11 @@ public class DataStorage implements Serializable{
 		thread3.start();
 	}
 	
+	/**
+	 * Serializes an array list
+	 * @param arrayList - the serialized list
+	 * @param fileName - name of the .ser file where the arrayList is stored
+	 */
 	private void serialize (ArrayList arrayList, String fileName) {
 		class SThread extends Thread{
 			public void run(){
@@ -89,6 +109,10 @@ public class DataStorage implements Serializable{
 		sThread.start();
 	}
 	
+	/**
+	 * @param fileName name of the .ser file where the data is stored
+	 * @return returns an array list of generic users
+	 */
 	@SuppressWarnings("unchecked")
 	private ArrayList<? extends IUser> deserializeUsers (String fileName) {
 		try
@@ -120,10 +144,6 @@ public class DataStorage implements Serializable{
 			c.printStackTrace();
 			return null;
 		}
-	}
-	
-	public void serializeCurrentCompany () {
-		serialize(companyUserList, "companyUserData");
 	}
 	
 	public void serializeAll () {

@@ -121,7 +121,7 @@ public class CompanyUser extends User implements Serializable, IUser {
 			System.out.println("Device not found!");
 		}
 		deviceList.remove(device);
-		DataStorage.getInstance().serializeCurrentCompany();
+		DataStorage.getInstance().serializeAll();
 	}
 	
 	public String getName () {
