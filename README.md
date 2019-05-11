@@ -1,7 +1,7 @@
 Author: David Silady |
 Date: 11/05/2019 |
 School: FIIT STU |
-Year: 1st |
+Semester: II.
 
  SECS - Sub-governmental Evidence and Control System is my first semestral work based around Java.
  It is a demo application for management of devices a company should run an evidence of.
