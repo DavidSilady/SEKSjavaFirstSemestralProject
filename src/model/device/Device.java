@@ -20,6 +20,7 @@ public abstract class Device implements Serializable, Observable {
 		E,
 		F
 	}
+	
 	DeviceClassification deviceClassification;
 	public DeviceClassification getDeviceClassification () {
 		return this.deviceClassification;
