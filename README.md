@@ -47,3 +47,86 @@ Každý používateľ bude dostávať upozornenia adekvátne k ich úlohe, či f
         logika je v package model.
         controllery v package controller.
         .fxml súbory v package view.
+        
+ Záverečné odovzdanie (zabudol som, že je zvyšok v slovenčine):
+ 
+      SECS - Sub-governmental Evidence and Control System
+      is a demo application for management of devices a company should run an evidence of.
+      This application only contains two types of devices - Electronic (ED) and Gas (GD).
+      
+ Basic description of functionality:
+ 
+      There are three user types, who interact with the devices:
+       - Company User
+           - owns, adds and removes devices
+           - asks inspector users for their assignment to the company
+           - revokes inspector user assignments
+       - Inspector User
+           - accepts assignments from companies
+           - sees relevant notifications from devices of assigned companies
+           - views assigned companies and their devices,
+           - removes or adds devices
+           - marks devices as inspected
+       - Auditor User (governmental)
+           - views all other users (with their devices)
+           - removes any user
+           - signs up new inspector users
+           - marks devices as audited
+           
+           The whole system of calculating next audition or inspection is automated, but simplified.
+           If a new audition/inspection is required, the company is notified via notification system.
+
+Hodnotenie:
+      
+      -Ďalšie:
+        - použitie návrhových vzorov: 
+            Observer - package: .model
+                implements Observable - .model.device.Device
+                implements Observer - .model.user.User
+        - oddelené GUI + handlers:
+             GUI: package: .controller (+.view pre fxml)
+             Logika: package: .model
+        - multithreading:
+              Pri serializácii/deserializácii
+             .model.DataStorage (riadok: 56 - 76) + (riadok: 85 - 102)
+             .main.Main (riadok: 39 - 48)
+        - RTTI:
+              .model.device.Device: (Riadok: 92 metóda notWarning)
+              .controller.DeviceMenuController (Riadok: 95)
+              .controller.NotificationController (Riadok 37)
+              .controller.CompanyMenuController (Riadok 173)
+         - Vhniezdené triedy a rozhrania:
+              Pri vytváraní nových threadov:
+             .model.DataStorage (riadok: 56 - 76) + (riadok: 85 - 102)
+             .main.Main (riadok: 39 - 48)
+              Enum:
+              .model.device.Device (riadok: 22)
+         - Použitie lambda výrazov:
+              GUI - napr:
+              .model.controller.UserInterfaceController (riadok: 65 - 73)
+              .model.controller.NotificationController (riadok: 52 - 60)
+              .model.controller.ConfirmationPopUp (riadok: 68 - 77)
+         - AspectJ: bohužiaľ som to nerozbehal
+     Hlavné: 
+         Dedenie/Polymorfizmus:
+              .model.notification
+                  Notification - abstract
+                    .model.notification.notificationTypes
+                        Request extends Notification overrides Dismiss()
+                        Warning extends Notification overrides Dismiss()
+                        Reminder extends Notification overrides Dismiss()
+              .model.device
+                  abstract Device a typy devicov
+              .model.user
+                  abstract User a typy userov
+                    override: napr. login()
+          Rozhrania: 
+              model.Observer
+              model.Observable
+              model.user.IUser
+              (Skôr používam abstractné classy - vyššie uvedené)
+       
+          
+          
+      
+    
