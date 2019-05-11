@@ -18,7 +18,8 @@ import model.DataStorage;
  *          - asks inspector users for their assignment to the company
  *          - revokes inspector user assignments
  *      - Inspector User
- *          - views companies and their devices,
+ *          - accepts assignments from companies
+ *          - views assigned companies and their devices,
  *          - removes or adds devices
  *          - marks devices as inspected
  *      - Auditor User (governmental)

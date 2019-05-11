@@ -31,8 +31,10 @@ public class GasDevice extends Device implements Serializable {
 		super(name, location, serialNum);
 		this.volume = mod;
 		super.setDeviceClassification(calculateDeviceClass());
-		calculateNextAudition();
-		calculateNextInspection();
+		setLastAudition(LocalDate.now().minusYears(1));
+		setNextAudition(LocalDate.now().minusYears(1));
+		setLastInspection(LocalDate.now().minusYears(1));
+		setNextInspection(LocalDate.now().minusYears(1));
 	}
 	
 	/**

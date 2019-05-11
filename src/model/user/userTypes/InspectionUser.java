@@ -2,15 +2,17 @@ package model.user.userTypes;
 
 import model.DataStorage;
 import model.device.Device;
+import model.notification.Notification;
 import model.user.IUser;
 import model.user.User;
 
+import javax.xml.crypto.Data;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.UUID;
 
 /**
- * Commercial user -
+ * Commercial user - inspects devices / adds or removes devices / accepts assignments
  */
 public class InspectionUser extends User implements Serializable, IUser {
 	private String organizationICO;
@@ -87,9 +89,21 @@ public class InspectionUser extends User implements Serializable, IUser {
 		device.calculateNextInspection();
 	}
 	
+	/**
+	 * Checks for relevant notifications from assigned company users
+	 */
 	@Override
 	public void updateNotifications () {
-		System.out.println("No new notifications.");
+		for (CompanyUser company: companyUsers) {
+			company.updateNotifications();
+			for (Notification notification: company.getNotifications()) {
+				if (notification.getText().contains("Inspection") && ! super.getNotifications().contains(notification)) {
+					notification.setGeneratorName(company.getName());
+					super.getNotifications().add(notification);
+				}
+			}
+		}
+		DataStorage.getInstance().serializeAll();
 	}
 	
 	public String getOrganizationICO () {
