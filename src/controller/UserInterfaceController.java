@@ -79,6 +79,12 @@ public class UserInterfaceController {
 	}
 	
 	@FXML
+	void showUserSettings(ActionEvent event) throws Exception{
+		SceneController sceneController = new SceneController();
+		sceneController.changeDynamicPane(dynamicPane, "userSettings");
+	}
+	
+	@FXML
 	void initialize() {
 		try {
 			generateNotifications();

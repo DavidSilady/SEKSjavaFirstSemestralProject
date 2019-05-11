@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="720.0" prefWidth="980.0" stylesheets="@css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserDataController">
+   <children>
+      <JFXTextField fx:id="reminderDelayField" layoutX="100.0" layoutY="179.0" prefHeight="34.0" prefWidth="258.0" promptText="Number of days until next reminder." />
+      <JFXButton layoutX="374.0" layoutY="171.0" onAction="#setReminderDelay" prefHeight="44.0" prefWidth="165.0" styleClass="pinkButton" text="Set Reminder Delay" />
+   </children>
+</AnchorPane>
