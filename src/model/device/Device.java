@@ -1,7 +1,7 @@
 package model.device;
 
-import model.notification.Notification;
 import model.Observable;
+import model.notification.Notification;
 import model.notification.notificationTypes.Reminder;
 import model.notification.notificationTypes.Warning;
 import model.user.User;

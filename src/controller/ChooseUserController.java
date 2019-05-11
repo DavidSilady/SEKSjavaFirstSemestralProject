@@ -1,18 +1,15 @@
 package controller;
 
 import com.jfoenix.controls.JFXButton;
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import controller.userController.UserController;
-import javafx.animation.ScaleTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
-import javafx.util.Duration;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 public class ChooseUserController {
 	

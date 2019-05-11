@@ -1,0 +1,10 @@
+controller
+controller.userController
+main
+model
+model.device
+model.device.deviceTypes
+model.notification
+model.notification.notificationTypes
+model.user
+model.user.userTypes
