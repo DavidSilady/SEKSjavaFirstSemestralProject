@@ -29,5 +29,5 @@ Semester: II.
            The whole system of calculating next audition or inspection is automated, but simplified.
            If a new audition/inspection is required, the company is notified via notification system.
 
-The whole application still needs refactoring. (Mainly the GUI)
+The whole application still needs refactoring. (Mainly GUI)
 
